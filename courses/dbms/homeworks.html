@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Домашние задания</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="./../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="./../../">ГК</a> / <a href="./../">Материалы курсов</a> / <a href="./">Базы данных</a> / </nav><h1>Домашние задания</h1></header><div id="main"><article><h4 id="intro">Домашнее задание 1. Установка и использование СУБД</h4><ol><li>
+            Установите систему управления реляционными базами данных.
+        </li><li>
+            Узнайте, как в вашей СУБД исполнять SQL в интерактивном режиме.
+        </li><li>
+            Узнайте, как в вашей СУБД исполнять SQL в пакетном режиме.
+        </li><li>
+            Разберитесь, как в вашей СУБД осуществляется поддержка русского языка.
+        </li><li>
+            Создайте базу данных и наполните ее в соответствии с примерами из презентации.
+        </li></ol><p>Ожидаемая структура проекта</p><ol><li>
+            Текстовая часть
+            <ol><li>Описание предметной области с кратким описанием неочевидных сущностей и атрибутов.</li><li>Предварительное разбиение на отношения (может отсутствовать).</li><li>Для каждого отношения: 
+                    определение функциональных зависимостей, 
+                    нормализация до 5НФ,
+                    денормализация (при необходимости).</li><li>Модель сущность-связь.</li><li>Физическая модель (должна соответствовать ERM) с указанием типов для доменов.</li></ol></li><li>
+            Часть на SQL
+            <ul><li><code>ddl.sql</code> &ndash; описание таблиц и индексов.</li><li><code>insert.sql</code> &ndash; добавление тестовых данных.</li><li><code>select.sql</code> &ndash; запросы на получение данных
+                    и представления.
+                </li><li><code>update.sql</code> &ndash; запросы на изменение данных,
+                    хранимые процедуры и триггеры.
+                </li></ul></li></ol><p>В рамках проекта:</p><ul><li>
+            Выберите тему проекта.
+            <ul><li>Тема должна быть уникальной.</li><li>Тема должна быть достаточно сложной.</li><li>
+                    Нельзя брать темы: 
+                    обучение в университете; 
+                    торговля (как товарами, так и билетами); 
+                    cоревнования по программированию.
+                </li></ul></li></ul><h4 id="homework-2">Домашнее задание 2. Моделирование БД &laquo;Университет&raquo;</h4><p>
+        Спроектируйте базу данных &laquo;Университет&raquo;,
+        позволяющую хранить информацию о факультетах, студентах,
+        группах, преподавателях, дисциплинах и оценках.
+    </p><ol><li>
+            Составьте модель сущность-связь.
+        </li><li>
+            Преобразуйте модель сущность-связь в физическую модель.
+        </li><li>
+            Запишите физическую модель на языке SQL.
+            Запись должна включать объявления ограничений.
+        </li><li>
+            Создайте базу данных по спроектированной модели.
+        </li><li>
+            Запишите операторы SQL, заполняющие базу тестовыми данными. 
+            Достаточно 2&ndash;3 записей на таблицу, 
+            если они в полной мере демонстрируют особенности БД.
+        </li></ol><p>
+        Примечания
+    </p><ol><li>
+            Не требуется поддержка:
+            <ul><li>нескольких университетов;</li><li>дисциплин по выбору;</li><li>
+                    дисциплин с необычным распределением по группам 
+                    (таких как физическая культура и иностранный язык);
+                </li><li>переводов между группами;</li><li>исторических данных;</li><li>нескольких оценок по одной дисциплине.</li></ul></li><li>
+            Многосеместровые дисциплины считаются по семестрам,
+            например:
+            <ul><li>Математический анализ (семестр 1);</li><li>Математический анализ (семестр 2).</li></ul></li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSffTt-D80JVpKGpfB4Ou2vBArepi_vz0GzjOXVOEvTrexVtvA/viewform">Форма для сдачи ДЗ</a>.
+        Проверка проводится в полуавтоматическом режиме, 
+        поэтому строго соблюдайте указанные форматы.
+    </p><p>В рамках проекта:</p><ul><li>
+            Сделайте предварительную схему для БД проекта на основе моделей:
+            <ul><li>модель сущность-связь;</li><li>физическая модель;</li><li>определение схемы на SQL.</li></ul></li></ul><h4 id="fundeps-students">Домашнее задание 3. Функциональные зависимости в БД &laquo;Университет&raquo;</h4><p>
+        Дано отношение с атрибутами
+            <em>StudentId</em>,
+            <em>StudentName</em>,
+            <em>GroupId</em>,
+            <em>GroupName</em>,
+            <em>GroupFacultyId</em>,
+            <em>CourseId</em>,
+            <em>CourseName</em>,
+            <em>LecturerId</em>,
+            <em>LecturerName</em>,
+            <em>LecturerFacultyId</em>,
+            <em>Mark</em>,
+            <em>FacultyId</em>,
+            <em>FacultyName</em>,
+            <em>FacultyDeanId</em>.
+        
+    </p><ol><li>
+            Найдите функциональные зависимости в данном отношении.
+        </li><li>
+            Найдите все ключи данного отношения.
+        </li><li>
+            Найдите замыкание множеств атрибутов:
+            <ol><li><em>GroupId</em>, <em>CourseId</em>;</li><li><em>StudentId</em>, <em>CourseId</em>;</li><li><em>StudentId</em>, <em>LecturerId</em>;</li><li><em>StudentId</em>, <em>LecturerFacultyDeanId</em>;</li><li><em>GroupName</em>, <em>LecturerId</em>.</li></ol></li><li>
+            Найдите неприводимое множество функциональных зависимостей
+            для данного отношения.
+        </li></ol><p>
+        Примечания
+    </p><ol><li>
+            Не требуется поддержка:
+            <ul><li>нескольких университетов;</li><li>дисциплин по выбору;</li><li>
+                    дисциплин с необычным распределением по группам 
+                    (таких как физическая культура и иностранный язык);
+                </li><li>переводов между группами;</li><li>нескольких оценок по одной дисциплине.</li></ul></li><li>
+            Многосеместровые дисциплины считаются по семестрам,
+            например: 
+                <i>Математический анализ (семестр 1)</i>,
+                <i>Математический анализ (семестр 2)</i>.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSde-lUPn4XBtAT-CGk7nZAc6ifDv9vyytOyVkYsrgVGtwEc4w/viewform">Форма для сдачи ДЗ</a>.
+        Проверка проводится в полуавтоматическом режиме, 
+        поэтому строго соблюдайте указанные форматы.
+    </p><p>В рамках проекта:</p><ol><li>
+            Определите набор атрибутов, необходимых для проекта,
+            и определите отношения на них.
+        </li><li>Найдите функциональные зависимости полученных отношений.</li><li>Найдите все ключи полученных отношений.</li><li>
+            Найдите неприводимые множества функциональных зависимостей
+            для полученных отношений.
+        </li></ol><h4 id="normalization-students">Домашнее задание 4. Нормализация БД &laquo;Университет&raquo;</h4><p>
+        Дано отношение с атрибутами
+            <em>StudentId</em>,
+            <em>StudentName</em>,
+            <em>GroupId</em>,
+            <em>GroupName</em>,
+            <em>GroupFacultyId</em>,
+            <em>GroupFacultyName</em>,
+            <em>GroupFacultyDeanId</em>;
+            <em>CourseId</em>,
+            <em>CourseName</em>,
+            <em>LecturerId</em>,
+            <em>LecturerName</em>,
+            <em>LecturerFacultyId</em>,
+            <em>LecturerFacultyName</em>,
+            <em>LecturerFacultyDeanId</em>,
+            <em>Mark</em>.
+        и функциональными зависимостями:
+    </p><div style="padding-left: 2em"><ul><li>StudentId &rarr; StudentName, GroupId, GroupName;</li><li>GroupId &rarr; GroupName, GroupFacultyId;</li><li>GroupName &rarr; GroupId;</li><li>CourseId &rarr; CourseName;</li><li>LecturerId &rarr; LecturerName, LecturerFacultyId;</li><li>StudentId, CourseId &rarr; Mark;</li><li>GroupId, CourseId &rarr; LecturerId;</li><li>GroupFacultyId &rarr; GroupFacultyName, GroupFacultyDeanId;</li><li>GroupFacultyName &rarr; GroupFacultyId;</li><li>LecturerFacultyId &rarr; LecturerFacultyName, LecturerFacultyDeanId;</li><li>LecturerFacultyName &rarr; LecturerFacultyId.</li></ul></div><ol><li>
+            Инкрементально приведите данное отношение в
+            пятую нормальную форму.
+        </li><li>
+            Постройте соответствующую модель сущность-связь.
+        </li><li>
+            Постройте соответствующую физическую модель.
+        </li><li>
+            Реализуйте SQL-скрипты, создающие схему базы данных.
+        </li><li>
+            Создайте базу данных по спроектированной модели.
+        </li><li>
+            Заполните базу тестовыми данными.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeyvYrFA-0OrPsU5fWeIQRbHJd7dvuL1Ywl_7napyV2-OURAg/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>Приведите схему базы в пятую нормальную форму.</li><li>Если итоговая схема не будет в НФ-5, то обоснуйте принятое решение.</li><li>Запишите определения таблиц на языке SQL.</li><li>Запишите на языке SQL наполнение таблиц тестовым данными.</li></ol><h4 id="relalgebra-students">Домашнее задание 5. Реляционная алгебра</h4><p>
+        Структура базы данных &laquo;Университет&raquo;:
+    </p><ul><li><em>Faculties</em>(<em>FacultyId</em>, <em>FacultyName</em>, <em>DeanId</em>)</li><li><em>Groups</em>(<em>GroupId</em>, <em>GroupName</em>, <em>GroupFacultyId</em>)</li><li><em>Students</em>(<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em>)</li><li><em>Courses</em>(<em>CourseId</em>, <em>CourseName</em>)</li><li><em>Lecturers</em>(<em>LecturerId</em>, <em>LecturerName</em>, <em>LecturerFacultyId</em>)</li><li><em>Plan</em>(<em>GroupId</em>, <em>CourseId</em>, <em>LecturerId</em>)</li><li><em>Marks</em>(<em>StudentId</em>, <em>CourseId</em>, <em>Mark</em>)</li></ul><div><p><p>
+            Составьте выражения реляционной алгебры и 
+            соответствующие SQL-запросы, позволяющие получать
+        </p></p><ol><li><p>
+                Информацию о студентах
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentId</em>).
+                    </p></li><li><p>
+                        С заданным ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentName</em>).
+                    </p></li></ol></li><li><p>
+                Полную информацию о студентах
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:StudentId</em>).
+                    </p></li><li><p>
+                        С заданным ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:StudentName</em>).
+                    </p></li><li><p>
+                        Из заданной группы
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:GroupName</em>).
+                    </p></li><li><p>
+                        C заданного факультета
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:FacultyName</em>).
+                    </p></li><li><p>
+                        C факультета, заданного деканом
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:LecturerName</em>).
+                    </p></li></ol></li><li><p>
+                Информацию о студентах с заданной оценкой по дисциплине
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseId</em>).
+                    </p></li><li><p>
+                        С заданным названием
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseName</em>).
+                    </p></li><li><p>
+                        Которую у него вёл лектор заданный идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerId</em>).
+                    </p></li><li><p>
+                        Которую у них вёл лектор, заданный ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerName</em>).
+                    </p></li><li><p>
+                        Которую вёл лектор, заданный идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerId</em>).
+                    </p></li><li><p>
+                        Которую вёл лектор, заданный ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerName</em>).
+                    </p></li></ol></li><li><p>
+                Информацию о студентах не имеющих оценки по дисциплине
+            </p><ol><li><p>
+                        Среди всех студентов
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>).
+                    </p></li><li><p><em>Тут был дубль задачи, пункт оставлен для сохранения нумерации.</em></p></li><li><p>
+                        Среди студентов факультета
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>, <em>:FacultyName</em>).
+                    </p></li><li><p>
+                        Среди студентов, у которых есть эта дисциплина
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>).
+                    </p></li></ol></li><li><p>
+                Для каждого студента ФИО и названия дисциплин
+            </p><ol><li><p>
+                        Которые у него есть по плану
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p></li><li><p>
+                        Есть, но у него нет оценки
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p></li><li><p>
+                        Есть, но у него не 4 или 5
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p></li><li><p>
+                        Вёл преподаватель
+                        (<em>StudentName</em>, <em>CourseName</em> по <em>:LecturerName</em>).
+                    </p></li><li><p>
+                        Вёл преподаватель с :FacultyName
+                        (<em>StudentName</em>, <em>CourseName</em> по <em>:FacultyName</em>).
+                    </p></li><li><p>
+                        Вёл преподаватель другого факультета
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p></li><li><p>
+                        Вёл декан
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p></li></ol></li><li><p>
+                Идентификаторы студентов по преподавателю
+            </p><ol><li><p>
+                        Имеющих хотя бы одну оценку у преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p></li><li><p>
+                        Не имеющих ни одной оценки у преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p></li><li><p>
+                        Имеющих оценки по всем дисциплинам преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p></li><li><p>
+                        Имеющих оценки по всем дисциплинам преподавателя, 
+                        которые он вёл у этого студента
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p></li></ol></li><li><p>
+                Группы и дисциплины, такие что все студенты группы имеют оценку по этой дисциплине
+            </p><ol><li><p>
+                        Идентификаторы
+                        (<em>GroupId</em>, <em>CourseId</em>).
+                    </p></li><li><p>
+                        Названия
+                        (<em>GroupName</em>, <em>CourseName</em>).
+                    </p></li></ol></li></ol><p><p>
+            Составьте SQL-запросы, позволяющие получать
+        </p></p><ol start="8"><li><p>
+                Суммарный балл
+            </p><ol><li><p>
+                        Одного студента
+                        (<em>SumMark</em> по <em>:StudentId</em>).
+                    </p></li><li><p>
+                        Каждого студента
+                        (<em>StudentName</em>, <em>SumMark</em>).
+                    </p></li><li><p>
+                        Каждой группы
+                        (<em>GroupName</em>, <em>SumMark</em>).
+                    </p></li></ol></li><li><p>
+                Средний балл
+            </p><ol><li><p>
+                        Одного студента
+                        (<em>AvgMark</em> по <em>:StudentId</em>).
+                    </p></li><li><p>
+                        Каждого студента
+                        (<em>StudentName</em>, <em>AvgMark</em>).
+                    </p></li><li><p>
+                        Каждой группы
+                        (<em>GroupName</em>, <em>AvgMark</em>).
+                    </p></li><li><p>
+                        Средний балл средних баллов студентов каждой группы
+                        (<em>GroupName</em>, <em>AvgAvgMark</em>).
+                    </p></li></ol></li><li><p>
+                Для каждого студента:
+                число дисциплин, которые у него были,
+                число сданных дисциплин и
+                число несданных дисциплин
+                (<em>StudentId</em>, <em>Total</em>, <em>Passed</em>, <em>Failed</em>).
+            </p></li></ol></div><a href="/courses/dbms/slides/misc/relations.html">Тестовый полигон</a><p>
+        Технические особенности проверки.
+    </p><ul><li>
+            Сдача &mdash; в <a href="https://pcms.itmo.ru">PCMS</a>. 
+            Если у вас нет аккаунта в PCMS, либо доступа к ДЗ, обратитесь к 
+            <a href="https://t.me/VedernikovNV">Николаю Викторовичу Ведерникову</a>.
+        </li><li>Проверяться и оцениваться будет <b>последняя</b> посланная версия.</li><li>
+            Проверка разделена на 4 фазы:
+            <ol><li>пустые таблицы (синтаксис и набор столбцов);</li><li>таблицы с не более чем одной записью;</li><li>таблицы с простыми данными;</li><li>таблицы со сложными данными.</li></ol></li><li>
+            В случае проблем с синтаксисом или набором столбцов вы будете получать
+            <em>Presentation Error</em>.
+        </li><li>
+            Реляционная алгебра проверяется одним тестом на фазу,
+            движком из тестового полигона.
+        </li><li>
+            SQL проверяется тремя тестами на фазу &mdash; с разными СУБД.
+            Первая СУБД &mdash; <a href="https://www.sqlite.org/">SQLite</a>,
+            как на тестовом полигоне.
+        </li><li>
+            Известные спецэффекты:
+            <ul style="list-style-type: square"><li>
+                    SQLite поддерживает только <code>left join</code>.
+                    <code>right</code> и <code>оuter join</code> делаются через него.
+                </li><li>
+                    Все вложенные запросы надо именовать, даже если вы не будете
+                    использовать это имя:
+<pre>
+    select ... from ... (select ... ) SubQueryName ...
+</pre></li><li>
+                    Используйте данные из минимально возможного набора таблиц.
+                </li></ul></li></ul><h4 id="relcalculus-students">Домашнее задание 6. Реляционное исчисление</h4><div><p>
+        Составьте запросы в терминах языков Datalog и SQL 
+        для базы данных &laquo;Университет&raquo;, позволяющие получать
+    </p><ol><li>
+            Информацию о студентах
+            <ol><li>
+                    С заданным ФИО
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentName</em>).
+                </li><li>
+                    Учащихся в заданной группе
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:GroupName</em>).
+                </li><li>
+                    Учащихся на заданном факультете
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:FacultyName</em>).
+                </li><li>
+                    C заданной оценкой по дисциплине, 
+                    заданной идентификатором
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseId</em>).
+                </li><li>
+                    C заданной оценкой по дисциплине, 
+                    заданной названием
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseName</em>).
+                </li></ol></li><li>
+            Полную информацию о студентах
+            <ol><li>
+                    Для всех студентов
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em>).
+                </li><li>
+                    Учащихся на заданном факультете
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:FacultyName</em>).
+                </li><li>
+                    C факультета, заданного деканом
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, заданной идентификатором
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseId</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, заданной названием
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseName</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, 
+                    у которых есть эта дисциплина
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseId</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, 
+                    у которых есть эта дисциплина
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseName</em>).
+                </li></ol></li><li>
+            Студенты и дисциплины, такие что у студента была дисциплина 
+            (по плану или есть оценка)
+            <ol><li>
+                    Идентификаторы
+                    (<em>StudentId</em>, <em>CourseId</em>).
+                </li><li>
+                    Имя и название
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Имя и название, преподаватель того же факультета
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Имя и название, преподаватель другого факультета
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li></ol></li><li>
+            Студенты и дисциплины, такие что 
+            дисциплина есть в его плане, 
+            и у студента долг по этой дисциплине
+            <ol><li>
+                    Долгом считается отсутствие оценки
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Долгом считается оценка не выше 2
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Долгом считается отсутствие оценки или оценка не выше 2
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li></ol></li><li>
+            Идентификаторы студентов по преподавателю
+            <ol><li>
+                    Имеющих хотя бы одну оценку у преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Не имеющих ни одной оценки у преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Имеющих оценки по всем дисциплинам преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Имеющих оценки по всем дисциплинам преподавателя, 
+                    которые он вёл у этого студента
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li></ol></li><li>
+            Группы и дисциплины, такие что 
+            все студенты группы имеют оценку по предмету
+            <ol><li>
+                    Идентификаторы
+                    (<em>GroupId</em>, <em>CourseId</em>).
+                </li><li>
+                    Названия
+                    (<em>GroupName</em>, <em>CourseName</em>).
+                </li></ol></li></ol></div><p><b>Примечания</b></p><ol><li>В Datalog итоговым считается последнее объявленное отношение.</li><li>Текущая реализация Datalog не поддерживает рекурсивные определения.</li><li>В SQL-запросах нельзя использовать <code>* join</code>.</li><li>SQL проверяется <em>четырьмя</em> тестами на фазу &mdash; с разными СУБД.
+            Первая СУБД &mdash; <a href="https://www.sqlite.org/">SQLite</a>,
+            как на тестовом полигоне.
+        </li></ol><p>В рамках проекта:</p><ol><li>
+            Определите запросы (в том числе, агрегирующие), 
+            необходимые для работы проекта.
+        </li><li>Реализуйте запросы на языке SQL.</li></ol><h4 id="modification-students">Домашнее задание 7. Изменение данных</h4><div><p>
+        Реализуйте указанные запросы, представления, 
+        проверки и триггеры на языке SQL.
+    </p><ol><li>
+            Напишите запросы, удаляющие студентов
+            <ol><li>
+                    Учащихся в группе, заданной идентификатором
+                    (<em>GroupId</em>).
+                </li><li>
+                    Учащихся в группе, заданной названием
+                    (<em>GroupName</em>).
+                </li><li>
+                    Учащихся на факультете
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Без оценок.
+                </li><li>
+                    Имеющих 3 и более оценки.
+                </li><li>
+                    Имеющих 3 и менее оценки.
+                </li></ol></li><li>
+            Напишите запросы, удаляющие должников (здесь и далее, долг определяется по отсутствию оценки)
+            <ol><li>
+                    Студентов, c долгами.
+                </li><li>
+                    Студентов, имеющих 2 и более долга.
+                </li><li>
+                    Студентов, имеющих 2 и более долга, учащихся на факультете
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Студентов, имеющих не более 3 долгов.
+                </li></ol></li><li>
+            Напишите запросы, обновляющие данные студентов
+            <ol><li>
+                    Изменение имени студента
+                    (<em>StudentId</em>, <em>StudentName</em>).
+                </li><li>
+                    Перевод студента из группы в группу по индентификаторам
+                    (<em>StudentId</em>, <em>GroupId</em>, <em>FromGroupId</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу по идентификаторам
+                    (<em>GroupId</em>, <em>FromGroupId</em>).
+                </li><li>
+                    Изменение имени всех студентов группы
+                    (<em>GroupName</em>, <em>StudentName</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу по названиям
+                    (<em>GroupName</em>, <em>FromGroupName</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу, 
+                    только если целевая группа существует
+                    (<em>GroupName</em>, <em>FromGroupName</em>).
+                </li></ol></li><li>
+            Напишите запросы, подсчитывающие статистику по оценкам
+            <ol><li>
+                    Число оценок студента
+                    (столбец <em>Students.Marks</em>)
+                    (<em>StudentId</em>).
+                </li><li>
+                    Число оценок каждого студента 
+                    (столбец <em>Students.Marks</em>).
+                </li><li>
+                    Число оценок каждого студента факультета
+                    (столбец <em>Students.Marks</em>)
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Пересчет числа оценок каждого студента, 
+                    с учётом новых оценок из таблицы <em>NewMarks</em>, 
+                    структура которой  такая же как у таблицы <em>Marks</em> 
+                    (столбец <em>Students.Marks</em>).
+                </li></ol></li><li>
+            Напишите запросы, подсчитывающие статистику по студентам
+            <ol><li>
+                    Число сданных дисциплин каждого студента
+                    (столбец <em>Students.Marks</em>).
+                </li><li>
+                    Число долгов студента 
+                    (столбец <em>Students.Debts</em>)
+                    (<em>StudentId</em>).
+                </li><li>
+                    Число долгов каждого студента 
+                    (столбец <em>Students.Debts</em>).
+                </li><li>
+                    Число долгов каждого студента группы (столбец <em>Students.Debts</em>)
+                    (<em>GroupName</em>).
+                </li><li>
+                    Число долгов каждого студента у деканов (столбец <em>Students.Debts</em>)
+                    (<em>GroupName</em>).
+                </li><li>
+                    Число оценок и долгов каждого студента 
+                    (столбцы <em>Students.Marks</em>, <em>Students.Debts</em>).
+                </li></ol></li><li>
+            Напишите запросы, обновляющие оценки, 
+            с учетом данных из таблицы <em>NewMarks</em>, 
+            имеющей такую же структуру, как таблица <em>Marks</em><ol><li>
+                    Проставляющий новую оценку только если ранее оценки не было.
+                </li><li>
+                    Проставляющий новую оценку только если ранее оценка была.
+                </li><li>
+                    Проставляющий максимум из старой и новой оценки 
+                    только если ранее оценка была.
+                </li><li>
+                    Проставляющий максимум из старой и новой оценки 
+                    (если ранее оценки не было, то новую оценку).
+                </li></ol></li><li>
+            Работа с представлениями
+            <ol><li>
+                    Создайте представление <em>StudentMarks</em> в котором 
+                    для каждого студента указано число оценок
+                    (<em>StudentId</em>, <em>Marks</em>).
+                </li><li>
+                    Создайте представление <em>AllMarks</em> в котором 
+                    для каждого студента указано число оценок,
+                    включая оценки из таблицы <em>NewMarks</em>
+                    (<em>StudentId</em>, <em>Marks</em>).
+                </li><li>
+                    Создайте представление <em>Debts</em> в котором для каждого
+                    студента, имеющего долги указано их число
+                    (<em>StudentId</em>, <em>Debts</em>).
+                </li><li>
+                    Создайте представление <em>StudentDebts</em> в котором 
+                    для каждого студента указано число долгов
+                    (<em>StudentId</em>, <em>Debts</em>).
+                </li></ol></li><li><p>
+                Целостность данных.
+            </p><p>
+                Обратите внимание, что задания из этого раздела
+                надо посылать в PCMS, но они будут проверяться 
+                только вручную после окончания сдачи.
+                То есть в PCMS вы получите <em>+</em> за любое решение.
+            </p><p>
+                В комментарии перед каждым запросом укажите 
+                название и версию использованной СУБД.
+            </p><ol><li>
+                    Добавьте проверку того, что у студентов есть оценки
+                    только по дисциплинам из их плана (<em>NoExtraMarks</em>).
+                </li><li>
+                    Добавьте проверку того, что все студенты каждой группы
+                    имеют оценку по одному и тому же набору дисциплин (<em>SameMarks</em>).
+                </li><li>
+                    Создайте триггер <em>PreserveMarks</em>, 
+                    не позволяющий уменьшить оценку студента по дисциплине. 
+                    При попытке такого изменения оценка изменяться не должна.
+                </li></ol></li></ol></div><p><b>Примечания</b></p><ol><li>
+            Некоторые базы данных не понимают, что <tt>* join ... using (Column)</tt>
+            должен оставлять один экземпляр <tt>Column</tt> и не требовать указывать
+            для него таблицу.
+        </li></ol><p>В рамках проекта:</p><ol><li>
+            Определите модифицирующие запросы, необходимые для работоспособности
+            проекта.
+        </li><li>Запишите эти запросы на языке SQL.</li><li>
+            Определите представления, необходимые для работоспособности
+            проекта.
+        </li><li>
+            Запишите эти представления на языке SQL.
+        </li></ol><h4 id="indexing-students">Домашнее задание 8. Индексирование</h4><ol><li>
+            Определите, какие индексы требуется добавить
+            к таблицам базы данных &laquo;Университет&raquo; на основе
+            запросов из ДЗ-5, 6 и 7.
+        </li><li>
+            Пусть частым запросом является определение
+            среднего балла студентов  факультета по дисциплине.
+            Как будет выглядеть запрос и какие индексы 
+            могут помочь при его исполнении?
+        </li><li>
+            Придумайте три запроса, требующих новых индексов
+            и запишите их. 
+            Если в результате, некоторые из старых индексов 
+            станут бесполезными, удалите их.
+        </li></ol><p>
+        При выполнении задания считайте, что ФЗ соответствуют полученным в ДЗ-3 и 4.
+    </p><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfshGHPac4B21i02DZ3E5F3T6QH6u2yGzgd7jG9Q3OAvyv6kQ/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите индексы и их типы,
+            необходимые для эффективного исполнения запросов.
+        </li><li>Запишите определения индексов на языке SQL.</li></ol><h4 id="procedures-airlines">Домашнее задание 9. Хранимые процедуры</h4><p>
+        В базе данных <code>Airline</code> информация о рейсах
+        самолётов задана в виде таблиц
+    </p><pre>
+    Flights(
+        FlightId integer,
+        FlightTime timestamp,
+        PlaneId integer,
+        -- Дополнительные столбцы, при необходимости
+    )
+    Seats(
+        PlaneId integer,
+        SeatNo varchar(4), -- 123A
+        -- Дополнительные столбцы, при необходимости
+    )
+</pre><p>
+        Реализуйте запросы к базе данных <code>Airline</code>
+        с применением представлений, хранимых процедур и функций.
+        При необходимости, вы можете создать дополнительные
+        таблицы, представления и хранимые процедуры.
+    </p><p>
+        Возможность бронирования должна автоматически отключаться
+        за трое суток до начала рейса.
+        Продажа мест должна автоматически отключаться
+        за три часа до начала рейса.
+        Также должна быть предусмотрена возможность отключения
+        бронирования и продаж вручную.
+    </p><ol><li>
+            Администрирование.
+            <ol><li><code>RegisterUser(UserId, Pass)</code>
+                    &mdash; зарегистрировать нового пользователя.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>ManageFlight(UserId, Pass, FlightId, SellAllowed, ReservationAllowed)</code>
+                    &mdash; изменить настройки рейса.
+                    Примечание: автоматические настройки имеют более высокий приоритет.
+                </li></ol></li><li>
+            Покупка и бронирование.
+            <ol><li><code>FreeSeats(FlightId)</code>
+                    &mdash; список мест рейса, доступных для продажи и для бронирования.
+                </li><li><code>Reserve(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; бронирует место на сутки начиная с момента бронирования.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>ExtendReservation(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; продлевает бронь места на сутки начиная с момента продления.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>BuyFree(FlightId, SeatNo)</code>
+                    &mdash; покупает свободное место.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>BuyReserved(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; покупает забронированное место
+                    (пользователи должны совпадать).
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li></ol></li><li>
+            Статистика.
+            <ol><li><code>FlightsStatistics(UserId, Pass)</code>
+                    &mdash; статистика по рейсам:
+                    возможность бронирования и покупки,
+                    число свободных, забронированных и проданных мест.
+                </li><li><code>FlightStat(UserId, Pass, FlightId)</code>
+                    &mdash; статистика по рейсу:
+                    возможность бронирования и покупки,
+                    число свободных, забронированных и проданных мест.
+                </li></ol></li><li><code>CompressSeats(UserId, Pass, FlightId)</code>
+            &mdash; оптимизирует занятость мест в самолете.
+            В результате оптимизации, в начале
+            самолета должны быть купленные места,
+            затем &mdash; забронированные, а в конце &mdash; свободные.
+            Примечание: клиенты, которые уже выкупили
+            билеты, также должны быть пересажены.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLScAm-q1ZhrQ3_rQaAaIin0W3adnwhoNOAEzYu6R7_JQ4q16Iw/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите хранимые процедуры и функции,
+            необходимые для работы проекта.
+        </li><li>Реализуйте хранимые процедуры (функции) на языке SQL.</li></ol><h4 id="transactions-airlines">Домашнее задание 10. Транзакции</h4><p>
+        Спланируйте транзакции и выберите их уровни изоляции для
+        базы данных <code>Airline</code>.
+    </p><ol><li>
+            Для каждой хранимой процедуры из предыдущего домашнего задания
+            выберите минимальный допустимый уровень изоляции транзакций
+            (с обоснованием).
+        </li><li>
+            Реализуйте сценарий работы:
+            <ol><li>
+                    Запрос списка свободных мест.
+                </li><li>
+                    Отображение списка свободных мест пользователю.
+                </li><li>
+                    Бронирование или покупка места, выбранного пользователем.
+                </li></ol></li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdFXnRknnEX-qdwIMOJOh7p59lswAUL4brIAuUIrdJy0bzGXA/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите минимальный уровень изоляции транзакций,
+            необходимый для каждого запроса и хранимой процедуры.
+        </li></ol></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#intro">ДЗ-1. Установка и использование СУБД</a></li><li class="i0"><a href="#homework-2">ДЗ-2. Моделирование БД &laquo;Университет&raquo;</a></li><li class="i0"><a href="#fundeps-students">ДЗ-3. Функциональные зависимости в БД &laquo;Университет&raquo;</a></li><li class="i0"><a href="#normalization-students">ДЗ-4. Нормализация БД &laquo;Университет&raquo;</a></li><li class="i0"><a href="#relalgebra-students">ДЗ-5. Реляционная алгебра</a></li><li class="i0"><a href="#relcalculus-students">ДЗ-6. Реляционное исчисление</a></li><li class="i0"><a href="#modification-students">ДЗ-7. Изменение данных</a></li><li class="i0"><a href="#indexing-students">ДЗ-8. Индексирование</a></li><li class="i0"><a href="#procedures-airlines">ДЗ-9. Хранимые процедуры</a></li><li class="i0"><a href="#transactions-airlines">ДЗ-10. Транзакции</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

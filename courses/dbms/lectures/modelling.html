@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 2. Моделирование баз данных</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 2. Моделирование баз данных</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Физическая модель базы данных<ol><li>Таблицы</li><li>Ключи</li><li>Ссылки</li><li>Графическая нотация</li></ol></li><li>Модель сущность-связь<ol><li>Сущности</li><li>Связи</li><li>Ассоциации</li><li>Слабые сущности</li><li>Альтернативные нотации</li></ol></li><li>Преобразование модели сущность-связь в физическую модель</li><li>Запись физической модели на языке DDL<ol><li>DDL как часть SQL</li><li>Типы данных</li><li>Описание ключей</li><li>Описание ссылок</li><li>Создание, изменение и удаление таблиц</li></ol></li></ol><div class="slides"><h4 id="N65600">Слайды</h4><a href="../slides/modelling.xhtml">HTML</a></div><div class="questions"><h4 id="N65607">Экзаменационные вопросы</h4><ol><li>Физическая модель базы данных</li><li>Модель сущность-связь</li><li>Преобразование модели сущность-связь в физическую модель</li></ol></div><div class="skills"><h4 id="N65618">Практические навыки</h4><ol><li>Создание модели сущность-связь по словесному описанию</li><li>Создание модели физической модели по словесному описанию</li><li>Построение физической модели по модели сущность-связь</li><li>Запись физической модели на DDL</li></ol></div><div class="references"><h4 id="N65631">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 14)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 2)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/18.html">Chapter 18 &ndash; SQL Table and View</a>)</li><li><i>Chen P.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.123.1085" title="">The Entity-Relationship Model: Toward a Unified View of Data</a></li><li><i>Chen P.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.15.4630" title="">Entity-Relationship Modeling: Historical Events, Future Trends, and Lessons</a></li><li><i>Hartmann S.</i>&nbsp;<a href="http://scholar.google.ru/scholar?q=Hartmann+Reasoning+about+participation+constraints+and+Chen%27s+constraints" title="">Reasoning about participation constraints and Chen's constraints</a></li><li><i>MySQL</i>&nbsp;<a href="https://dev.mysql.com/doc/refman/8.0/en/sql-data-definition-statements.html" title="">Data Definition Statements</a></li><li><i>PostgreSQL</i>&nbsp;<a href="https://www.postgresql.org/docs/current/ddl.html" title="">Data Definition</a></li><li><i>Oracle</i>&nbsp;<a href="https://docs.oracle.com/cd/B28359_01/server.111/b28310/tables.htm" title="">Managing tables</a></li><li><i>MSSQL Server</i>&nbsp;<a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/statements?view=sql-server-2017" title="">Transact-SQL statements</a></li></ol></div><div class="homework"><h4 id="N65714">Домашнее задание 2. Моделирование БД &laquo;Университет&raquo;</h4><p>
+        Спроектируйте базу данных &laquo;Университет&raquo;,
+        позволяющую хранить информацию о факультетах, студентах,
+        группах, преподавателях, дисциплинах и оценках.
+    </p><ol><li>
+            Составьте модель сущность-связь.
+        </li><li>
+            Преобразуйте модель сущность-связь в физическую модель.
+        </li><li>
+            Запишите физическую модель на языке SQL.
+            Запись должна включать объявления ограничений.
+        </li><li>
+            Создайте базу данных по спроектированной модели.
+        </li><li>
+            Запишите операторы SQL, заполняющие базу тестовыми данными. 
+            Достаточно 2&ndash;3 записей на таблицу, 
+            если они в полной мере демонстрируют особенности БД.
+        </li></ol><p>
+        Примечания
+    </p><ol><li>
+            Не требуется поддержка:
+            <ul><li>нескольких университетов;</li><li>дисциплин по выбору;</li><li>
+                    дисциплин с необычным распределением по группам 
+                    (таких как физическая культура и иностранный язык);
+                </li><li>переводов между группами;</li><li>исторических данных;</li><li>нескольких оценок по одной дисциплине.</li></ul></li><li>
+            Многосеместровые дисциплины считаются по семестрам,
+            например:
+            <ul><li>Математический анализ (семестр 1);</li><li>Математический анализ (семестр 2).</li></ul></li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSffTt-D80JVpKGpfB4Ou2vBArepi_vz0GzjOXVOEvTrexVtvA/viewform">Форма для сдачи ДЗ</a>.
+        Проверка проводится в полуавтоматическом режиме, 
+        поэтому строго соблюдайте указанные форматы.
+    </p><p>В рамках проекта:</p><ul><li>
+            Сделайте предварительную схему для БД проекта на основе моделей:
+            <ul><li>модель сущность-связь;</li><li>физическая модель;</li><li>определение схемы на SQL.</li></ul></li></ul></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65600">Слайды</a></li><li class="i0"><a href="#N65607">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65618">Практические навыки</a></li><li class="i0"><a href="#N65631">Библиография</a></li><li class="i0"><a href="#N65714">Домашнее задание 2. Моделирование БД &laquo;Университет&raquo;</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ru" xml:lang="ru" xmlns="http://www.w3.org/1999/xhtml"><head><title>Базы данных / Хранимые процедуры</title><meta name="author" content="" /><link rel="stylesheet" type="text/css" media="screen, projection, print" href="scripts/slidy.css" /><link rel="stylesheet" type="text/css" href="scripts/prettify.css" /><link rel="stylesheet" type="text/css" href="scripts/kgeorgiy-slides.css" /><script type="text/javascript" src="scripts/slidy.js" charset="utf-8" /><script type="text/javascript" src="scripts/kgeorgiy-slides.js" charset="utf-8" /><script type="text/javascript" src="scripts/prettify.js" /><script type="text/javascript" src="scripts/lang-sql.js" /><script type="text/javascript" src="scripts/lang-javaModule.js" /><script type="text/javascript" src="scripts/lang-scala.js" /><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ" /><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body onload="prettyPrint()"><div id="all">
+<div class="slide cover"><div class="content"><div class="course">Базы данных</div><hr /><div class="lecture"><div>Хранимые процедуры</div></div><div class="link"><a href="https://kgeorgiy.info/courses/dbms/">https://kgeorgiy.info/courses/dbms/</a></div><div class="copyright"><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru"><span class="copyright">Copyright © Георгий Корнеев</span><img src="scripts/by-nc-sa.png" alt="Attribution-NonCommercial-ShareAlike" /></a></div></div></div>
+<div class="slide section"><div class="content"><h1>Хранимые процедуры</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Хранимые процедуры</a></li><li><a href="#(10)" class="toc">Операторы</a></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">2</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Хранимые процедуры</h1><div class="body"><ul class="item-1 level-1"><li>Фрагмент кода, хранящийся в БД<ul class="item-2 level-2"><li>Процедуры</li><li>Функции</li></ul></li><li>Достоинства<ul class="item-2 level-2"><li>Обработка данных на стороне БД</li><li>Возможность компиляции при объявлении</li><li>Защита данных</li></ul></li><li>Недостатки<ul class="item-2 level-2"><li>Специфичный язык</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">3</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Создание хранимой процедуры</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">create procedure имя(параметры)
+[language {sql|...}]
+[[not] deterministic]
+{contains sql|reads sql data|modifies sql data|no sql}
+[{returns null|called} on null input]
+[sql security {definer|invoker}]
+тело
+</pre></li></ul></li><li>Другие «поддерживаемые» языки<br /><var>Ada</var>, <var>C</var>, <var>COBOL</var>, <var>Fortran</var>, <var>MUMPS</var>, <var>Pascal</var>, <var>PLI</var></li><li>Вызов <pre class="prettyprint lang-sql">call имя(аргументы);
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">4</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Примеры хранимых процедур</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-sql">create procedure s() 
+language sql reads sql data
+select * from Students;
+</pre></li><li><pre class="prettyprint lang-sql">create procedure d(id int)
+delete from Students where SId = id
+</pre></li><li><pre class="prettyprint lang-sql">create procedure t(id int)
+begin
+    ...
+end
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">5</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Параметры</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">{in|out|inout|} имя тип
+</pre></li></ul></li><li>Типы параметров<ul class="item-2 level-2"><li><var>in</var> — входной (по умолчанию)</li><li><var>out</var> — результат</li><li><var>inout</var> — входной и результат</li></ul></li><li>Примеры<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">in sid int
+</pre></li><li><pre class="prettyprint lang-sql">out StudentName varchar(20)
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">6</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вызов процедуры</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">exec имя(аргументы)
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">exec ChangeName('Иванов', 'Петров');
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">7</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Управление доступом</h1><div class="body"><ul class="item-1 level-1"><li>Привилегия <var>execute</var></li><li>Права доступа<ul class="item-2 level-2"><li><var>sql security definer</var> — создателя</li><li><var>sql security invoker</var> — вызывающего</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">8</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Разделители</h1><div class="body"><ul class="item-1 level-1"><li>Разделитель по умолчанию<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">;
+</pre></li></ul></li><li>Тело содержит несколько операторов<ul class="item-2 level-2"><li><span class="question">Что делать с разделителями?</span></li></ul></li><li class="incremental"><div class="non-incremental">Сделать другой разделитель<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">delimiter //
+</pre></li></ul></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">9</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Операторы</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc current">Операторы</a><ol class="level-2 toc-2"><li><a href="#(11)" class="">Составной и присваивания</a></li><li><a href="#(16)" class="">Ветвления</a></li><li><a href="#(20)" class="">Циклы</a></li><li><a href="#(25)" class="">Обработка ошибок</a></li></ol></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">10</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Составной и присваивания</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc current">Операторы</a><ol class="level-2 toc-2"><li><a href="#(11)" class=" current">Составной и присваивания</a></li><li><a href="#(16)" class="">Ветвления</a></li><li><a href="#(20)" class="">Циклы</a></li><li><a href="#(25)" class="">Обработка ошибок</a></li></ol></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">11</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Составной оператор</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">[метка:] begin
+    определения
+    тело
+end
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">begin
+    update Accounts set Balance = Balance - Amount
+        where Id = fromId;
+    update Accounts set Balance = Balance + Amount
+        where Id = toId;
+end;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">12</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Определение переменных</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare имя тип [default значение];
+</pre></li></ul></li><li>Примеры<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare id int;
+</pre></li><li><pre class="prettyprint lang-sql">declare finish datetime default now();
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">13</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Присваивание</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">set переменная = значение
+    [, переменная = значение]*;
+</pre></li></ul></li><li>Примеры<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">set idx = 0;
+</pre></li><li><pre class="prettyprint lang-sql">set idx = idx + 1;
+</pre></li><li><pre class="prettyprint lang-sql">set name = (select FirstName from Students
+                    where SId = id);
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">14</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Запрос</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">select ...
+into переменные
+from ...
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">select FirstName, LastName
+into FN, LN
+from Students
+where SId = id;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">15</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Ветвления</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc current">Операторы</a><ol class="level-2 toc-2"><li><a href="#(11)" class="">Составной и присваивания</a></li><li><a href="#(16)" class=" current">Ветвления</a></li><li><a href="#(20)" class="">Циклы</a></li><li><a href="#(25)" class="">Обработка ошибок</a></li></ol></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">16</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ветвление 1</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">if условие then операторы
+[else if условие then операторы]*
+[else операторы]
+end if;
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">if (select Balance from Accounts) &gt; amount then
+    update Accounts set Balance = Balance - amount
+end if;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">17</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ветвление 2</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">case выражение
+    [when значение then операторы]+
+    [else операторы]
+end case;
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">case name
+    when 'Иван' then set name = 'Ивана'
+    when 'Пётр' then set name = 'Петра'
+    else set name = '???'
+end case;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">18</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ветвление 3</h1><div class="body"><ul class="item-1 level-1"><li><var>case</var> не только оператор, но и операция</li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">set name = case name
+   when 'Иван' then 'Ивана'
+   when 'Пётр' then 'Петра'
+   else '???'
+end case;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">19</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Циклы</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc current">Операторы</a><ol class="level-2 toc-2"><li><a href="#(11)" class="">Составной и присваивания</a></li><li><a href="#(16)" class="">Ветвления</a></li><li><a href="#(20)" class=" current">Циклы</a></li><li><a href="#(25)" class="">Обработка ошибок</a></li></ol></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">20</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Цикл while</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">[метка:] while условие do
+    операторы
+end while [метка];
+</pre></li></ul></li><li>Примеры<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">while i &lt; 0 do
+    set i = i + 1;
+end while;
+</pre></li><li><pre class="prettyprint lang-sql">declare i int default 1;
+ins: while i &lt;= 10 do
+    insert into Students (Id) values (i);
+    set i = i + 1;
+end while ins;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">21</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Цикл repeat</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">[метка:] repeat
+    операторы
+until условие
+end repeat [метка];
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare i int default 1;
+repeat
+    insert into Students (Id) values (i);
+    set i = i + 1;
+until i &gt;= 10
+end repeat;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">22</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Цикл loop</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">[метка:] loop
+    операторы
+end loop [метка];
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare i int default 1;
+loop
+    insert into Students (Id) values (i);
+    set i = i + 1;
+end loop;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">23</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>break и continue</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">leave метка;
+</pre></li><li><pre class="prettyprint lang-sql">iterate метка;
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare i int default 1;
+l: loop
+    insert into Students (Id) values (i);
+    if i &gt; 10 then
+        leave l;
+    end if;
+    set i = i + 1;
+end loop;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">24</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Обработка ошибок</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc current">Операторы</a><ol class="level-2 toc-2"><li><a href="#(11)" class="">Составной и присваивания</a></li><li><a href="#(16)" class="">Ветвления</a></li><li><a href="#(20)" class="">Циклы</a></li><li><a href="#(25)" class=" current">Обработка ошибок</a></li></ol></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">25</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Обработчики ошибок</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare {exit|undo|continue} handler
+for условие
+оператор
+</pre></li><li><var>exit</var> — выйти из блока</li><li><var>undo</var> — выйти из блока с откатом изменений</li><li><var>continue</var> — продолжить выполнение</li></ul></li><li>Условия<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">sqlstate [value] 'номер'
+</pre></li><li><pre class="prettyprint lang-sql">sqlwarning    -- sqlstate 01xxx
+</pre></li><li><pre class="prettyprint lang-sql">not found      -- sqlstate 02xxx
+</pre></li><li><pre class="prettyprint lang-sql">sqlexception -- sqlstate yyxxx
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">26</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример обработчика</h1><div class="body"><ul class="item-1 level-1"><li>Подавление ошибки<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">begin
+    declare exit handler for not found begin end;
+    ...
+end;
+</pre></li></ul></li><li>Подмена значения<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">begin
+    declare continue handler for not found set name = '?';
+    set name = (select FirstName from students
+        where SId = id);
+    ...
+end;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">27</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Генерация сигналов</h1><div class="body"><ul class="item-1 level-1"><li>Нового <pre class="prettyprint lang-sql">signal sqlstate 'номер'
+</pre></li><li>В обработчике <pre class="prettyprint lang-sql">resignal [sqlstate 'номер']
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">28</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Курсоры</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc">Операторы</a></li><li><a href="#(29)" class="toc current">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">29</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Курсор</h1><div class="body"><ul class="item-1 level-1"><li>Способ перебора результатов запроса<ul class="item-2 level-2"><li>Много строк</li></ul></li><li>Аналог итераторов</li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">30</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Объявление курсора</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare имя
+{sensitive|insensitive|asensitive} 
+[[no] scroll]
+cursor select...
+[ for {read only|update [of столбцы]}];
+</pre></li></ul></li><li>Примеры<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">declare SCursor cursor
+select * from Students
+order by SId;
+</pre></li><li><pre class="prettyprint lang-sql">declare SCursor cursor
+select * from Students where GId = 'M3439'
+for update of SName;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">31</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Открытие и закрытие</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">open курсор;
+</pre></li><li><pre class="prettyprint lang-sql">close курсор;
+</pre></li></ul></li><li>Переинициализация при повторном открытии</li><li>Автоматическое закрытие при выходе</li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">32</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Получение данных</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">fetch
+[next|prior|last|first|absolute n|relative n]
+курсор into переменные;
+</pre></li></ul></li><li>Отсутствие данных<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">not found</pre></li><li><pre class="prettyprint lang-java">sqlstate '02000'</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">fetch SCursor into SId, FirstName, LastName;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">33</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Позиционированные изменения</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">update таблица set что where current of курсор;
+</pre></li><li><pre class="prettyprint lang-sql">delete from таблица where current of курсор;
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">if FirstName = 'Иван' then
+    delete from Students where current of SCursor;
+end if;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">34</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример применения курсора</h1><div class="body"><ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">create procedure updateNameStat(name)
+begin
+    declare cnt int default 0;
+    declare exit handler for sqlstate not found begin
+        insert into Stats (Name, Cnt) values (name, cnt);
+    end;
+    declare SCursor cursor
+        select FirstName from Students;
+    open SCursor;
+    loop
+        declare sname varchar(20);
+        fetch SCursor into sname;
+        if name = sname then set cnt = cnt + 1; end if;
+    end loop;
+end;
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">35</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Особенности курсоров</h1><div class="body"><ul class="item-1 level-1"><li>Внешние курсоры</li><li>Размер выборки<ul class="item-2 level-2"><li>Малый — много повторных обращений</li><li>Большой — требуется много памяти</li></ul></li><li>Блокировка ресурсов</li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">36</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Хранимые функции</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc">Операторы</a></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc current">Хранимые функции</a></li><li><a href="#(41)" class="toc">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">37</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Хранимые функции</h1><div class="body"><ul class="item-1 level-1"><li>Возвращает значение<ul class="item-2 level-2"><li>Вызов в выражениях</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">38</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Создание</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">create [aggregate] function
+имя(параметры)
+returns тип
+тело
+</pre></li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-sql">create function add(a int, b int) returns int
+    return a + b;
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">39</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Особенности</h1><div class="body"><ul class="item-1 level-1"><li>Обращение к таблицам<ul class="item-2 level-2"><li>Часто запрещено</li></ul></li><li>Возвращаемые значения<ul class="item-2 level-2"><li>Встроенные типы</li><li>Редко UDT и таблицы</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">40</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Литература</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Хранимые процедуры</a></li><li><a href="#(10)" class="toc">Операторы</a></li><li><a href="#(29)" class="toc">Курсоры</a></li><li><a href="#(37)" class="toc">Хранимые функции</a></li><li><a href="#(41)" class="toc current">Литература</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">41</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Основная литература</h1><div class="body"><ul class="item-1 level-1"><li><em>Дейт К.</em> Введение в системы баз данных (главы 4 и 17)</li><li><em>Уидом Д., Ульман Д.</em> Основы реляционных баз данных (раздел 7.4)</li><li><em>Gulutzan P.</em>, <em>Pelzer T.</em> SQL-99 complete, really<ul class="item-2 level-2"><li><a href="https://crate.io/docs/sql-99/en/latest/chapters/25.html" target="_blank">Chapter 25 – SQL-Invoked Routine</a></li><li><a href="https://crate.io/docs/sql-99/en/latest/chapters/26.html" target="_blank">Chapter 26 – PSM: Not Just Persistent Stored Modules</a></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Базы данных / Хранимые процедуры</span><span class="number">42</span></div></div></div></div></div></body></html>

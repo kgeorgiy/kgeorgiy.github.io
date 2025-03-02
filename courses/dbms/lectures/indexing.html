@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 8. Хранение данных и индексирование</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 8. Хранение данных и индексирование</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Подсистема хранения данных<ol><li>Структура подсистемы хранения данных<ol><li>Память и жёсткие диски</li><li>Страничная организация памяти</li><li>Интерфейс с СУБД</li></ol></li><li>Организация данных<ol><li>Списки страниц</li><li>Хранение записей</li><li>Сжатие данных</li></ol></li></ol></li><li>Индексация данных<ol><li>Индексы<ol><li>Применение индексов</li><li>Структура индекса</li><li>Кластеризованные индексы</li></ol></li><li>Хэш-индексы<ol><li>Простой хэш-индекс</li><li>Расширяемый хэш-индекс</li></ol></li><li>Упорядоченные индексы<ol><li>B-деревья</li><li>B+-деревья</li></ol></li><li>Другие типы индексов<ol><li>Битовые индексы</li><li>Индексы на R-деревьях</li></ol></li><li>Применение индексов<ol><li>Селективность индекса</li><li>Покрывающие индексы</li><li>Выбор индексов</li></ol></li></ol></li></ol><div class="slides"><h4 id="N65624">Слайды</h4><a href="../slides/indexing.xhtml">HTML</a></div><div class="questions"><h4 id="N65631">Экзаменационные вопросы</h4><ol><li>Подсистема хранения данных</li><li>Индексация данных. Упорядоченные и хэш-индексы</li><li>Индексация данных. Другие типы индексов. Применение индексов</li></ol></div><div class="skills"><h4 id="N65642">Практические навыки</h4><ol><li>Выбор индексов в базе данных</li><li>Запись индексов на языке SQL</li></ol></div><div class="references"><h4 id="N65651">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (приложение Г)</li><li><i>Кнут Д.</i>&nbsp;Искусство программирования. Том 3. Сортировка и поиск</li><li><i>Silberschatz A.</i>, <i>Korth H.F.</i>, <i>Sudarshan S.</i>&nbsp;Database System Concepts</li></ol></div><div class="homework"><h4 id="N65674">Домашнее задание 8. Индексирование</h4><ol><li>
+            Определите, какие индексы требуется добавить
+            к таблицам базы данных &laquo;Университет&raquo; на основе
+            запросов из ДЗ-5, 6 и 7.
+        </li><li>
+            Пусть частым запросом является определение
+            среднего балла студентов  факультета по дисциплине.
+            Как будет выглядеть запрос и какие индексы 
+            могут помочь при его исполнении?
+        </li><li>
+            Придумайте три запроса, требующих новых индексов
+            и запишите их. 
+            Если в результате, некоторые из старых индексов 
+            станут бесполезными, удалите их.
+        </li></ol><p>
+        При выполнении задания считайте, что ФЗ соответствуют полученным в ДЗ-3 и 4.
+    </p><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfshGHPac4B21i02DZ3E5F3T6QH6u2yGzgd7jG9Q3OAvyv6kQ/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите индексы и их типы,
+            необходимые для эффективного исполнения запросов.
+        </li><li>Запишите определения индексов на языке SQL.</li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65624">Слайды</a></li><li class="i0"><a href="#N65631">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65642">Практические навыки</a></li><li class="i0"><a href="#N65651">Библиография</a></li><li class="i0"><a href="#N65674">Домашнее задание 8. Индексирование</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

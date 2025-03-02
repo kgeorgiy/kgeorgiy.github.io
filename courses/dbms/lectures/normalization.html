@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 4. Нормализация баз данных</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 4. Нормализация баз данных</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Цели и средства нормализации<ol><li>Нормализация</li><li>Проекции и соединения</li><li>Декомпозиция отношений</li></ol></li><li>Первые нормальные формы<ol><li>Аномалии</li><li>Первая нормальная форма</li><li>Вторая нормальная форма</li><li>Третья нормальная форма</li><li>Нормальная форма Бойса-Кодда</li></ol></li><li>Многозначные зависимости и четвертая нормальная форма<ol><li>Многозначные зависимости</li><li>Четвертая нормальная форма</li></ol></li><li>Зависимости соединения и пятая нормальная форма<ol><li>Зависимости соединения</li><li>Пятая нормальная форма</li></ol></li><li>Процесс нормализации и другие нормальные формы<ol><li>Иерархия нормальных форм</li><li>Связи нормальных форм</li><li>Другие нормальные формы</li><li>Денормализация</li></ol></li></ol><div class="questions"><h4 id="N65608">Экзаменационные вопросы</h4><ol><li>Цели и средства нормализации</li><li>Нормальные формы: первая и вторая</li><li>Нормальные формы: третья и Бойса-Кодда</li><li>Многозначные зависимости и четвертая нормальная форма</li><li>Зависимости соединения и пятая нормальная форма</li></ol></div><div class="slides"><h4 id="N65623">Слайды</h4><a href="../slides/normalization.xhtml">HTML</a></div><div class="skills"><h4 id="N65630">Практические навыки</h4><ol><li>Нормализация баз данных</li><li>Проектирование высококачественных баз данных</li></ol></div><div class="references"><h4 id="N65639">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 12 и 13)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 3)</li><li><i>Fagin R.</i>&nbsp;Multivalued Dependencies and a New Normal Form for Relational Databases</li><li><i>Beeri C.</i>, <i>Fagin R.</i>, <i>Howard J.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=509414" title="">A complete axiomatization for functional and multivalued dependencies in database relations</a></li><li><i>Date C.J.</i>, <i>Fagin R.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=132274" title="">Simple conditions for guaranteeing higher normal forms in relational databases</a></li><li><i>Fagin R.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=582120" title="">Normal forms and relational database operators</a></li></ol></div><div class="homework"><h4 id="N65692">Домашнее задание 4. Нормализация БД &laquo;Университет&raquo;</h4><p>
+        Дано отношение с атрибутами
+            <em>StudentId</em>,
+            <em>StudentName</em>,
+            <em>GroupId</em>,
+            <em>GroupName</em>,
+            <em>GroupFacultyId</em>,
+            <em>GroupFacultyName</em>,
+            <em>GroupFacultyDeanId</em>;
+            <em>CourseId</em>,
+            <em>CourseName</em>,
+            <em>LecturerId</em>,
+            <em>LecturerName</em>,
+            <em>LecturerFacultyId</em>,
+            <em>LecturerFacultyName</em>,
+            <em>LecturerFacultyDeanId</em>,
+            <em>Mark</em>.
+        и функциональными зависимостями:
+    </p><div style="padding-left: 2em"><ul><li>StudentId &rarr; StudentName, GroupId, GroupName;</li><li>GroupId &rarr; GroupName, GroupFacultyId;</li><li>GroupName &rarr; GroupId;</li><li>CourseId &rarr; CourseName;</li><li>LecturerId &rarr; LecturerName, LecturerFacultyId;</li><li>StudentId, CourseId &rarr; Mark;</li><li>GroupId, CourseId &rarr; LecturerId;</li><li>GroupFacultyId &rarr; GroupFacultyName, GroupFacultyDeanId;</li><li>GroupFacultyName &rarr; GroupFacultyId;</li><li>LecturerFacultyId &rarr; LecturerFacultyName, LecturerFacultyDeanId;</li><li>LecturerFacultyName &rarr; LecturerFacultyId.</li></ul></div><ol><li>
+            Инкрементально приведите данное отношение в
+            пятую нормальную форму.
+        </li><li>
+            Постройте соответствующую модель сущность-связь.
+        </li><li>
+            Постройте соответствующую физическую модель.
+        </li><li>
+            Реализуйте SQL-скрипты, создающие схему базы данных.
+        </li><li>
+            Создайте базу данных по спроектированной модели.
+        </li><li>
+            Заполните базу тестовыми данными.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeyvYrFA-0OrPsU5fWeIQRbHJd7dvuL1Ywl_7napyV2-OURAg/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>Приведите схему базы в пятую нормальную форму.</li><li>Если итоговая схема не будет в НФ-5, то обоснуйте принятое решение.</li><li>Запишите определения таблиц на языке SQL.</li><li>Запишите на языке SQL наполнение таблиц тестовым данными.</li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65608">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65623">Слайды</a></li><li class="i0"><a href="#N65630">Практические навыки</a></li><li class="i0"><a href="#N65639">Библиография</a></li><li class="i0"><a href="#N65692">Домашнее задание 4. Нормализация БД &laquo;Университет&raquo;</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

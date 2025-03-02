@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 5. Реляционная алгебра</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 5. Реляционная алгебра</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Реляционная алгебра<ol><li>Предназначение</li><li>Замкнутость</li></ol></li><li>Унарные операции<ol><li>Проекция</li><li>Фильтрация</li><li>Переименование</li></ol></li><li>Операции над множествами<ol><li>Объединение</li><li>Пересечение</li><li>Разность</li></ol></li><li>Соединения<ol><li>Полное соединение</li><li>Естественное соединение</li><li>Внешние соединения</li><li>Полусоединения</li><li>Условные соединения</li></ol></li><li>Деление</li><li>Операции над данными<ol><li>Расширение</li><li>Агрегирование</li></ol></li><li>Свойства реляционной алгебры<ol><li>Базис операций</li><li>Ограничения реляционной алгебры</li></ol></li><li>Реляционная алгебра и SQL<ol><li>Простые операции</li><li>Соединения</li></ol></li></ol><div class="slides"><h4 id="N65622">Слайды</h4><a href="../slides/relalgebra.xhtml">HTML</a></div><div class="questions"><h4 id="N65629">Экзаменационные вопросы</h4><ol><li>Реляционная алгебра: предназначение и свойства</li><li>Реляционная алгебра: унарные и множественные операции</li><li>Реляционная алгебра: соединения</li><li>Реляционная алгебра: деление и операции над данными</li></ol></div><div class="skills"><h4 id="N65642">Практические навыки</h4><ol><li>Построение запросов в терминах реляционной алгебры</li><li>Преобразование запросов</li><li>Перевод запросов из терминов реляционной алгебры в термины SQL и обратно</li><li>Построение запросов на SQL (без подзапросов)</li></ol></div><div class="references"><h4 id="N65655">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 7)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (главы 4 и 5)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/28.html">Chapter 28 &ndash; Introduction to SQL-data operations</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/29.html">Chapter 29 &ndash; Simple Search Conditions</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/30.html">Chapter 30 &ndash; Searching with Joins</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/32.html">Chapter 32 &ndash; Searching with Set Operators</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/33.html">Chapter 33 &ndash; Searching with Groups</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/34.html">Chapter 34 &ndash; Sorting Search Results</a>)</li><li><i>Select Syntax</i>&nbsp;<a href="http://dev.mysql.com/doc/refman/5.5/en/select.html" title="">in MySQL Reference Manual</a></li></ol></div><div class="homework"><h4 id="N65745">Домашнее задание 5. Реляционная алгебра</h4><p>
+        Структура базы данных &laquo;Университет&raquo;:
+    </p><ul><li><em>Faculties</em>(<em>FacultyId</em>, <em>FacultyName</em>, <em>DeanId</em>)</li><li><em>Groups</em>(<em>GroupId</em>, <em>GroupName</em>, <em>GroupFacultyId</em>)</li><li><em>Students</em>(<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em>)</li><li><em>Courses</em>(<em>CourseId</em>, <em>CourseName</em>)</li><li><em>Lecturers</em>(<em>LecturerId</em>, <em>LecturerName</em>, <em>LecturerFacultyId</em>)</li><li><em>Plan</em>(<em>GroupId</em>, <em>CourseId</em>, <em>LecturerId</em>)</li><li><em>Marks</em>(<em>StudentId</em>, <em>CourseId</em>, <em>Mark</em>)</li></ul><div><p><p>
+            Составьте выражения реляционной алгебры и 
+            соответствующие SQL-запросы, позволяющие получать
+        </p></p><ol><li><p>
+                Информацию о студентах
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentId</em>).
+                    </p><comment id="01_1r"></comment><comment id="01_1s"></comment></li><li><p>
+                        С заданным ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentName</em>).
+                    </p><comment id="01_2r"></comment><comment id="01_2s"></comment></li></ol></li><li><p>
+                Полную информацию о студентах
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:StudentId</em>).
+                    </p><comment id="02_1r"></comment><comment id="02_1s"></comment></li><li><p>
+                        С заданным ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:StudentName</em>).
+                    </p><comment id="02_2r"></comment><comment id="02_2s"></comment></li><li><p>
+                        Из заданной группы
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:GroupName</em>).
+                    </p><comment id="02_3r"></comment><comment id="02_3s"></comment></li><li><p>
+                        C заданного факультета
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:FacultyName</em>).
+                    </p><comment id="02_4r"></comment><comment id="02_4s"></comment></li><li><p>
+                        C факультета, заданного деканом
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:LecturerName</em>).
+                    </p><comment id="02_5r"></comment><comment id="02_5s"></comment></li></ol></li><li><p>
+                Информацию о студентах с заданной оценкой по дисциплине
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseId</em>).
+                    </p><comment id="03_1r"></comment><comment id="03_1s"></comment></li><li><p>
+                        С заданным названием
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseName</em>).
+                    </p><comment id="03_2r"></comment><comment id="03_2s"></comment></li><li><p>
+                        Которую у него вёл лектор заданный идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerId</em>).
+                    </p><comment id="03_3r"></comment><comment id="03_3s"></comment></li><li><p>
+                        Которую у них вёл лектор, заданный ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerName</em>).
+                    </p><comment id="03_4r"></comment><comment id="03_4s"></comment></li><li><p>
+                        Которую вёл лектор, заданный идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerId</em>).
+                    </p><comment id="03_5r"></comment><comment id="03_5s"></comment></li><li><p>
+                        Которую вёл лектор, заданный ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerName</em>).
+                    </p><comment id="03_6r"></comment><comment id="03_6s"></comment></li></ol></li><li><p>
+                Информацию о студентах не имеющих оценки по дисциплине
+            </p><ol><li><p>
+                        Среди всех студентов
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>).
+                    </p><comment id="04_1r"></comment><comment id="04_1s"></comment></li><li><p><em>Тут был дубль задачи, пункт оставлен для сохранения нумерации.</em></p><comment id="04_2r"></comment><comment id="04_2s"></comment></li><li><p>
+                        Среди студентов факультета
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>, <em>:FacultyName</em>).
+                    </p><comment id="04_3r"></comment><comment id="04_3s"></comment></li><li><p>
+                        Среди студентов, у которых есть эта дисциплина
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>).
+                    </p><comment id="04_4r"></comment><comment id="04_4s"></comment></li></ol></li><li><p>
+                Для каждого студента ФИО и названия дисциплин
+            </p><ol><li><p>
+                        Которые у него есть по плану
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_1r"></comment><comment id="05_1s"></comment><comment id="05_1s"></comment><comment id="05_1s"></comment></li><li><p>
+                        Есть, но у него нет оценки
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_2r"></comment><comment id="05_2s"></comment></li><li><p>
+                        Есть, но у него не 4 или 5
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_3r"></comment><comment id="05_3s"></comment></li><li><p>
+                        Вёл преподаватель
+                        (<em>StudentName</em>, <em>CourseName</em> по <em>:LecturerName</em>).
+                    </p><comment id="05_4r"></comment><comment id="05_4s"></comment></li><li><p>
+                        Вёл преподаватель с :FacultyName
+                        (<em>StudentName</em>, <em>CourseName</em> по <em>:FacultyName</em>).
+                    </p><comment id="05_5r"></comment><comment id="05_5s"></comment></li><li><p>
+                        Вёл преподаватель другого факультета
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_6r"></comment><comment id="05_6s"></comment></li><li><p>
+                        Вёл декан
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_7r"></comment><comment id="05_7s"></comment></li></ol></li><li><p>
+                Идентификаторы студентов по преподавателю
+            </p><ol><li><p>
+                        Имеющих хотя бы одну оценку у преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_1r"></comment><comment id="06_1s"></comment></li><li><p>
+                        Не имеющих ни одной оценки у преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_2r"></comment><comment id="06_2s"></comment></li><li><p>
+                        Имеющих оценки по всем дисциплинам преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_3r"></comment><comment id="06_3s"></comment><comment id="06_3s"></comment></li><li><p>
+                        Имеющих оценки по всем дисциплинам преподавателя, 
+                        которые он вёл у этого студента
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_4r"></comment><comment id="06_4r"></comment><comment id="06_4r"></comment><comment id="06_4r"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment></li></ol></li><li><p>
+                Группы и дисциплины, такие что все студенты группы имеют оценку по этой дисциплине
+            </p><ol><li><p>
+                        Идентификаторы
+                        (<em>GroupId</em>, <em>CourseId</em>).
+                    </p><comment id="07_1r"></comment><comment id="07_1s"></comment></li><li><p>
+                        Названия
+                        (<em>GroupName</em>, <em>CourseName</em>).
+                    </p><comment id="07_2r"></comment><comment id="07_2s"></comment></li></ol></li></ol><p><p>
+            Составьте SQL-запросы, позволяющие получать
+        </p></p><ol start="8"><li><p>
+                Суммарный балл
+            </p><ol><li><p>
+                        Одного студента
+                        (<em>SumMark</em> по <em>:StudentId</em>).
+                    </p><comment id="08_1s"></comment></li><li><p>
+                        Каждого студента
+                        (<em>StudentName</em>, <em>SumMark</em>).
+                    </p><comment id="08_2s"></comment></li><li><p>
+                        Каждой группы
+                        (<em>GroupName</em>, <em>SumMark</em>).
+                    </p><comment id="08_3s"></comment></li></ol></li><li><p>
+                Средний балл
+            </p><ol><li><p>
+                        Одного студента
+                        (<em>AvgMark</em> по <em>:StudentId</em>).
+                    </p><comment id="09_1s"></comment></li><li><p>
+                        Каждого студента
+                        (<em>StudentName</em>, <em>AvgMark</em>).
+                    </p><comment id="09_2s"></comment></li><li><p>
+                        Каждой группы
+                        (<em>GroupName</em>, <em>AvgMark</em>).
+                    </p><comment id="09_3s"></comment></li><li><p>
+                        Средний балл средних баллов студентов каждой группы
+                        (<em>GroupName</em>, <em>AvgAvgMark</em>).
+                    </p><comment id="09_4s"></comment></li></ol></li><li><p>
+                Для каждого студента:
+                число дисциплин, которые у него были,
+                число сданных дисциплин и
+                число несданных дисциплин
+                (<em>StudentId</em>, <em>Total</em>, <em>Passed</em>, <em>Failed</em>).
+            </p><comment id="10s"></comment><comment id="10s"></comment></li></ol></div><a href="/courses/dbms/slides/misc/relations.html">Тестовый полигон</a><p>
+        Технические особенности проверки.
+    </p><ul><li>
+            Сдача &mdash; в <a href="https://pcms.itmo.ru">PCMS</a>. 
+            Если у вас нет аккаунта в PCMS, либо доступа к ДЗ, обратитесь к 
+            <a href="https://t.me/VedernikovNV">Николаю Викторовичу Ведерникову</a>.
+        </li><li>Проверяться и оцениваться будет <b>последняя</b> посланная версия.</li><li>
+            Проверка разделена на 4 фазы:
+            <ol><li>пустые таблицы (синтаксис и набор столбцов);</li><li>таблицы с не более чем одной записью;</li><li>таблицы с простыми данными;</li><li>таблицы со сложными данными.</li></ol></li><li>
+            В случае проблем с синтаксисом или набором столбцов вы будете получать
+            <em>Presentation Error</em>.
+        </li><li>
+            Реляционная алгебра проверяется одним тестом на фазу,
+            движком из тестового полигона.
+        </li><li>
+            SQL проверяется тремя тестами на фазу &mdash; с разными СУБД.
+            Первая СУБД &mdash; <a href="https://www.sqlite.org/">SQLite</a>,
+            как на тестовом полигоне.
+        </li><li>
+            Известные спецэффекты:
+            <ul style="list-style-type: square"><li>
+                    SQLite поддерживает только <code>left join</code>.
+                    <code>right</code> и <code>оuter join</code> делаются через него.
+                </li><li>
+                    Все вложенные запросы надо именовать, даже если вы не будете
+                    использовать это имя:
+<pre>
+    select ... from ... (select ... ) SubQueryName ...
+</pre></li><li>
+                    Используйте данные из минимально возможного набора таблиц.
+                </li></ul></li></ul></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65622">Слайды</a></li><li class="i0"><a href="#N65629">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65642">Практические навыки</a></li><li class="i0"><a href="#N65655">Библиография</a></li><li class="i0"><a href="#N65745">Домашнее задание 5. Реляционная алгебра</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

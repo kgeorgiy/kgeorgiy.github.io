@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 6. Реляционное исчисление</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 6. Реляционное исчисление</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Реляционное исчисление<ol><li>Типы реляционного исчисления</li><li>Структура запроса</li></ol></li><li>Исчисление кортежей<ol><li>Реляционные переменные</li><li>Условия<ol><li>Простые</li><li>С кванторами</li></ol></li></ol></li><li>Связь реляционной алгебры и реляционного исчисления<ol><li>Выражение алгебры через исчисление</li><li>Выражение исчисления через алгебру</li><li>Реляционная полнота</li></ol></li><li>Исчисление доменов<ol><li>Доменные переменные</li><li>Условие принадлежности</li></ol></li><li>Язык Datalog<ol><li>Определение отношений</li><li>Реляционная полнота</li><li>Рекурсия</li></ol></li><li>Реляционное исчисление и SQL<ol><li>Структура запроса</li><li>Подзапросы<ol><li>Существования</li><li>Вхождения</li><li>Условные</li><li>Скалярные</li></ol></li><li>Рекурсия</li></ol></li></ol><div class="slides"><h4 id="N65623">Слайды</h4><a href="../slides/relcalculus.xhtml">HTML</a></div><div class="questions"><h4 id="N65630">Экзаменационные вопросы</h4><ol><li>Исчисление кортежей и его реляционная полнота</li><li>Исчисление доменов и его реляционная полнота</li><li>Datalog и рекурсия</li></ol></div><div class="skills"><h4 id="N65641">Практические навыки</h4><ol><li>Построение запросов в терминах исчисления кортежей</li><li>Построение запросов в терминах исчисления доменов</li><li>Перевод запросов из терминов реляционного исчисления в SQL и обратно</li><li>Построение запросов на SQL (с подзапросами)</li></ol></div><div class="references"><h4 id="N65654">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 8)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (главы 4 и 5)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/31.html">Chapter 31 &ndash; Searching with Subqueries</a>)</li><li><i>Codd E.F.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=358007" title="">A relational model of data for large shared data banks</a></li><li><i>Codd E.F.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277" title="">Relational completeness of data base sublanguages</a></li></ol></div><div class="homework"><h4 id="N65697">Домашнее задание 6. Реляционное исчисление</h4><div><p>
+        Составьте запросы в терминах языков Datalog и SQL 
+        для базы данных &laquo;Университет&raquo;, позволяющие получать
+    </p><ol><li>
+            Информацию о студентах
+            <ol><li>
+                    С заданным ФИО
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentName</em>).
+                </li><li>
+                    Учащихся в заданной группе
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:GroupName</em>).
+                </li><li>
+                    Учащихся на заданном факультете
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:FacultyName</em>).
+                </li><li>
+                    C заданной оценкой по дисциплине, 
+                    заданной идентификатором
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseId</em>).
+                </li><li>
+                    C заданной оценкой по дисциплине, 
+                    заданной названием
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseName</em>).
+                </li></ol></li><li>
+            Полную информацию о студентах
+            <ol><li>
+                    Для всех студентов
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em>).
+                </li><li>
+                    Учащихся на заданном факультете
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:FacultyName</em>).
+                </li><li>
+                    C факультета, заданного деканом
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, заданной идентификатором
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseId</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, заданной названием
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseName</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, 
+                    у которых есть эта дисциплина
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseId</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, 
+                    у которых есть эта дисциплина
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseName</em>).
+                </li></ol></li><li>
+            Студенты и дисциплины, такие что у студента была дисциплина 
+            (по плану или есть оценка)
+            <ol><li>
+                    Идентификаторы
+                    (<em>StudentId</em>, <em>CourseId</em>).
+                </li><li>
+                    Имя и название
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Имя и название, преподаватель того же факультета
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Имя и название, преподаватель другого факультета
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li></ol></li><li>
+            Студенты и дисциплины, такие что 
+            дисциплина есть в его плане, 
+            и у студента долг по этой дисциплине
+            <ol><li>
+                    Долгом считается отсутствие оценки
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Долгом считается оценка не выше 2
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Долгом считается отсутствие оценки или оценка не выше 2
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li></ol></li><li>
+            Идентификаторы студентов по преподавателю
+            <ol><li>
+                    Имеющих хотя бы одну оценку у преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Не имеющих ни одной оценки у преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Имеющих оценки по всем дисциплинам преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Имеющих оценки по всем дисциплинам преподавателя, 
+                    которые он вёл у этого студента
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li></ol></li><li>
+            Группы и дисциплины, такие что 
+            все студенты группы имеют оценку по предмету
+            <ol><li>
+                    Идентификаторы
+                    (<em>GroupId</em>, <em>CourseId</em>).
+                </li><li>
+                    Названия
+                    (<em>GroupName</em>, <em>CourseName</em>).
+                </li></ol></li></ol></div><p><b>Примечания</b></p><ol><li>В Datalog итоговым считается последнее объявленное отношение.</li><li>Текущая реализация Datalog не поддерживает рекурсивные определения.</li><li>В SQL-запросах нельзя использовать <code>* join</code>.</li><li>SQL проверяется <em>четырьмя</em> тестами на фазу &mdash; с разными СУБД.
+            Первая СУБД &mdash; <a href="https://www.sqlite.org/">SQLite</a>,
+            как на тестовом полигоне.
+        </li></ol><p>В рамках проекта:</p><ol><li>
+            Определите запросы (в том числе, агрегирующие), 
+            необходимые для работы проекта.
+        </li><li>Реализуйте запросы на языке SQL.</li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65623">Слайды</a></li><li class="i0"><a href="#N65630">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65641">Практические навыки</a></li><li class="i0"><a href="#N65654">Библиография</a></li><li class="i0"><a href="#N65697">Домашнее задание 6. Реляционное исчисление</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

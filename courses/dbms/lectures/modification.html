@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 7. Изменение данных</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 7. Изменение данных</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Операторы<ol><li>Вставка</li><li>Обновление</li><li>Объединение</li><li>Удаление</li></ol></li><li>Целостность данных<ol><li>Корректность и целостность</li><li>Типы ограничений целостности<ol><li>Типов и атрибутов</li><li>Отношений</li><li>Баз данных</li></ol></li><li>Компенсирующие действия</li></ol></li><li>Триггеры</li><li>Представления<ol><li>Объявление и применения</li><li>Обновление представлений</li><li>Материализованные представления</li></ol></li><li>Управление доступом<ol><li>Схемы управления доступом</li><li>Пользователи и группы</li><li>Data Control Language</li><li>Представления и права</li></ol></li></ol><div class="slides"><h4 id="N65610">Слайды</h4><a href="../slides/modification.xhtml">HTML</a></div><div class="questions"><h4 id="N65617">Экзаменационные вопросы</h4><ol><li>Целостность данных. Триггеры</li><li>Представления и их обновление</li><li>Управление доступом к данным</li></ol></div><div class="skills"><h4 id="N65628">Практические навыки</h4><ol><li>Построение изменяющих запросов на SQL</li><li>Задание ограничений целостности</li><li>Работа с представлениями</li><li>Управление доступом к данным</li></ol></div><div class="references"><h4 id="N65641">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 9, 10, 17)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 6)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/35.html">Chapter 35 &ndash; Changing SQL-data</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/18.html">Chapter 18 &ndash; Table and View</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/20.html">Chapter 20 &ndash; SQL Constraint and Assertion</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/24.html">Chapter 24 &ndash; SQL Trigger</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/15.html">Chapter 15 &ndash; SQL Authorization</a>)</li></ol></div><div class="homework"><h4 id="N65712">Домашнее задание 7. Изменение данных</h4><div><p>
+        Реализуйте указанные запросы, представления, 
+        проверки и триггеры на языке SQL.
+    </p><ol><li>
+            Напишите запросы, удаляющие студентов
+            <ol><li>
+                    Учащихся в группе, заданной идентификатором
+                    (<em>GroupId</em>).
+                </li><li>
+                    Учащихся в группе, заданной названием
+                    (<em>GroupName</em>).
+                </li><li>
+                    Учащихся на факультете
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Без оценок.
+                </li><li>
+                    Имеющих 3 и более оценки.
+                </li><li>
+                    Имеющих 3 и менее оценки.
+                </li></ol></li><li>
+            Напишите запросы, удаляющие должников (здесь и далее, долг определяется по отсутствию оценки)
+            <ol><li>
+                    Студентов, c долгами.
+                </li><li>
+                    Студентов, имеющих 2 и более долга.
+                </li><li>
+                    Студентов, имеющих 2 и более долга, учащихся на факультете
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Студентов, имеющих не более 3 долгов.
+                </li></ol></li><li>
+            Напишите запросы, обновляющие данные студентов
+            <ol><li>
+                    Изменение имени студента
+                    (<em>StudentId</em>, <em>StudentName</em>).
+                </li><li>
+                    Перевод студента из группы в группу по индентификаторам
+                    (<em>StudentId</em>, <em>GroupId</em>, <em>FromGroupId</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу по идентификаторам
+                    (<em>GroupId</em>, <em>FromGroupId</em>).
+                </li><li>
+                    Изменение имени всех студентов группы
+                    (<em>GroupName</em>, <em>StudentName</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу по названиям
+                    (<em>GroupName</em>, <em>FromGroupName</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу, 
+                    только если целевая группа существует
+                    (<em>GroupName</em>, <em>FromGroupName</em>).
+                </li></ol></li><li>
+            Напишите запросы, подсчитывающие статистику по оценкам
+            <ol><li>
+                    Число оценок студента
+                    (столбец <em>Students.Marks</em>)
+                    (<em>StudentId</em>).
+                </li><li>
+                    Число оценок каждого студента 
+                    (столбец <em>Students.Marks</em>).
+                </li><li>
+                    Число оценок каждого студента факультета
+                    (столбец <em>Students.Marks</em>)
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Пересчет числа оценок каждого студента, 
+                    с учётом новых оценок из таблицы <em>NewMarks</em>, 
+                    структура которой  такая же как у таблицы <em>Marks</em> 
+                    (столбец <em>Students.Marks</em>).
+                </li></ol></li><li>
+            Напишите запросы, подсчитывающие статистику по студентам
+            <ol><li>
+                    Число сданных дисциплин каждого студента
+                    (столбец <em>Students.Marks</em>).
+                </li><li>
+                    Число долгов студента 
+                    (столбец <em>Students.Debts</em>)
+                    (<em>StudentId</em>).
+                </li><li>
+                    Число долгов каждого студента 
+                    (столбец <em>Students.Debts</em>).
+                </li><li>
+                    Число долгов каждого студента группы (столбец <em>Students.Debts</em>)
+                    (<em>GroupName</em>).
+                </li><li>
+                    Число долгов каждого студента у деканов (столбец <em>Students.Debts</em>)
+                    (<em>GroupName</em>).
+                </li><li>
+                    Число оценок и долгов каждого студента 
+                    (столбцы <em>Students.Marks</em>, <em>Students.Debts</em>).
+                </li></ol></li><li>
+            Напишите запросы, обновляющие оценки, 
+            с учетом данных из таблицы <em>NewMarks</em>, 
+            имеющей такую же структуру, как таблица <em>Marks</em><ol><li>
+                    Проставляющий новую оценку только если ранее оценки не было.
+                </li><li>
+                    Проставляющий новую оценку только если ранее оценка была.
+                </li><li>
+                    Проставляющий максимум из старой и новой оценки 
+                    только если ранее оценка была.
+                </li><li>
+                    Проставляющий максимум из старой и новой оценки 
+                    (если ранее оценки не было, то новую оценку).
+                </li></ol></li><li>
+            Работа с представлениями
+            <ol><li>
+                    Создайте представление <em>StudentMarks</em> в котором 
+                    для каждого студента указано число оценок
+                    (<em>StudentId</em>, <em>Marks</em>).
+                </li><li>
+                    Создайте представление <em>AllMarks</em> в котором 
+                    для каждого студента указано число оценок,
+                    включая оценки из таблицы <em>NewMarks</em>
+                    (<em>StudentId</em>, <em>Marks</em>).
+                </li><li>
+                    Создайте представление <em>Debts</em> в котором для каждого
+                    студента, имеющего долги указано их число
+                    (<em>StudentId</em>, <em>Debts</em>).
+                </li><li>
+                    Создайте представление <em>StudentDebts</em> в котором 
+                    для каждого студента указано число долгов
+                    (<em>StudentId</em>, <em>Debts</em>).
+                </li></ol></li><li><p>
+                Целостность данных.
+            </p><p>
+                Обратите внимание, что задания из этого раздела
+                надо посылать в PCMS, но они будут проверяться 
+                только вручную после окончания сдачи.
+                То есть в PCMS вы получите <em>+</em> за любое решение.
+            </p><p>
+                В комментарии перед каждым запросом укажите 
+                название и версию использованной СУБД.
+            </p><ol><li>
+                    Добавьте проверку того, что у студентов есть оценки
+                    только по дисциплинам из их плана (<em>NoExtraMarks</em>).
+                </li><li>
+                    Добавьте проверку того, что все студенты каждой группы
+                    имеют оценку по одному и тому же набору дисциплин (<em>SameMarks</em>).
+                </li><li>
+                    Создайте триггер <em>PreserveMarks</em>, 
+                    не позволяющий уменьшить оценку студента по дисциплине. 
+                    При попытке такого изменения оценка изменяться не должна.
+                </li></ol></li></ol></div><p><b>Примечания</b></p><ol><li>
+            Некоторые базы данных не понимают, что <tt>* join ... using (Column)</tt>
+            должен оставлять один экземпляр <tt>Column</tt> и не требовать указывать
+            для него таблицу.
+        </li></ol><p>В рамках проекта:</p><ol><li>
+            Определите модифицирующие запросы, необходимые для работоспособности
+            проекта.
+        </li><li>Запишите эти запросы на языке SQL.</li><li>
+            Определите представления, необходимые для работоспособности
+            проекта.
+        </li><li>
+            Запишите эти представления на языке SQL.
+        </li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65610">Слайды</a></li><li class="i0"><a href="#N65617">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65628">Практические навыки</a></li><li class="i0"><a href="#N65641">Библиография</a></li><li class="i0"><a href="#N65712">Домашнее задание 7. Изменение данных</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

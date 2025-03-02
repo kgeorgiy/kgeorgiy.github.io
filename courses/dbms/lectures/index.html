@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: План курса</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>План курса</h1></header><div id="main"><article><section class="part"><h2 id="part-1">Часть 1. Проектирование</h2><p>Тем: 4</p><section><h3 id="lecture-1">Тема 1. Введение</h3><h4 id="N65567">Содержание</h4><ol><li>Структура курса</li><li>Развитие баз данных<ol><li>Требования к системам управления базами данных</li><li>База данных на основе текстового файла</li><li>База данных на основе файловой системы</li><li>Иерархические базы данных</li><li>Сетевые базы данных</li><li>Реляционные базы данных</li><li>Объектные базы данных</li></ol></li><li>Архитектура современных СУБД</li><li>Обзор современных РСУБД<ol><li>Oracle (<a href="http://www.oracle.com/database/">Сайт</a>, <a href="http://en.wikipedia.org/wiki/Oracle_Database">Wikipedia</a>)</li><li>DB2 (<a href="http://www.ibm.com/db2">Сайт</a>, <a href="http://en.wikipedia.org/wiki/IBM_DB2">Wikipedia</a>)</li><li>Microsoft SQL Server (<a href="http://www.microsoft.com/sqlserver">Сайт</a>, <a href="http://en.wikipedia.org/wiki/Microsoft_SQL_Server">Wikipedia</a>)</li><li>MySQL (<a href="http://www.mysql.com/">Сайт</a>, <a href="http://en.wikipedia.org/wiki/MySQL">Wikipedia</a>)</li><li>PostgreSQL (<a href="http://www.postgresql.org/">Сайт</a>, <a href="http://en.wikipedia.org/wiki/PostgreSQL">Wikipedia</a>)</li><li>Firebird (<a href="http://www.firebirdsql.org/">Сайт</a>, <a href="http://en.wikipedia.org/wiki/Firebird_%28database_server%29">Wikipedia</a>)</li><li>Derby (<a href="http://db.apache.org/derby/">Сайт</a>, <a href="http://en.wikipedia.org/wiki/Apache_derby">Wikipedia</a>)</li><li>HSQLDB (<a href="http://hsqldb.org/">Сайт</a>, <a href="http://en.wikipedia.org/wiki/Hsqldb">Wikipedia</a>)</li><li>Microsoft Access (<a href="http://office.microsoft.com/access">Сайт</a>, <a href="http://en.wikipedia.org/wiki/Microsoft_access">Wikipedia</a>)</li></ol></li><li>Введение в SQL<ol><li>Ревизии стандарта SQL</li><li>Пример создания базы данных</li></ol></li></ol><div class="slides"><h4 id="N65693">Слайды</h4><a href="../slides/intro.xhtml">HTML</a></div><div class="questions"><h4 id="N65700">Экзаменационные вопросы</h4><ol><li>Развитие баз данных</li><li>Архитектура современной СУБД</li></ol></div><div class="references"><h4 id="N65709">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных</li><li><i>Гарсиа Молина Г.</i>, <i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Системы баз данных полный курс</li><li><i>Фаулер М.</i>&nbsp;Архитектура корпоративных программных приложений</li><li><i>Эмблер С. В.</i>, <i>Садаладж П. Дж.</i>&nbsp;Рефакторинг баз данных. Эволюционное проектирование</li><li><i>Garcia-Molina H.</i>, <i>Ullman J.</i>, <i>Widom J.</i>&nbsp;Database System Implementation</li><li><i>Silberschatz A.</i>, <i>Korth H.F.</i>, <i>Sudarshan S.</i>&nbsp;Database System Concepts</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;<a href="https://crate.io/docs/sql-99/en/latest/" title="">SQL-99 complete, really</a></li><li><i>Silberschatz A.</i>, <i>Korth H.F.</i>, <i>Sudarshan S.</i>&nbsp;<a href="https://codex.cs.yale.edu/avi/db-book/slides-dir/index.html" title="">Database System Concepts (Slides)</a></li><li><i>Werstein P.</i>&nbsp;<a href="http://www.cs.otago.ac.nz/cosc344/lectures.php" title="">Database Theory and Applications (Slides)</a></li></ol></div><div class="homework"><h4 id="N65799">Домашнее задание 1. Установка и использование СУБД</h4><ol><li>
+            Установите систему управления реляционными базами данных.
+        </li><li>
+            Узнайте, как в вашей СУБД исполнять SQL в интерактивном режиме.
+        </li><li>
+            Узнайте, как в вашей СУБД исполнять SQL в пакетном режиме.
+        </li><li>
+            Разберитесь, как в вашей СУБД осуществляется поддержка русского языка.
+        </li><li>
+            Создайте базу данных и наполните ее в соответствии с примерами из презентации.
+        </li></ol><p>Ожидаемая структура проекта</p><ol><li>
+            Текстовая часть
+            <ol><li>Описание предметной области с кратким описанием неочевидных сущностей и атрибутов.</li><li>Предварительное разбиение на отношения (может отсутствовать).</li><li>Для каждого отношения: 
+                    определение функциональных зависимостей, 
+                    нормализация до 5НФ,
+                    денормализация (при необходимости).</li><li>Модель сущность-связь.</li><li>Физическая модель (должна соответствовать ERM) с указанием типов для доменов.</li></ol></li><li>
+            Часть на SQL
+            <ul><li><code>ddl.sql</code> &ndash; описание таблиц и индексов.</li><li><code>insert.sql</code> &ndash; добавление тестовых данных.</li><li><code>select.sql</code> &ndash; запросы на получение данных
+                    и представления.
+                </li><li><code>update.sql</code> &ndash; запросы на изменение данных,
+                    хранимые процедуры и триггеры.
+                </li></ul></li></ol><p>В рамках проекта:</p><ul><li>
+            Выберите тему проекта.
+            <ul><li>Тема должна быть уникальной.</li><li>Тема должна быть достаточно сложной.</li><li>
+                    Нельзя брать темы: 
+                    обучение в университете; 
+                    торговля (как товарами, так и билетами); 
+                    cоревнования по программированию.
+                </li></ul></li></ul></div></section><section><h3 id="lecture-2">Тема 2. Моделирование баз данных</h3><h4 id="N65868">Содержание</h4><ol><li>Физическая модель базы данных<ol><li>Таблицы</li><li>Ключи</li><li>Ссылки</li><li>Графическая нотация</li></ol></li><li>Модель сущность-связь<ol><li>Сущности</li><li>Связи</li><li>Ассоциации</li><li>Слабые сущности</li><li>Альтернативные нотации</li></ol></li><li>Преобразование модели сущность-связь в физическую модель</li><li>Запись физической модели на языке DDL<ol><li>DDL как часть SQL</li><li>Типы данных</li><li>Описание ключей</li><li>Описание ссылок</li><li>Создание, изменение и удаление таблиц</li></ol></li></ol><div class="slides"><h4 id="N65912">Слайды</h4><a href="../slides/modelling.xhtml">HTML</a></div><div class="questions"><h4 id="N65919">Экзаменационные вопросы</h4><ol><li>Физическая модель базы данных</li><li>Модель сущность-связь</li><li>Преобразование модели сущность-связь в физическую модель</li></ol></div><div class="skills"><h4 id="N65930">Практические навыки</h4><ol><li>Создание модели сущность-связь по словесному описанию</li><li>Создание модели физической модели по словесному описанию</li><li>Построение физической модели по модели сущность-связь</li><li>Запись физической модели на DDL</li></ol></div><div class="references"><h4 id="N65943">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 14)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 2)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/18.html">Chapter 18 &ndash; SQL Table and View</a>)</li><li><i>Chen P.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.123.1085" title="">The Entity-Relationship Model: Toward a Unified View of Data</a></li><li><i>Chen P.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.15.4630" title="">Entity-Relationship Modeling: Historical Events, Future Trends, and Lessons</a></li><li><i>Hartmann S.</i>&nbsp;<a href="http://scholar.google.ru/scholar?q=Hartmann+Reasoning+about+participation+constraints+and+Chen%27s+constraints" title="">Reasoning about participation constraints and Chen's constraints</a></li><li><i>MySQL</i>&nbsp;<a href="https://dev.mysql.com/doc/refman/8.0/en/sql-data-definition-statements.html" title="">Data Definition Statements</a></li><li><i>PostgreSQL</i>&nbsp;<a href="https://www.postgresql.org/docs/current/ddl.html" title="">Data Definition</a></li><li><i>Oracle</i>&nbsp;<a href="https://docs.oracle.com/cd/B28359_01/server.111/b28310/tables.htm" title="">Managing tables</a></li><li><i>MSSQL Server</i>&nbsp;<a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/statements?view=sql-server-2017" title="">Transact-SQL statements</a></li></ol></div><div class="homework"><h4 id="N66026">Домашнее задание 2. Моделирование БД &laquo;Университет&raquo;</h4><p>
+        Спроектируйте базу данных &laquo;Университет&raquo;,
+        позволяющую хранить информацию о факультетах, студентах,
+        группах, преподавателях, дисциплинах и оценках.
+    </p><ol><li>
+            Составьте модель сущность-связь.
+        </li><li>
+            Преобразуйте модель сущность-связь в физическую модель.
+        </li><li>
+            Запишите физическую модель на языке SQL.
+            Запись должна включать объявления ограничений.
+        </li><li>
+            Создайте базу данных по спроектированной модели.
+        </li><li>
+            Запишите операторы SQL, заполняющие базу тестовыми данными. 
+            Достаточно 2&ndash;3 записей на таблицу, 
+            если они в полной мере демонстрируют особенности БД.
+        </li></ol><p>
+        Примечания
+    </p><ol><li>
+            Не требуется поддержка:
+            <ul><li>нескольких университетов;</li><li>дисциплин по выбору;</li><li>
+                    дисциплин с необычным распределением по группам 
+                    (таких как физическая культура и иностранный язык);
+                </li><li>переводов между группами;</li><li>исторических данных;</li><li>нескольких оценок по одной дисциплине.</li></ul></li><li>
+            Многосеместровые дисциплины считаются по семестрам,
+            например:
+            <ul><li>Математический анализ (семестр 1);</li><li>Математический анализ (семестр 2).</li></ul></li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSffTt-D80JVpKGpfB4Ou2vBArepi_vz0GzjOXVOEvTrexVtvA/viewform">Форма для сдачи ДЗ</a>.
+        Проверка проводится в полуавтоматическом режиме, 
+        поэтому строго соблюдайте указанные форматы.
+    </p><p>В рамках проекта:</p><ul><li>
+            Сделайте предварительную схему для БД проекта на основе моделей:
+            <ul><li>модель сущность-связь;</li><li>физическая модель;</li><li>определение схемы на SQL.</li></ul></li></ul></div></section><section><h3 id="lecture-3">Тема 3. Реляционная модель и функциональные зависимости</h3><h4 id="N66094">Содержание</h4><ol><li>Реляционная модель данных<ol><li>Отношение</li><li>Кортежи</li><li>Представление null'ов</li><li>Отличия таблиц и отношений</li></ol></li><li>Ключи<ol><li>Надключи</li><li>Ключи</li><li>Требования к ключам</li><li>Естественные и суррогатные ключи</li><li>Выбор ключей</li></ol></li><li>Функциональные зависимости<ol><li>Определение и примеры</li><li>Замыкание множества функциональных зависимостей</li><li>Эквивалентность множеств функциональных зависимостей</li><li>Правила вывода функциональных зависимостей</li><li>Замыкание множество атрибутов</li><li>Неприводимые множества функциональных зависимостей</li></ol></li></ol><div class="slides"><h4 id="N66138">Слайды</h4><a href="../slides/fundeps.xhtml">HTML</a></div><div class="questions"><h4 id="N66145">Экзаменационные вопросы</h4><ol><li>Реляционная модель данных. Ключи</li><li>Функциональные зависимости: замыкание, эквивалентность и правила вывода</li><li>Функциональные зависимости: замыкание атрибутов, неприводимые множества функциональных зависимостей, их построение</li></ol></div><div class="skills"><h4 id="N66156">Практические навыки</h4><ol><li>Выделение надключей и ключей отношения</li><li>Определение функциональных зависимостей в отношении</li><li>Построение замыкания множества атрибутов</li><li>Построение неприводимого множества функциональных зависимостей, эквивалентного данному</li></ol></div><div class="references"><h4 id="N66169">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 9 и 11)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 3)</li><li><i>Armstrong W.W.</i>&nbsp;<a href="https://web.archive.org/web/20180126091352if_/https://ipfs.io/ipfs/QmWYWTGUZyTm2iRFTZY2pTr2x1vWkDiJr2CBp2PGVpSVSv" title="">Dependency Structures of Data Base Relationships</a></li><li><i>Fagin R.</i>&nbsp;Functional Dependencies in a Relational Database and Propositional Logic</li><li><i>Beeri C.</i>, <i>Fagin R.</i>, <i>Howard J.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=509414" title="">A complete axiomatization for functional and multivalued dependencies in database relations</a></li><li><i>Maier D.</i>&nbsp;Maier D. - Minimum covers in the relational database model</li></ol></div><div class="homework"><h4 id="N66215">Домашнее задание 3. Функциональные зависимости в БД &laquo;Университет&raquo;</h4><p>
+        Дано отношение с атрибутами
+            <em>StudentId</em>,
+            <em>StudentName</em>,
+            <em>GroupId</em>,
+            <em>GroupName</em>,
+            <em>GroupFacultyId</em>,
+            <em>CourseId</em>,
+            <em>CourseName</em>,
+            <em>LecturerId</em>,
+            <em>LecturerName</em>,
+            <em>LecturerFacultyId</em>,
+            <em>Mark</em>,
+            <em>FacultyId</em>,
+            <em>FacultyName</em>,
+            <em>FacultyDeanId</em>.
+        
+    </p><ol><li>
+            Найдите функциональные зависимости в данном отношении.
+        </li><li>
+            Найдите все ключи данного отношения.
+        </li><li>
+            Найдите замыкание множеств атрибутов:
+            <ol><li><em>GroupId</em>, <em>CourseId</em>;</li><li><em>StudentId</em>, <em>CourseId</em>;</li><li><em>StudentId</em>, <em>LecturerId</em>;</li><li><em>StudentId</em>, <em>LecturerFacultyDeanId</em>;</li><li><em>GroupName</em>, <em>LecturerId</em>.</li></ol></li><li>
+            Найдите неприводимое множество функциональных зависимостей
+            для данного отношения.
+        </li></ol><p>
+        Примечания
+    </p><ol><li>
+            Не требуется поддержка:
+            <ul><li>нескольких университетов;</li><li>дисциплин по выбору;</li><li>
+                    дисциплин с необычным распределением по группам 
+                    (таких как физическая культура и иностранный язык);
+                </li><li>переводов между группами;</li><li>нескольких оценок по одной дисциплине.</li></ul></li><li>
+            Многосеместровые дисциплины считаются по семестрам,
+            например: 
+                <i>Математический анализ (семестр 1)</i>,
+                <i>Математический анализ (семестр 2)</i>.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSde-lUPn4XBtAT-CGk7nZAc6ifDv9vyytOyVkYsrgVGtwEc4w/viewform">Форма для сдачи ДЗ</a>.
+        Проверка проводится в полуавтоматическом режиме, 
+        поэтому строго соблюдайте указанные форматы.
+    </p><p>В рамках проекта:</p><ol><li>
+            Определите набор атрибутов, необходимых для проекта,
+            и определите отношения на них.
+        </li><li>Найдите функциональные зависимости полученных отношений.</li><li>Найдите все ключи полученных отношений.</li><li>
+            Найдите неприводимые множества функциональных зависимостей
+            для полученных отношений.
+        </li></ol></div></section><section><h3 id="lecture-4">Тема 4. Нормализация баз данных</h3><h4 id="N66357">Содержание</h4><ol><li>Цели и средства нормализации<ol><li>Нормализация</li><li>Проекции и соединения</li><li>Декомпозиция отношений</li></ol></li><li>Первые нормальные формы<ol><li>Аномалии</li><li>Первая нормальная форма</li><li>Вторая нормальная форма</li><li>Третья нормальная форма</li><li>Нормальная форма Бойса-Кодда</li></ol></li><li>Многозначные зависимости и четвертая нормальная форма<ol><li>Многозначные зависимости</li><li>Четвертая нормальная форма</li></ol></li><li>Зависимости соединения и пятая нормальная форма<ol><li>Зависимости соединения</li><li>Пятая нормальная форма</li></ol></li><li>Процесс нормализации и другие нормальные формы<ol><li>Иерархия нормальных форм</li><li>Связи нормальных форм</li><li>Другие нормальные формы</li><li>Денормализация</li></ol></li></ol><div class="questions"><h4 id="N66409">Экзаменационные вопросы</h4><ol><li>Цели и средства нормализации</li><li>Нормальные формы: первая и вторая</li><li>Нормальные формы: третья и Бойса-Кодда</li><li>Многозначные зависимости и четвертая нормальная форма</li><li>Зависимости соединения и пятая нормальная форма</li></ol></div><div class="slides"><h4 id="N66424">Слайды</h4><a href="../slides/normalization.xhtml">HTML</a></div><div class="skills"><h4 id="N66431">Практические навыки</h4><ol><li>Нормализация баз данных</li><li>Проектирование высококачественных баз данных</li></ol></div><div class="references"><h4 id="N66440">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 12 и 13)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 3)</li><li><i>Fagin R.</i>&nbsp;Multivalued Dependencies and a New Normal Form for Relational Databases</li><li><i>Beeri C.</i>, <i>Fagin R.</i>, <i>Howard J.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=509414" title="">A complete axiomatization for functional and multivalued dependencies in database relations</a></li><li><i>Date C.J.</i>, <i>Fagin R.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=132274" title="">Simple conditions for guaranteeing higher normal forms in relational databases</a></li><li><i>Fagin R.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=582120" title="">Normal forms and relational database operators</a></li></ol></div><div class="homework"><h4 id="N66493">Домашнее задание 4. Нормализация БД &laquo;Университет&raquo;</h4><p>
+        Дано отношение с атрибутами
+            <em>StudentId</em>,
+            <em>StudentName</em>,
+            <em>GroupId</em>,
+            <em>GroupName</em>,
+            <em>GroupFacultyId</em>,
+            <em>GroupFacultyName</em>,
+            <em>GroupFacultyDeanId</em>;
+            <em>CourseId</em>,
+            <em>CourseName</em>,
+            <em>LecturerId</em>,
+            <em>LecturerName</em>,
+            <em>LecturerFacultyId</em>,
+            <em>LecturerFacultyName</em>,
+            <em>LecturerFacultyDeanId</em>,
+            <em>Mark</em>.
+        и функциональными зависимостями:
+    </p><div style="padding-left: 2em"><ul><li>StudentId &rarr; StudentName, GroupId, GroupName;</li><li>GroupId &rarr; GroupName, GroupFacultyId;</li><li>GroupName &rarr; GroupId;</li><li>CourseId &rarr; CourseName;</li><li>LecturerId &rarr; LecturerName, LecturerFacultyId;</li><li>StudentId, CourseId &rarr; Mark;</li><li>GroupId, CourseId &rarr; LecturerId;</li><li>GroupFacultyId &rarr; GroupFacultyName, GroupFacultyDeanId;</li><li>GroupFacultyName &rarr; GroupFacultyId;</li><li>LecturerFacultyId &rarr; LecturerFacultyName, LecturerFacultyDeanId;</li><li>LecturerFacultyName &rarr; LecturerFacultyId.</li></ul></div><ol><li>
+            Инкрементально приведите данное отношение в
+            пятую нормальную форму.
+        </li><li>
+            Постройте соответствующую модель сущность-связь.
+        </li><li>
+            Постройте соответствующую физическую модель.
+        </li><li>
+            Реализуйте SQL-скрипты, создающие схему базы данных.
+        </li><li>
+            Создайте базу данных по спроектированной модели.
+        </li><li>
+            Заполните базу тестовыми данными.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeyvYrFA-0OrPsU5fWeIQRbHJd7dvuL1Ywl_7napyV2-OURAg/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>Приведите схему базы в пятую нормальную форму.</li><li>Если итоговая схема не будет в НФ-5, то обоснуйте принятое решение.</li><li>Запишите определения таблиц на языке SQL.</li><li>Запишите на языке SQL наполнение таблиц тестовым данными.</li></ol></div></section></section><section class="part"><h2 id="part-2">Часть 2. Запросы</h2><p>Тем: 3</p><section><h3 id="lecture-5">Тема 5. Реляционная алгебра</h3><h4 id="N66612">Содержание</h4><ol><li>Реляционная алгебра<ol><li>Предназначение</li><li>Замкнутость</li></ol></li><li>Унарные операции<ol><li>Проекция</li><li>Фильтрация</li><li>Переименование</li></ol></li><li>Операции над множествами<ol><li>Объединение</li><li>Пересечение</li><li>Разность</li></ol></li><li>Соединения<ol><li>Полное соединение</li><li>Естественное соединение</li><li>Внешние соединения</li><li>Полусоединения</li><li>Условные соединения</li></ol></li><li>Деление</li><li>Операции над данными<ol><li>Расширение</li><li>Агрегирование</li></ol></li><li>Свойства реляционной алгебры<ol><li>Базис операций</li><li>Ограничения реляционной алгебры</li></ol></li><li>Реляционная алгебра и SQL<ol><li>Простые операции</li><li>Соединения</li></ol></li></ol><div class="slides"><h4 id="N66678">Слайды</h4><a href="../slides/relalgebra.xhtml">HTML</a></div><div class="questions"><h4 id="N66685">Экзаменационные вопросы</h4><ol><li>Реляционная алгебра: предназначение и свойства</li><li>Реляционная алгебра: унарные и множественные операции</li><li>Реляционная алгебра: соединения</li><li>Реляционная алгебра: деление и операции над данными</li></ol></div><div class="skills"><h4 id="N66698">Практические навыки</h4><ol><li>Построение запросов в терминах реляционной алгебры</li><li>Преобразование запросов</li><li>Перевод запросов из терминов реляционной алгебры в термины SQL и обратно</li><li>Построение запросов на SQL (без подзапросов)</li></ol></div><div class="references"><h4 id="N66711">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 7)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (главы 4 и 5)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/28.html">Chapter 28 &ndash; Introduction to SQL-data operations</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/29.html">Chapter 29 &ndash; Simple Search Conditions</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/30.html">Chapter 30 &ndash; Searching with Joins</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/32.html">Chapter 32 &ndash; Searching with Set Operators</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/33.html">Chapter 33 &ndash; Searching with Groups</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/34.html">Chapter 34 &ndash; Sorting Search Results</a>)</li><li><i>Select Syntax</i>&nbsp;<a href="http://dev.mysql.com/doc/refman/5.5/en/select.html" title="">in MySQL Reference Manual</a></li></ol></div><div class="homework"><h4 id="N66801">Домашнее задание 5. Реляционная алгебра</h4><p>
+        Структура базы данных &laquo;Университет&raquo;:
+    </p><ul><li><em>Faculties</em>(<em>FacultyId</em>, <em>FacultyName</em>, <em>DeanId</em>)</li><li><em>Groups</em>(<em>GroupId</em>, <em>GroupName</em>, <em>GroupFacultyId</em>)</li><li><em>Students</em>(<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em>)</li><li><em>Courses</em>(<em>CourseId</em>, <em>CourseName</em>)</li><li><em>Lecturers</em>(<em>LecturerId</em>, <em>LecturerName</em>, <em>LecturerFacultyId</em>)</li><li><em>Plan</em>(<em>GroupId</em>, <em>CourseId</em>, <em>LecturerId</em>)</li><li><em>Marks</em>(<em>StudentId</em>, <em>CourseId</em>, <em>Mark</em>)</li></ul><div><p><p>
+            Составьте выражения реляционной алгебры и 
+            соответствующие SQL-запросы, позволяющие получать
+        </p></p><ol><li><p>
+                Информацию о студентах
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentId</em>).
+                    </p><comment id="01_1r"></comment><comment id="01_1s"></comment></li><li><p>
+                        С заданным ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentName</em>).
+                    </p><comment id="01_2r"></comment><comment id="01_2s"></comment></li></ol></li><li><p>
+                Полную информацию о студентах
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:StudentId</em>).
+                    </p><comment id="02_1r"></comment><comment id="02_1s"></comment></li><li><p>
+                        С заданным ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:StudentName</em>).
+                    </p><comment id="02_2r"></comment><comment id="02_2s"></comment></li><li><p>
+                        Из заданной группы
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:GroupName</em>).
+                    </p><comment id="02_3r"></comment><comment id="02_3s"></comment></li><li><p>
+                        C заданного факультета
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:FacultyName</em>).
+                    </p><comment id="02_4r"></comment><comment id="02_4s"></comment></li><li><p>
+                        C факультета, заданного деканом
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:LecturerName</em>).
+                    </p><comment id="02_5r"></comment><comment id="02_5s"></comment></li></ol></li><li><p>
+                Информацию о студентах с заданной оценкой по дисциплине
+            </p><ol><li><p>
+                        С заданным идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseId</em>).
+                    </p><comment id="03_1r"></comment><comment id="03_1s"></comment></li><li><p>
+                        С заданным названием
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseName</em>).
+                    </p><comment id="03_2r"></comment><comment id="03_2s"></comment></li><li><p>
+                        Которую у него вёл лектор заданный идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerId</em>).
+                    </p><comment id="03_3r"></comment><comment id="03_3s"></comment></li><li><p>
+                        Которую у них вёл лектор, заданный ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerName</em>).
+                    </p><comment id="03_4r"></comment><comment id="03_4s"></comment></li><li><p>
+                        Которую вёл лектор, заданный идентификатором
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerId</em>).
+                    </p><comment id="03_5r"></comment><comment id="03_5s"></comment></li><li><p>
+                        Которую вёл лектор, заданный ФИО
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:LecturerName</em>).
+                    </p><comment id="03_6r"></comment><comment id="03_6s"></comment></li></ol></li><li><p>
+                Информацию о студентах не имеющих оценки по дисциплине
+            </p><ol><li><p>
+                        Среди всех студентов
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>).
+                    </p><comment id="04_1r"></comment><comment id="04_1s"></comment></li><li><p><em>Тут был дубль задачи, пункт оставлен для сохранения нумерации.</em></p><comment id="04_2r"></comment><comment id="04_2s"></comment></li><li><p>
+                        Среди студентов факультета
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>, <em>:FacultyName</em>).
+                    </p><comment id="04_3r"></comment><comment id="04_3s"></comment></li><li><p>
+                        Среди студентов, у которых есть эта дисциплина
+                        (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:CourseName</em>).
+                    </p><comment id="04_4r"></comment><comment id="04_4s"></comment></li></ol></li><li><p>
+                Для каждого студента ФИО и названия дисциплин
+            </p><ol><li><p>
+                        Которые у него есть по плану
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_1r"></comment><comment id="05_1s"></comment><comment id="05_1s"></comment><comment id="05_1s"></comment></li><li><p>
+                        Есть, но у него нет оценки
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_2r"></comment><comment id="05_2s"></comment></li><li><p>
+                        Есть, но у него не 4 или 5
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_3r"></comment><comment id="05_3s"></comment></li><li><p>
+                        Вёл преподаватель
+                        (<em>StudentName</em>, <em>CourseName</em> по <em>:LecturerName</em>).
+                    </p><comment id="05_4r"></comment><comment id="05_4s"></comment></li><li><p>
+                        Вёл преподаватель с :FacultyName
+                        (<em>StudentName</em>, <em>CourseName</em> по <em>:FacultyName</em>).
+                    </p><comment id="05_5r"></comment><comment id="05_5s"></comment></li><li><p>
+                        Вёл преподаватель другого факультета
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_6r"></comment><comment id="05_6s"></comment></li><li><p>
+                        Вёл декан
+                        (<em>StudentName</em>, <em>CourseName</em>).
+                    </p><comment id="05_7r"></comment><comment id="05_7s"></comment></li></ol></li><li><p>
+                Идентификаторы студентов по преподавателю
+            </p><ol><li><p>
+                        Имеющих хотя бы одну оценку у преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_1r"></comment><comment id="06_1s"></comment></li><li><p>
+                        Не имеющих ни одной оценки у преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_2r"></comment><comment id="06_2s"></comment></li><li><p>
+                        Имеющих оценки по всем дисциплинам преподавателя
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_3r"></comment><comment id="06_3s"></comment><comment id="06_3s"></comment></li><li><p>
+                        Имеющих оценки по всем дисциплинам преподавателя, 
+                        которые он вёл у этого студента
+                        (<em>StudentId</em> по <em>:LecturerName</em>).
+                    </p><comment id="06_4r"></comment><comment id="06_4r"></comment><comment id="06_4r"></comment><comment id="06_4r"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment><comment id="06_4s"></comment></li></ol></li><li><p>
+                Группы и дисциплины, такие что все студенты группы имеют оценку по этой дисциплине
+            </p><ol><li><p>
+                        Идентификаторы
+                        (<em>GroupId</em>, <em>CourseId</em>).
+                    </p><comment id="07_1r"></comment><comment id="07_1s"></comment></li><li><p>
+                        Названия
+                        (<em>GroupName</em>, <em>CourseName</em>).
+                    </p><comment id="07_2r"></comment><comment id="07_2s"></comment></li></ol></li></ol><p><p>
+            Составьте SQL-запросы, позволяющие получать
+        </p></p><ol start="8"><li><p>
+                Суммарный балл
+            </p><ol><li><p>
+                        Одного студента
+                        (<em>SumMark</em> по <em>:StudentId</em>).
+                    </p><comment id="08_1s"></comment></li><li><p>
+                        Каждого студента
+                        (<em>StudentName</em>, <em>SumMark</em>).
+                    </p><comment id="08_2s"></comment></li><li><p>
+                        Каждой группы
+                        (<em>GroupName</em>, <em>SumMark</em>).
+                    </p><comment id="08_3s"></comment></li></ol></li><li><p>
+                Средний балл
+            </p><ol><li><p>
+                        Одного студента
+                        (<em>AvgMark</em> по <em>:StudentId</em>).
+                    </p><comment id="09_1s"></comment></li><li><p>
+                        Каждого студента
+                        (<em>StudentName</em>, <em>AvgMark</em>).
+                    </p><comment id="09_2s"></comment></li><li><p>
+                        Каждой группы
+                        (<em>GroupName</em>, <em>AvgMark</em>).
+                    </p><comment id="09_3s"></comment></li><li><p>
+                        Средний балл средних баллов студентов каждой группы
+                        (<em>GroupName</em>, <em>AvgAvgMark</em>).
+                    </p><comment id="09_4s"></comment></li></ol></li><li><p>
+                Для каждого студента:
+                число дисциплин, которые у него были,
+                число сданных дисциплин и
+                число несданных дисциплин
+                (<em>StudentId</em>, <em>Total</em>, <em>Passed</em>, <em>Failed</em>).
+            </p><comment id="10s"></comment><comment id="10s"></comment></li></ol></div><a href="/courses/dbms/slides/misc/relations.html">Тестовый полигон</a><p>
+        Технические особенности проверки.
+    </p><ul><li>
+            Сдача &mdash; в <a href="https://pcms.itmo.ru">PCMS</a>. 
+            Если у вас нет аккаунта в PCMS, либо доступа к ДЗ, обратитесь к 
+            <a href="https://t.me/VedernikovNV">Николаю Викторовичу Ведерникову</a>.
+        </li><li>Проверяться и оцениваться будет <b>последняя</b> посланная версия.</li><li>
+            Проверка разделена на 4 фазы:
+            <ol><li>пустые таблицы (синтаксис и набор столбцов);</li><li>таблицы с не более чем одной записью;</li><li>таблицы с простыми данными;</li><li>таблицы со сложными данными.</li></ol></li><li>
+            В случае проблем с синтаксисом или набором столбцов вы будете получать
+            <em>Presentation Error</em>.
+        </li><li>
+            Реляционная алгебра проверяется одним тестом на фазу,
+            движком из тестового полигона.
+        </li><li>
+            SQL проверяется тремя тестами на фазу &mdash; с разными СУБД.
+            Первая СУБД &mdash; <a href="https://www.sqlite.org/">SQLite</a>,
+            как на тестовом полигоне.
+        </li><li>
+            Известные спецэффекты:
+            <ul style="list-style-type: square"><li>
+                    SQLite поддерживает только <code>left join</code>.
+                    <code>right</code> и <code>оuter join</code> делаются через него.
+                </li><li>
+                    Все вложенные запросы надо именовать, даже если вы не будете
+                    использовать это имя:
+<pre>
+    select ... from ... (select ... ) SubQueryName ...
+</pre></li><li>
+                    Используйте данные из минимально возможного набора таблиц.
+                </li></ul></li></ul></div></section><section><h3 id="lecture-6">Тема 6. Реляционное исчисление</h3><h4 id="N67640">Содержание</h4><ol><li>Реляционное исчисление<ol><li>Типы реляционного исчисления</li><li>Структура запроса</li></ol></li><li>Исчисление кортежей<ol><li>Реляционные переменные</li><li>Условия<ol><li>Простые</li><li>С кванторами</li></ol></li></ol></li><li>Связь реляционной алгебры и реляционного исчисления<ol><li>Выражение алгебры через исчисление</li><li>Выражение исчисления через алгебру</li><li>Реляционная полнота</li></ol></li><li>Исчисление доменов<ol><li>Доменные переменные</li><li>Условие принадлежности</li></ol></li><li>Язык Datalog<ol><li>Определение отношений</li><li>Реляционная полнота</li><li>Рекурсия</li></ol></li><li>Реляционное исчисление и SQL<ol><li>Структура запроса</li><li>Подзапросы<ol><li>Существования</li><li>Вхождения</li><li>Условные</li><li>Скалярные</li></ol></li><li>Рекурсия</li></ol></li></ol><div class="slides"><h4 id="N67707">Слайды</h4><a href="../slides/relcalculus.xhtml">HTML</a></div><div class="questions"><h4 id="N67714">Экзаменационные вопросы</h4><ol><li>Исчисление кортежей и его реляционная полнота</li><li>Исчисление доменов и его реляционная полнота</li><li>Datalog и рекурсия</li></ol></div><div class="skills"><h4 id="N67725">Практические навыки</h4><ol><li>Построение запросов в терминах исчисления кортежей</li><li>Построение запросов в терминах исчисления доменов</li><li>Перевод запросов из терминов реляционного исчисления в SQL и обратно</li><li>Построение запросов на SQL (с подзапросами)</li></ol></div><div class="references"><h4 id="N67738">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 8)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (главы 4 и 5)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/31.html">Chapter 31 &ndash; Searching with Subqueries</a>)</li><li><i>Codd E.F.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=358007" title="">A relational model of data for large shared data banks</a></li><li><i>Codd E.F.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.86.9277" title="">Relational completeness of data base sublanguages</a></li></ol></div><div class="homework"><h4 id="N67781">Домашнее задание 6. Реляционное исчисление</h4><div><p>
+        Составьте запросы в терминах языков Datalog и SQL 
+        для базы данных &laquo;Университет&raquo;, позволяющие получать
+    </p><ol><li>
+            Информацию о студентах
+            <ol><li>
+                    С заданным ФИО
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:StudentName</em>).
+                </li><li>
+                    Учащихся в заданной группе
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:GroupName</em>).
+                </li><li>
+                    Учащихся на заданном факультете
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:FacultyName</em>).
+                </li><li>
+                    C заданной оценкой по дисциплине, 
+                    заданной идентификатором
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseId</em>).
+                </li><li>
+                    C заданной оценкой по дисциплине, 
+                    заданной названием
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupId</em> по <em>:Mark</em>, <em>:CourseName</em>).
+                </li></ol></li><li>
+            Полную информацию о студентах
+            <ol><li>
+                    Для всех студентов
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em>).
+                </li><li>
+                    Учащихся на заданном факультете
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:FacultyName</em>).
+                </li><li>
+                    C факультета, заданного деканом
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, заданной идентификатором
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseId</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, заданной названием
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseName</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, 
+                    у которых есть эта дисциплина
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseId</em>).
+                </li><li>
+                    Студентов, не имеющих оценки по дисциплине, 
+                    у которых есть эта дисциплина
+                    (<em>StudentId</em>, <em>StudentName</em>, <em>GroupName</em> по <em>:CourseName</em>).
+                </li></ol></li><li>
+            Студенты и дисциплины, такие что у студента была дисциплина 
+            (по плану или есть оценка)
+            <ol><li>
+                    Идентификаторы
+                    (<em>StudentId</em>, <em>CourseId</em>).
+                </li><li>
+                    Имя и название
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Имя и название, преподаватель того же факультета
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Имя и название, преподаватель другого факультета
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li></ol></li><li>
+            Студенты и дисциплины, такие что 
+            дисциплина есть в его плане, 
+            и у студента долг по этой дисциплине
+            <ol><li>
+                    Долгом считается отсутствие оценки
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Долгом считается оценка не выше 2
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li><li>
+                    Долгом считается отсутствие оценки или оценка не выше 2
+                    (<em>StudentName</em>, <em>CourseName</em>).
+                </li></ol></li><li>
+            Идентификаторы студентов по преподавателю
+            <ol><li>
+                    Имеющих хотя бы одну оценку у преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Не имеющих ни одной оценки у преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Имеющих оценки по всем дисциплинам преподавателя
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li><li>
+                    Имеющих оценки по всем дисциплинам преподавателя, 
+                    которые он вёл у этого студента
+                    (<em>StudentId</em> по <em>:LecturerName</em>).
+                </li></ol></li><li>
+            Группы и дисциплины, такие что 
+            все студенты группы имеют оценку по предмету
+            <ol><li>
+                    Идентификаторы
+                    (<em>GroupId</em>, <em>CourseId</em>).
+                </li><li>
+                    Названия
+                    (<em>GroupName</em>, <em>CourseName</em>).
+                </li></ol></li></ol></div><p><b>Примечания</b></p><ol><li>В Datalog итоговым считается последнее объявленное отношение.</li><li>Текущая реализация Datalog не поддерживает рекурсивные определения.</li><li>В SQL-запросах нельзя использовать <code>* join</code>.</li><li>SQL проверяется <em>четырьмя</em> тестами на фазу &mdash; с разными СУБД.
+            Первая СУБД &mdash; <a href="https://www.sqlite.org/">SQLite</a>,
+            как на тестовом полигоне.
+        </li></ol><p>В рамках проекта:</p><ol><li>
+            Определите запросы (в том числе, агрегирующие), 
+            необходимые для работы проекта.
+        </li><li>Реализуйте запросы на языке SQL.</li></ol></div></section><section><h3 id="lecture-7">Тема 7. Изменение данных</h3><h4 id="N68118">Содержание</h4><ol><li>Операторы<ol><li>Вставка</li><li>Обновление</li><li>Объединение</li><li>Удаление</li></ol></li><li>Целостность данных<ol><li>Корректность и целостность</li><li>Типы ограничений целостности<ol><li>Типов и атрибутов</li><li>Отношений</li><li>Баз данных</li></ol></li><li>Компенсирующие действия</li></ol></li><li>Триггеры</li><li>Представления<ol><li>Объявление и применения</li><li>Обновление представлений</li><li>Материализованные представления</li></ol></li><li>Управление доступом<ol><li>Схемы управления доступом</li><li>Пользователи и группы</li><li>Data Control Language</li><li>Представления и права</li></ol></li></ol><div class="slides"><h4 id="N68172">Слайды</h4><a href="../slides/modification.xhtml">HTML</a></div><div class="questions"><h4 id="N68179">Экзаменационные вопросы</h4><ol><li>Целостность данных. Триггеры</li><li>Представления и их обновление</li><li>Управление доступом к данным</li></ol></div><div class="skills"><h4 id="N68190">Практические навыки</h4><ol><li>Построение изменяющих запросов на SQL</li><li>Задание ограничений целостности</li><li>Работа с представлениями</li><li>Управление доступом к данным</li></ol></div><div class="references"><h4 id="N68203">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 9, 10, 17)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 6)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/35.html">Chapter 35 &ndash; Changing SQL-data</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/18.html">Chapter 18 &ndash; Table and View</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/20.html">Chapter 20 &ndash; SQL Constraint and Assertion</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/24.html">Chapter 24 &ndash; SQL Trigger</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/15.html">Chapter 15 &ndash; SQL Authorization</a>)</li></ol></div><div class="homework"><h4 id="N68274">Домашнее задание 7. Изменение данных</h4><div><p>
+        Реализуйте указанные запросы, представления, 
+        проверки и триггеры на языке SQL.
+    </p><ol><li>
+            Напишите запросы, удаляющие студентов
+            <ol><li>
+                    Учащихся в группе, заданной идентификатором
+                    (<em>GroupId</em>).
+                </li><li>
+                    Учащихся в группе, заданной названием
+                    (<em>GroupName</em>).
+                </li><li>
+                    Учащихся на факультете
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Без оценок.
+                </li><li>
+                    Имеющих 3 и более оценки.
+                </li><li>
+                    Имеющих 3 и менее оценки.
+                </li></ol></li><li>
+            Напишите запросы, удаляющие должников (здесь и далее, долг определяется по отсутствию оценки)
+            <ol><li>
+                    Студентов, c долгами.
+                </li><li>
+                    Студентов, имеющих 2 и более долга.
+                </li><li>
+                    Студентов, имеющих 2 и более долга, учащихся на факультете
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Студентов, имеющих не более 3 долгов.
+                </li></ol></li><li>
+            Напишите запросы, обновляющие данные студентов
+            <ol><li>
+                    Изменение имени студента
+                    (<em>StudentId</em>, <em>StudentName</em>).
+                </li><li>
+                    Перевод студента из группы в группу по индентификаторам
+                    (<em>StudentId</em>, <em>GroupId</em>, <em>FromGroupId</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу по идентификаторам
+                    (<em>GroupId</em>, <em>FromGroupId</em>).
+                </li><li>
+                    Изменение имени всех студентов группы
+                    (<em>GroupName</em>, <em>StudentName</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу по названиям
+                    (<em>GroupName</em>, <em>FromGroupName</em>).
+                </li><li>
+                    Перевод всех студентов из группы в группу, 
+                    только если целевая группа существует
+                    (<em>GroupName</em>, <em>FromGroupName</em>).
+                </li></ol></li><li>
+            Напишите запросы, подсчитывающие статистику по оценкам
+            <ol><li>
+                    Число оценок студента
+                    (столбец <em>Students.Marks</em>)
+                    (<em>StudentId</em>).
+                </li><li>
+                    Число оценок каждого студента 
+                    (столбец <em>Students.Marks</em>).
+                </li><li>
+                    Число оценок каждого студента факультета
+                    (столбец <em>Students.Marks</em>)
+                    (<em>FacultyName</em>).
+                </li><li>
+                    Пересчет числа оценок каждого студента, 
+                    с учётом новых оценок из таблицы <em>NewMarks</em>, 
+                    структура которой  такая же как у таблицы <em>Marks</em> 
+                    (столбец <em>Students.Marks</em>).
+                </li></ol></li><li>
+            Напишите запросы, подсчитывающие статистику по студентам
+            <ol><li>
+                    Число сданных дисциплин каждого студента
+                    (столбец <em>Students.Marks</em>).
+                </li><li>
+                    Число долгов студента 
+                    (столбец <em>Students.Debts</em>)
+                    (<em>StudentId</em>).
+                </li><li>
+                    Число долгов каждого студента 
+                    (столбец <em>Students.Debts</em>).
+                </li><li>
+                    Число долгов каждого студента группы (столбец <em>Students.Debts</em>)
+                    (<em>GroupName</em>).
+                </li><li>
+                    Число долгов каждого студента у деканов (столбец <em>Students.Debts</em>)
+                    (<em>GroupName</em>).
+                </li><li>
+                    Число оценок и долгов каждого студента 
+                    (столбцы <em>Students.Marks</em>, <em>Students.Debts</em>).
+                </li></ol></li><li>
+            Напишите запросы, обновляющие оценки, 
+            с учетом данных из таблицы <em>NewMarks</em>, 
+            имеющей такую же структуру, как таблица <em>Marks</em><ol><li>
+                    Проставляющий новую оценку только если ранее оценки не было.
+                </li><li>
+                    Проставляющий новую оценку только если ранее оценка была.
+                </li><li>
+                    Проставляющий максимум из старой и новой оценки 
+                    только если ранее оценка была.
+                </li><li>
+                    Проставляющий максимум из старой и новой оценки 
+                    (если ранее оценки не было, то новую оценку).
+                </li></ol></li><li>
+            Работа с представлениями
+            <ol><li>
+                    Создайте представление <em>StudentMarks</em> в котором 
+                    для каждого студента указано число оценок
+                    (<em>StudentId</em>, <em>Marks</em>).
+                </li><li>
+                    Создайте представление <em>AllMarks</em> в котором 
+                    для каждого студента указано число оценок,
+                    включая оценки из таблицы <em>NewMarks</em>
+                    (<em>StudentId</em>, <em>Marks</em>).
+                </li><li>
+                    Создайте представление <em>Debts</em> в котором для каждого
+                    студента, имеющего долги указано их число
+                    (<em>StudentId</em>, <em>Debts</em>).
+                </li><li>
+                    Создайте представление <em>StudentDebts</em> в котором 
+                    для каждого студента указано число долгов
+                    (<em>StudentId</em>, <em>Debts</em>).
+                </li></ol></li><li><p>
+                Целостность данных.
+            </p><p>
+                Обратите внимание, что задания из этого раздела
+                надо посылать в PCMS, но они будут проверяться 
+                только вручную после окончания сдачи.
+                То есть в PCMS вы получите <em>+</em> за любое решение.
+            </p><p>
+                В комментарии перед каждым запросом укажите 
+                название и версию использованной СУБД.
+            </p><ol><li>
+                    Добавьте проверку того, что у студентов есть оценки
+                    только по дисциплинам из их плана (<em>NoExtraMarks</em>).
+                </li><li>
+                    Добавьте проверку того, что все студенты каждой группы
+                    имеют оценку по одному и тому же набору дисциплин (<em>SameMarks</em>).
+                </li><li>
+                    Создайте триггер <em>PreserveMarks</em>, 
+                    не позволяющий уменьшить оценку студента по дисциплине. 
+                    При попытке такого изменения оценка изменяться не должна.
+                </li></ol></li></ol></div><p><b>Примечания</b></p><ol><li>
+            Некоторые базы данных не понимают, что <tt>* join ... using (Column)</tt>
+            должен оставлять один экземпляр <tt>Column</tt> и не требовать указывать
+            для него таблицу.
+        </li></ol><p>В рамках проекта:</p><ol><li>
+            Определите модифицирующие запросы, необходимые для работоспособности
+            проекта.
+        </li><li>Запишите эти запросы на языке SQL.</li><li>
+            Определите представления, необходимые для работоспособности
+            проекта.
+        </li><li>
+            Запишите эти представления на языке SQL.
+        </li></ol></div></section></section><section class="part"><h2 id="part-3">Часть 3. Реализация</h2><p>Тем: 5</p><section><h3 id="lecture-8">Тема 8. Хранение данных и индексирование</h3><h4 id="N68583">Содержание</h4><ol><li>Подсистема хранения данных<ol><li>Структура подсистемы хранения данных<ol><li>Память и жёсткие диски</li><li>Страничная организация памяти</li><li>Интерфейс с СУБД</li></ol></li><li>Организация данных<ol><li>Списки страниц</li><li>Хранение записей</li><li>Сжатие данных</li></ol></li></ol></li><li>Индексация данных<ol><li>Индексы<ol><li>Применение индексов</li><li>Структура индекса</li><li>Кластеризованные индексы</li></ol></li><li>Хэш-индексы<ol><li>Простой хэш-индекс</li><li>Расширяемый хэш-индекс</li></ol></li><li>Упорядоченные индексы<ol><li>B-деревья</li><li>B+-деревья</li></ol></li><li>Другие типы индексов<ol><li>Битовые индексы</li><li>Индексы на R-деревьях</li></ol></li><li>Применение индексов<ol><li>Селективность индекса</li><li>Покрывающие индексы</li><li>Выбор индексов</li></ol></li></ol></li></ol><div class="slides"><h4 id="N68651">Слайды</h4><a href="../slides/indexing.xhtml">HTML</a></div><div class="questions"><h4 id="N68658">Экзаменационные вопросы</h4><ol><li>Подсистема хранения данных</li><li>Индексация данных. Упорядоченные и хэш-индексы</li><li>Индексация данных. Другие типы индексов. Применение индексов</li></ol></div><div class="skills"><h4 id="N68669">Практические навыки</h4><ol><li>Выбор индексов в базе данных</li><li>Запись индексов на языке SQL</li></ol></div><div class="references"><h4 id="N68678">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (приложение Г)</li><li><i>Кнут Д.</i>&nbsp;Искусство программирования. Том 3. Сортировка и поиск</li><li><i>Silberschatz A.</i>, <i>Korth H.F.</i>, <i>Sudarshan S.</i>&nbsp;Database System Concepts</li></ol></div><div class="homework"><h4 id="N68701">Домашнее задание 8. Индексирование</h4><ol><li>
+            Определите, какие индексы требуется добавить
+            к таблицам базы данных &laquo;Университет&raquo; на основе
+            запросов из ДЗ-5, 6 и 7.
+        </li><li>
+            Пусть частым запросом является определение
+            среднего балла студентов  факультета по дисциплине.
+            Как будет выглядеть запрос и какие индексы 
+            могут помочь при его исполнении?
+        </li><li>
+            Придумайте три запроса, требующих новых индексов
+            и запишите их. 
+            Если в результате, некоторые из старых индексов 
+            станут бесполезными, удалите их.
+        </li></ol><p>
+        При выполнении задания считайте, что ФЗ соответствуют полученным в ДЗ-3 и 4.
+    </p><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfshGHPac4B21i02DZ3E5F3T6QH6u2yGzgd7jG9Q3OAvyv6kQ/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите индексы и их типы,
+            необходимые для эффективного исполнения запросов.
+        </li><li>Запишите определения индексов на языке SQL.</li></ol></div></section><section><h3 id="lecture-9">Тема 9. Хранимые процедуры</h3><h4 id="N68732">Содержание</h4><ol><li>Хранимые процедуры</li><li>Операторы<ol><li>Составной и присваивания</li><li>Ветвления</li><li>Циклы</li><li>Обработка ошибок</li></ol></li><li>Курсоры</li><li>Хранимые функции</li><li>Управление доступом</li></ol><div class="slides"><h4 id="N68756">Слайды</h4><a href="../slides/procedures.xhtml">HTML</a></div><div class="questions"><h4 id="N68763">Экзаменационные вопросы</h4><ol><li>Хранимые процедуры и функции. Сходства и различия</li><li>Императивное подмножество SQL</li><li>Data Control Language</li></ol></div><div class="skills"><h4 id="N68774">Практические навыки</h4><ol><li>Реализация хранимых процедур и функций</li><li>Реализация сложных триггеров</li><li>Управление правами доступа</li></ol></div><div class="references"><h4 id="N68785">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 4 и 7)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (раздел 7.4)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/25.html">Chapter 25 &ndash; SQL-Invoked Routine</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/26.html">Chapter 26 &ndash; PSM: Not Just Persistent Stored Modules</a>)</li><li>&nbsp;<a href="https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html" title="">MySQL 8.0: CREATE PROCEDURE and CREATE FUNCTION Statements</a></li></ol></div><div class="homework"><h4 id="N68829">Домашнее задание 9. Хранимые процедуры</h4><p>
+        В базе данных <code>Airline</code> информация о рейсах
+        самолётов задана в виде таблиц
+    </p><pre>
+    Flights(
+        FlightId integer,
+        FlightTime timestamp,
+        PlaneId integer,
+        -- Дополнительные столбцы, при необходимости
+    )
+    Seats(
+        PlaneId integer,
+        SeatNo varchar(4), -- 123A
+        -- Дополнительные столбцы, при необходимости
+    )
+</pre><p>
+        Реализуйте запросы к базе данных <code>Airline</code>
+        с применением представлений, хранимых процедур и функций.
+        При необходимости, вы можете создать дополнительные
+        таблицы, представления и хранимые процедуры.
+    </p><p>
+        Возможность бронирования должна автоматически отключаться
+        за трое суток до начала рейса.
+        Продажа мест должна автоматически отключаться
+        за три часа до начала рейса.
+        Также должна быть предусмотрена возможность отключения
+        бронирования и продаж вручную.
+    </p><ol><li>
+            Администрирование.
+            <ol><li><code>RegisterUser(UserId, Pass)</code>
+                    &mdash; зарегистрировать нового пользователя.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>ManageFlight(UserId, Pass, FlightId, SellAllowed, ReservationAllowed)</code>
+                    &mdash; изменить настройки рейса.
+                    Примечание: автоматические настройки имеют более высокий приоритет.
+                </li></ol></li><li>
+            Покупка и бронирование.
+            <ol><li><code>FreeSeats(FlightId)</code>
+                    &mdash; список мест рейса, доступных для продажи и для бронирования.
+                </li><li><code>Reserve(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; бронирует место на сутки начиная с момента бронирования.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>ExtendReservation(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; продлевает бронь места на сутки начиная с момента продления.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>BuyFree(FlightId, SeatNo)</code>
+                    &mdash; покупает свободное место.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>BuyReserved(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; покупает забронированное место
+                    (пользователи должны совпадать).
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li></ol></li><li>
+            Статистика.
+            <ol><li><code>FlightsStatistics(UserId, Pass)</code>
+                    &mdash; статистика по рейсам:
+                    возможность бронирования и покупки,
+                    число свободных, забронированных и проданных мест.
+                </li><li><code>FlightStat(UserId, Pass, FlightId)</code>
+                    &mdash; статистика по рейсу:
+                    возможность бронирования и покупки,
+                    число свободных, забронированных и проданных мест.
+                </li></ol></li><li><code>CompressSeats(UserId, Pass, FlightId)</code>
+            &mdash; оптимизирует занятость мест в самолете.
+            В результате оптимизации, в начале
+            самолета должны быть купленные места,
+            затем &mdash; забронированные, а в конце &mdash; свободные.
+            Примечание: клиенты, которые уже выкупили
+            билеты, также должны быть пересажены.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLScAm-q1ZhrQ3_rQaAaIin0W3adnwhoNOAEzYu6R7_JQ4q16Iw/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите хранимые процедуры и функции,
+            необходимые для работы проекта.
+        </li><li>Реализуйте хранимые процедуры (функции) на языке SQL.</li></ol></div></section><section><h3 id="lecture-10">Тема 10. Транзакции</h3><h4 id="N68948">Содержание</h4><ol><li>Транзакции<ol><li>Определение</li><li>Свойства транзакций</li></ol></li><li>Восстановление<ol><li>Сбои и их типы</li><li>Журнал транзакций</li><li>Классический алгоритм восстановления</li><li>Алгоритм ARIES</li><li>Повторные сбои</li><li>Отказ оборудования</li></ol></li><li>Параллельное исполнение<ol><li>Изоляция и конфликты</li><li>Блокировки</li><li>Упорядочиваемость</li><li>Восстановление</li><li>Гранулярность блокировок</li></ol></li><li>Транзакции в SQL<ol><li>Уровни изоляции транзакций<ol><li>Уровни изоляции</li><li>Аномалии</li></ol></li><li>Синтаксис<ol><li>Транзакции</li><li>Точки сохранения</li></ol></li></ol></li></ol><div class="slides"><h4 id="N69005">Слайды</h4><a href="../slides/transactions.xhtml">HTML</a></div><div class="questions"><h4 id="N69012">Экзаменационные вопросы</h4><ol><li>Транзакции. Восстановление. Классический алгоритм</li><li>Транзакции. Восстановление. Алгоритм ARIES</li><li>Транзакции. Параллельное исполнение. Блокировки</li><li>Транзакции. Параллельное исполнение. Уровни изоляции</li></ol></div><div class="skills"><h4 id="N69025">Практические навыки</h4><ol><li>Выбор границ транзакции</li><li>Объявление транзакций на языке SQL</li></ol></div><div class="references"><h4 id="N69034">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 15 и 16)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (раздел 7.2)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/36.html">Chapter 36 &ndash; SQL Transactions</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/37.html">Chapter 37 &ndash; SQL Transactions Concurrency</a>)</li><li><i>Mohan C.</i>, <i>Haderle D.</i>, <i>Lindsay B.</i>, <i>Pirahesh H.</i>, <i>Schwarz P.</i>&nbsp;<a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.109.2480" title="">ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging</a></li><li><i>Mohan C.</i>&nbsp;<a href="https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.42.740" title="">Repeating History Beyond ARIES</a></li><li><i>Bernstein P.A.</i>, <i>Hadzilacos V.</i>, <i>Goodman N.</i>&nbsp;<a href="https://www.microsoft.com/en-us/research/people/philbe/book/" title="">Concurrency Control and Recovery in Database Systems</a></li></ol></div><div class="homework"><h4 id="N69114">Домашнее задание 10. Транзакции</h4><p>
+        Спланируйте транзакции и выберите их уровни изоляции для
+        базы данных <code>Airline</code>.
+    </p><ol><li>
+            Для каждой хранимой процедуры из предыдущего домашнего задания
+            выберите минимальный допустимый уровень изоляции транзакций
+            (с обоснованием).
+        </li><li>
+            Реализуйте сценарий работы:
+            <ol><li>
+                    Запрос списка свободных мест.
+                </li><li>
+                    Отображение списка свободных мест пользователю.
+                </li><li>
+                    Бронирование или покупка места, выбранного пользователем.
+                </li></ol></li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdFXnRknnEX-qdwIMOJOh7p59lswAUL4brIAuUIrdJy0bzGXA/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите минимальный уровень изоляции транзакций,
+            необходимый для каждого запроса и хранимой процедуры.
+        </li></ol></div></section><section><h3 id="lecture-11">Тема 11. Оптимизация запросов</h3><h4 id="N69151">Содержание</h4><ol><li>Обработка запросов<ol><li>Разбор запроса</li><li>Перезапись запроса</li><li>Планировщик и его структура</li></ol></li><li>Перезапись запросов<ol><li>Минимизация набора операций</li><li>Унарные операции</li><li>Алгебраические свойства операций</li><li>Обработка условий</li><li>Семантические оптимизации</li></ol></li><li>Методы исполнения<ol><li>Унарные операции</li><li>Операции над множествами</li><li>Соединения</li></ol></li><li>Выбор структуры запроса<ol><li>Правила планирования операций</li><li>Применение динамического программирования</li><li>Применение других подходов</li></ol></li><li>Оценка размера и распределения<ol><li>Статистические характеристики</li><li>Оценка худшего случая</li><li>Оценка операций</li></ol></li><li>Пример оптимизации запроса<ol><li>Оценка путей доступа</li><li>Оценка соединения</li></ol></li></ol><div class="slides"><h4 id="N69212">Слайды</h4><a href="../slides/optimization.xhtml">HTML</a></div><div class="questions"><h4 id="N69219">Экзаменационные вопросы</h4><ol><li>Этапы обработки запроса. Перезапись запросов</li><li>Оптимизация запросов. Выбор структуры исполнения запроса</li><li>Оптимизация запросов. Выбор методов исполнения запроса</li><li>Оптимизация запросов. Оценка размера и распределения</li></ol></div><div class="skills"><h4 id="N69232">Практические навыки</h4><ol><li>Перезапись плана исполнения запроса</li><li>Оптимизация плана исполнения запроса</li><li>Оценка времени исполнения плана запроса</li></ol></div><div class="references"><h4 id="N69243">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 18)</li><li><i>Ioannidis Y.E.</i>&nbsp;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.31.5178" title="">Query Optimization</a></li><li><i>Mannino M.V.</i>, <i>Chu P.</i>, <i>Sager T.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=62061.62063" title="">Statistical profile estimation in database systems</a></li><li><i>PostgreSQL Documentation</i>&nbsp;<a href="https://www.postgresql.org/docs/current/overview.html" title="">Chapter 51. Overview of PostgreSQL Internals</a></li></ol></div></section><section><h3 id="lecture-12">Тема 12. Распределенные базы данных</h3><h4 id="N69284">Содержание</h4><ol><li>Секционирование<ol><li>Цели секционирования</li><li>Типы секционирования</li><li>Методы секционирования</li><li>Управление секциями</li></ol></li><li>Репликация<ol><li>Цели репликации</li><li>Реализация репликации</li><li>Применения репликации</li></ol></li><li>Распределенных базы данных<ol><li>Цели распределения</li><li>Распределенные транзакции</li><li>Проблемы распределенных баз данных</li></ol></li></ol><div class="slides"><h4 id="N69318">Слайды</h4><a href="../slides/distributed.xhtml">HTML</a></div><div class="questions"><h4 id="N69325">Экзаменационные вопросы</h4><ol><li>Секционирование</li><li>Репликация</li><li>Распределенные транзакции</li><li>Распределенные базы данных. Цели и проблемы</li></ol></div><div class="skills"><h4 id="N69338">Практические навыки</h4><ol><li>Секционирование данных</li><li>Организация репликации данных</li><li>Организация распределенных баз данных</li></ol></div><div class="references"><h4 id="N69349">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 21)</li><li><i>Partitioning</i>&nbsp;<a href="http://dev.mysql.com/doc/refman/8.0/en/partitioning.html" title="">in MySQL Reference Manual</a></li><li><i>Replication</i>&nbsp;<a href="http://dev.mysql.com/doc/refman/8.0/en/replication.html" title="">in MySQL Reference Manual</a></li></ol></div></section></section><section class="part"><h2 id="part-4">Часть 4. Применение</h2><p>Тем: 4</p><section><h3 id="lecture-13">Тема 13. Неполные данные и null</h3><h4 id="N69383">Содержание</h4><ol><li>Что означает null?</li><li>Операции с null</li><li>Null и SQL</li></ol><div class="slides"><h4 id="N69394">Слайды</h4><a href="../slides/null.xhtml">HTML</a></div><div class="questions"><h4 id="N69401">Экзаменационные вопросы</h4><ol><li>Трактовки null и операции с ним</li><li>Операции с null в SQL</li></ol></div><div class="skills"><h4 id="N69410">Практические навыки</h4><ol><li>Представление неполных данных</li></ol></div><div class="references"><h4 id="N69417">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 19)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/13.html">Chapter 13 &ndash; NULLs</a>)</li><li><i>Celko J.</i>&nbsp;<a href="https://www.red-gate.com/simple-talk/databases/sql-server/learn/sql-and-the-snare-of-three-valued-logic/" title="">SQL and the Snare of Three-Valued Logic</a></li><li><i>Wikibooks</i>&nbsp;<a href="https://en.wikibooks.org/wiki/Structured_Query_Language/NULLs_and_the_Three_Valued_Logic" title="">SQL: NULLs and the Three Valued Logic</a></li></ol></div></section><section><h3 id="lecture-14">Тема 14. Object-relational Mapping</h3><h4 id="N69455">Содержание</h4><ol><li>Ключи и ссылки<ol><li>Генерация ключей</li><li>Ссылки и их типы</li></ol></li><li>Наследование<ol><li>&laquo;Широкая&raquo; таблицы</li><li>Таблицы конкретных классов</li><li>Таблицы классов</li></ol></li><li>Динамичные структуры и модель сущность-атрибут-значение</li></ol><div class="slides"><h4 id="N69478">Слайды</h4><a href="../slides/orm.xhtml">HTML</a></div><div class="questions"><h4 id="N69485">Экзаменационные вопросы</h4><ol><li>ORM. Ключи и ссылки</li><li>ORM. Наследование</li><li>ORM. Модель сущность-атрибут-значение</li></ol></div><div class="skills"><h4 id="N69496">Практические навыки</h4><ol><li>Применение различных стратегий генерации ключей</li><li>Управление ссылками</li><li>Преставление наследования в БД</li><li>Представление динамичных структур в БД</li></ol></div><div class="references"><h4 id="N69509">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 26)</li><li><i>Фаулер М.</i>&nbsp;Архитектура корпоративных программных приложений (главы 3, 13)</li></ol></div></section><section><h3 id="lecture-15">Тема 15. Иерархические данные</h3><h4 id="N69524">Содержание</h4><ol><li>Операции<ol><li>Базовые представления</li><li>Навигационные запросы и пути</li><li>Предикаты и статистика</li><li>Упорядочивание</li><li>Обновление</li></ol></li><li>Модель близости<ol><li>Представление данных</li><li>Базовые представления</li><li>Обновление</li><li>Характеристики</li></ol></li><li>Вложенные множества<ol><li>Представление данных</li><li>Базовые представления и упорядочивание</li><li>Обновление</li><li>Характеристики</li></ol></li><li>Модель путей<ol><li>Представление данных</li><li>Базовые представления и упорядочивание</li><li>Обновление</li><li>Характеристики</li></ol></li></ol><div class="slides"><h4 id="N69575">Слайды</h4><a href="../slides/trees.xhtml">HTML</a></div><div class="questions"><h4 id="N69582">Экзаменационные вопросы</h4><ol><li>Иерархические данные. Модель близости</li><li>Иерархические данные. Вложенные множества</li><li>Иерархические данные. Модель путей</li></ol></div><div class="skills"><h4 id="N69593">Практические навыки</h4><ol><li>Проектирование БД для хранения иерархических данных</li><li>Управление иерархическими данными</li></ol></div><div class="references"><h4 id="N69602">Библиография</h4><ol><li><i>Celko J.</i>&nbsp;<a href="http://www.codenet.ru/db/other/trees/" title="">Деревья в SQL</a></li><li><i>Celko J.</i>&nbsp;SQL for Smarties (глава 28)</li></ol></div></section><section><h3 id="lecture-16">Тема 16. Временны́е данные</h3><h4 id="N69621">Содержание</h4><ol><li>Время в SQL</li><li>Временны́е данные</li><li>Полутемпоральные базы данных</li><li>Темпоральные базы данных<ol><li>Модель интервалов</li><li>Модель событий</li></ol></li></ol><div class="slides"><h4 id="N69639">Слайды</h4><a href="../slides/temporal.xhtml">HTML</a></div><div class="questions"><h4 id="N69646">Экзаменационные вопросы</h4><ol><li>Временны́е данные. Полутемпоральные базы данных</li><li>Временны́е данные. Модель интервалов</li><li>Временны́е данные. Модель событий</li></ol></div><div class="skills"><h4 id="N69657">Практические навыки</h4><ol><li>Умение работать с временны́ми данными</li><li>Проектирование БД для хранения темпоральных данных</li></ol></div><div class="references"><h4 id="N69666">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (глава 23)</li><li><i>Celko J.</i>&nbsp;SQL for Smarties (глава 4)</li><li><i>Gao D.</i>, <i>Jensen C.</i>, <i>Snodgrass R.</i>, <i>Soo M.</i>&nbsp;Join operations in temporal databases</li></ol></div></section></section></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#part-1">Часть 1. Проектирование</a></li><li class="i1"><a href="#lecture-1">Тема 1. Введение</a></li><li class="i2"><a href="#N65567">Содержание</a></li><li class="i2"><a href="#N65693">Слайды</a></li><li class="i2"><a href="#N65700">Экзаменационные вопросы</a></li><li class="i2"><a href="#N65709">Библиография</a></li><li class="i2"><a href="#N65799">Домашнее задание 1. Установка и использование СУБД</a></li><li class="i1"><a href="#lecture-2">Тема 2. Моделирование баз данных</a></li><li class="i2"><a href="#N65868">Содержание</a></li><li class="i2"><a href="#N65912">Слайды</a></li><li class="i2"><a href="#N65919">Экзаменационные вопросы</a></li><li class="i2"><a href="#N65930">Практические навыки</a></li><li class="i2"><a href="#N65943">Библиография</a></li><li class="i2"><a href="#N66026">Домашнее задание 2. Моделирование БД &laquo;Университет&raquo;</a></li><li class="i1"><a href="#lecture-3">Тема 3. Реляционная модель и функциональные зависимости</a></li><li class="i2"><a href="#N66094">Содержание</a></li><li class="i2"><a href="#N66138">Слайды</a></li><li class="i2"><a href="#N66145">Экзаменационные вопросы</a></li><li class="i2"><a href="#N66156">Практические навыки</a></li><li class="i2"><a href="#N66169">Библиография</a></li><li class="i2"><a href="#N66215">Домашнее задание 3. Функциональные зависимости в БД &laquo;Университет&raquo;</a></li><li class="i1"><a href="#lecture-4">Тема 4. Нормализация баз данных</a></li><li class="i2"><a href="#N66357">Содержание</a></li><li class="i2"><a href="#N66409">Экзаменационные вопросы</a></li><li class="i2"><a href="#N66424">Слайды</a></li><li class="i2"><a href="#N66431">Практические навыки</a></li><li class="i2"><a href="#N66440">Библиография</a></li><li class="i2"><a href="#N66493">Домашнее задание 4. Нормализация БД &laquo;Университет&raquo;</a></li><li class="i0"><a href="#part-2">Часть 2. Запросы</a></li><li class="i1"><a href="#lecture-5">Тема 5. Реляционная алгебра</a></li><li class="i2"><a href="#N66612">Содержание</a></li><li class="i2"><a href="#N66678">Слайды</a></li><li class="i2"><a href="#N66685">Экзаменационные вопросы</a></li><li class="i2"><a href="#N66698">Практические навыки</a></li><li class="i2"><a href="#N66711">Библиография</a></li><li class="i2"><a href="#N66801">Домашнее задание 5. Реляционная алгебра</a></li><li class="i1"><a href="#lecture-6">Тема 6. Реляционное исчисление</a></li><li class="i2"><a href="#N67640">Содержание</a></li><li class="i2"><a href="#N67707">Слайды</a></li><li class="i2"><a href="#N67714">Экзаменационные вопросы</a></li><li class="i2"><a href="#N67725">Практические навыки</a></li><li class="i2"><a href="#N67738">Библиография</a></li><li class="i2"><a href="#N67781">Домашнее задание 6. Реляционное исчисление</a></li><li class="i1"><a href="#lecture-7">Тема 7. Изменение данных</a></li><li class="i2"><a href="#N68118">Содержание</a></li><li class="i2"><a href="#N68172">Слайды</a></li><li class="i2"><a href="#N68179">Экзаменационные вопросы</a></li><li class="i2"><a href="#N68190">Практические навыки</a></li><li class="i2"><a href="#N68203">Библиография</a></li><li class="i2"><a href="#N68274">Домашнее задание 7. Изменение данных</a></li><li class="i0"><a href="#part-3">Часть 3. Реализация</a></li><li class="i1"><a href="#lecture-8">Тема 8. Хранение данных и индексирование</a></li><li class="i2"><a href="#N68583">Содержание</a></li><li class="i2"><a href="#N68651">Слайды</a></li><li class="i2"><a href="#N68658">Экзаменационные вопросы</a></li><li class="i2"><a href="#N68669">Практические навыки</a></li><li class="i2"><a href="#N68678">Библиография</a></li><li class="i2"><a href="#N68701">Домашнее задание 8. Индексирование</a></li><li class="i1"><a href="#lecture-9">Тема 9. Хранимые процедуры</a></li><li class="i2"><a href="#N68732">Содержание</a></li><li class="i2"><a href="#N68756">Слайды</a></li><li class="i2"><a href="#N68763">Экзаменационные вопросы</a></li><li class="i2"><a href="#N68774">Практические навыки</a></li><li class="i2"><a href="#N68785">Библиография</a></li><li class="i2"><a href="#N68829">Домашнее задание 9. Хранимые процедуры</a></li><li class="i1"><a href="#lecture-10">Тема 10. Транзакции</a></li><li class="i2"><a href="#N68948">Содержание</a></li><li class="i2"><a href="#N69005">Слайды</a></li><li class="i2"><a href="#N69012">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69025">Практические навыки</a></li><li class="i2"><a href="#N69034">Библиография</a></li><li class="i2"><a href="#N69114">Домашнее задание 10. Транзакции</a></li><li class="i1"><a href="#lecture-11">Тема 11. Оптимизация запросов</a></li><li class="i2"><a href="#N69151">Содержание</a></li><li class="i2"><a href="#N69212">Слайды</a></li><li class="i2"><a href="#N69219">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69232">Практические навыки</a></li><li class="i2"><a href="#N69243">Библиография</a></li><li class="i1"><a href="#lecture-12">Тема 12. Распределенные базы данных</a></li><li class="i2"><a href="#N69284">Содержание</a></li><li class="i2"><a href="#N69318">Слайды</a></li><li class="i2"><a href="#N69325">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69338">Практические навыки</a></li><li class="i2"><a href="#N69349">Библиография</a></li><li class="i0"><a href="#part-4">Часть 4. Применение</a></li><li class="i1"><a href="#lecture-13">Тема 13. Неполные данные и null</a></li><li class="i2"><a href="#N69383">Содержание</a></li><li class="i2"><a href="#N69394">Слайды</a></li><li class="i2"><a href="#N69401">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69410">Практические навыки</a></li><li class="i2"><a href="#N69417">Библиография</a></li><li class="i1"><a href="#lecture-14">Тема 14. Object-relational Mapping</a></li><li class="i2"><a href="#N69455">Содержание</a></li><li class="i2"><a href="#N69478">Слайды</a></li><li class="i2"><a href="#N69485">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69496">Практические навыки</a></li><li class="i2"><a href="#N69509">Библиография</a></li><li class="i1"><a href="#lecture-15">Тема 15. Иерархические данные</a></li><li class="i2"><a href="#N69524">Содержание</a></li><li class="i2"><a href="#N69575">Слайды</a></li><li class="i2"><a href="#N69582">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69593">Практические навыки</a></li><li class="i2"><a href="#N69602">Библиография</a></li><li class="i1"><a href="#lecture-16">Тема 16. Временны́е данные</a></li><li class="i2"><a href="#N69621">Содержание</a></li><li class="i2"><a href="#N69639">Слайды</a></li><li class="i2"><a href="#N69646">Экзаменационные вопросы</a></li><li class="i2"><a href="#N69657">Практические навыки</a></li><li class="i2"><a href="#N69666">Библиография</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

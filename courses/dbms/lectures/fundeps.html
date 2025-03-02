@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 3. Реляционная модель и функциональные зависимости</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 3. Реляционная модель и функциональные зависимости</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Реляционная модель данных<ol><li>Отношение</li><li>Кортежи</li><li>Представление null'ов</li><li>Отличия таблиц и отношений</li></ol></li><li>Ключи<ol><li>Надключи</li><li>Ключи</li><li>Требования к ключам</li><li>Естественные и суррогатные ключи</li><li>Выбор ключей</li></ol></li><li>Функциональные зависимости<ol><li>Определение и примеры</li><li>Замыкание множества функциональных зависимостей</li><li>Эквивалентность множеств функциональных зависимостей</li><li>Правила вывода функциональных зависимостей</li><li>Замыкание множество атрибутов</li><li>Неприводимые множества функциональных зависимостей</li></ol></li></ol><div class="slides"><h4 id="N65600">Слайды</h4><a href="../slides/fundeps.xhtml">HTML</a></div><div class="questions"><h4 id="N65607">Экзаменационные вопросы</h4><ol><li>Реляционная модель данных. Ключи</li><li>Функциональные зависимости: замыкание, эквивалентность и правила вывода</li><li>Функциональные зависимости: замыкание атрибутов, неприводимые множества функциональных зависимостей, их построение</li></ol></div><div class="skills"><h4 id="N65618">Практические навыки</h4><ol><li>Выделение надключей и ключей отношения</li><li>Определение функциональных зависимостей в отношении</li><li>Построение замыкания множества атрибутов</li><li>Построение неприводимого множества функциональных зависимостей, эквивалентного данному</li></ol></div><div class="references"><h4 id="N65631">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 9 и 11)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (глава 3)</li><li><i>Armstrong W.W.</i>&nbsp;<a href="https://web.archive.org/web/20180126091352if_/https://ipfs.io/ipfs/QmWYWTGUZyTm2iRFTZY2pTr2x1vWkDiJr2CBp2PGVpSVSv" title="">Dependency Structures of Data Base Relationships</a></li><li><i>Fagin R.</i>&nbsp;Functional Dependencies in a Relational Database and Propositional Logic</li><li><i>Beeri C.</i>, <i>Fagin R.</i>, <i>Howard J.</i>&nbsp;<a href="http://portal.acm.org/citation.cfm?id=509414" title="">A complete axiomatization for functional and multivalued dependencies in database relations</a></li><li><i>Maier D.</i>&nbsp;Maier D. - Minimum covers in the relational database model</li></ol></div><div class="homework"><h4 id="N65677">Домашнее задание 3. Функциональные зависимости в БД &laquo;Университет&raquo;</h4><p>
+        Дано отношение с атрибутами
+            <em>StudentId</em>,
+            <em>StudentName</em>,
+            <em>GroupId</em>,
+            <em>GroupName</em>,
+            <em>GroupFacultyId</em>,
+            <em>CourseId</em>,
+            <em>CourseName</em>,
+            <em>LecturerId</em>,
+            <em>LecturerName</em>,
+            <em>LecturerFacultyId</em>,
+            <em>Mark</em>,
+            <em>FacultyId</em>,
+            <em>FacultyName</em>,
+            <em>FacultyDeanId</em>.
+        
+    </p><ol><li>
+            Найдите функциональные зависимости в данном отношении.
+        </li><li>
+            Найдите все ключи данного отношения.
+        </li><li>
+            Найдите замыкание множеств атрибутов:
+            <ol><li><em>GroupId</em>, <em>CourseId</em>;</li><li><em>StudentId</em>, <em>CourseId</em>;</li><li><em>StudentId</em>, <em>LecturerId</em>;</li><li><em>StudentId</em>, <em>LecturerFacultyDeanId</em>;</li><li><em>GroupName</em>, <em>LecturerId</em>.</li></ol></li><li>
+            Найдите неприводимое множество функциональных зависимостей
+            для данного отношения.
+        </li></ol><p>
+        Примечания
+    </p><ol><li>
+            Не требуется поддержка:
+            <ul><li>нескольких университетов;</li><li>дисциплин по выбору;</li><li>
+                    дисциплин с необычным распределением по группам 
+                    (таких как физическая культура и иностранный язык);
+                </li><li>переводов между группами;</li><li>нескольких оценок по одной дисциплине.</li></ul></li><li>
+            Многосеместровые дисциплины считаются по семестрам,
+            например: 
+                <i>Математический анализ (семестр 1)</i>,
+                <i>Математический анализ (семестр 2)</i>.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSde-lUPn4XBtAT-CGk7nZAc6ifDv9vyytOyVkYsrgVGtwEc4w/viewform">Форма для сдачи ДЗ</a>.
+        Проверка проводится в полуавтоматическом режиме, 
+        поэтому строго соблюдайте указанные форматы.
+    </p><p>В рамках проекта:</p><ol><li>
+            Определите набор атрибутов, необходимых для проекта,
+            и определите отношения на них.
+        </li><li>Найдите функциональные зависимости полученных отношений.</li><li>Найдите все ключи полученных отношений.</li><li>
+            Найдите неприводимые множества функциональных зависимостей
+            для полученных отношений.
+        </li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65600">Слайды</a></li><li class="i0"><a href="#N65607">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65618">Практические навыки</a></li><li class="i0"><a href="#N65631">Библиография</a></li><li class="i0"><a href="#N65677">Домашнее задание 3. Функциональные зависимости в БД &laquo;Университет&raquo;</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

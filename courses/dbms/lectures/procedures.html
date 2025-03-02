@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Базы данных :: Тема&nbsp; 9. Хранимые процедуры</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Базы данных</a> / </nav><h1>Тема&nbsp; 9. Хранимые процедуры</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Хранимые процедуры</li><li>Операторы<ol><li>Составной и присваивания</li><li>Ветвления</li><li>Циклы</li><li>Обработка ошибок</li></ol></li><li>Курсоры</li><li>Хранимые функции</li><li>Управление доступом</li></ol><div class="slides"><h4 id="N65580">Слайды</h4><a href="../slides/procedures.xhtml">HTML</a></div><div class="questions"><h4 id="N65587">Экзаменационные вопросы</h4><ol><li>Хранимые процедуры и функции. Сходства и различия</li><li>Императивное подмножество SQL</li><li>Data Control Language</li></ol></div><div class="skills"><h4 id="N65598">Практические навыки</h4><ol><li>Реализация хранимых процедур и функций</li><li>Реализация сложных триггеров</li><li>Управление правами доступа</li></ol></div><div class="references"><h4 id="N65609">Библиография</h4><ol><li><i>Дейт К.</i>&nbsp;Введение в системы баз данных (главы 4 и 7)</li><li><i>Уидом Д.</i>, <i>Ульман Д.</i>&nbsp;Основы реляционных баз данных (раздел 7.4)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/25.html">Chapter 25 &ndash; SQL-Invoked Routine</a>)</li><li><i>Gulutzan&nbsp;P.</i>, <i>Pelzer&nbsp;T.</i>&nbsp;SQL-99 complete, really (<a href="https://crate.io/docs/sql-99/en/latest/chapters/26.html">Chapter 26 &ndash; PSM: Not Just Persistent Stored Modules</a>)</li><li>&nbsp;<a href="https://dev.mysql.com/doc/refman/8.0/en/create-procedure.html" title="">MySQL 8.0: CREATE PROCEDURE and CREATE FUNCTION Statements</a></li></ol></div><div class="homework"><h4 id="N65653">Домашнее задание 9. Хранимые процедуры</h4><p>
+        В базе данных <code>Airline</code> информация о рейсах
+        самолётов задана в виде таблиц
+    </p><pre>
+    Flights(
+        FlightId integer,
+        FlightTime timestamp,
+        PlaneId integer,
+        -- Дополнительные столбцы, при необходимости
+    )
+    Seats(
+        PlaneId integer,
+        SeatNo varchar(4), -- 123A
+        -- Дополнительные столбцы, при необходимости
+    )
+</pre><p>
+        Реализуйте запросы к базе данных <code>Airline</code>
+        с применением представлений, хранимых процедур и функций.
+        При необходимости, вы можете создать дополнительные
+        таблицы, представления и хранимые процедуры.
+    </p><p>
+        Возможность бронирования должна автоматически отключаться
+        за трое суток до начала рейса.
+        Продажа мест должна автоматически отключаться
+        за три часа до начала рейса.
+        Также должна быть предусмотрена возможность отключения
+        бронирования и продаж вручную.
+    </p><ol><li>
+            Администрирование.
+            <ol><li><code>RegisterUser(UserId, Pass)</code>
+                    &mdash; зарегистрировать нового пользователя.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>ManageFlight(UserId, Pass, FlightId, SellAllowed, ReservationAllowed)</code>
+                    &mdash; изменить настройки рейса.
+                    Примечание: автоматические настройки имеют более высокий приоритет.
+                </li></ol></li><li>
+            Покупка и бронирование.
+            <ol><li><code>FreeSeats(FlightId)</code>
+                    &mdash; список мест рейса, доступных для продажи и для бронирования.
+                </li><li><code>Reserve(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; бронирует место на сутки начиная с момента бронирования.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>ExtendReservation(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; продлевает бронь места на сутки начиная с момента продления.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>BuyFree(FlightId, SeatNo)</code>
+                    &mdash; покупает свободное место.
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li><li><code>BuyReserved(UserId, Pass, FlightId, SeatNo)</code>
+                    &mdash; покупает забронированное место
+                    (пользователи должны совпадать).
+                    Возвращает <em>истину</em>, если удалось и
+                    <em>ложь</em> &mdash; в противном случае.
+                </li></ol></li><li>
+            Статистика.
+            <ol><li><code>FlightsStatistics(UserId, Pass)</code>
+                    &mdash; статистика по рейсам:
+                    возможность бронирования и покупки,
+                    число свободных, забронированных и проданных мест.
+                </li><li><code>FlightStat(UserId, Pass, FlightId)</code>
+                    &mdash; статистика по рейсу:
+                    возможность бронирования и покупки,
+                    число свободных, забронированных и проданных мест.
+                </li></ol></li><li><code>CompressSeats(UserId, Pass, FlightId)</code>
+            &mdash; оптимизирует занятость мест в самолете.
+            В результате оптимизации, в начале
+            самолета должны быть купленные места,
+            затем &mdash; забронированные, а в конце &mdash; свободные.
+            Примечание: клиенты, которые уже выкупили
+            билеты, также должны быть пересажены.
+        </li></ol><p><a href="https://docs.google.com/forms/d/e/1FAIpQLScAm-q1ZhrQ3_rQaAaIin0W3adnwhoNOAEzYu6R7_JQ4q16Iw/viewform">Форма для сдачи ДЗ</a></p><p>В рамках проекта:</p><ol><li>
+            Определите хранимые процедуры и функции,
+            необходимые для работы проекта.
+        </li><li>Реализуйте хранимые процедуры (функции) на языке SQL.</li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65580">Слайды</a></li><li class="i0"><a href="#N65587">Экзаменационные вопросы</a></li><li class="i0"><a href="#N65598">Практические навыки</a></li><li class="i0"><a href="#N65609">Библиография</a></li><li class="i0"><a href="#N65653">Домашнее задание 9. Хранимые процедуры</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>
