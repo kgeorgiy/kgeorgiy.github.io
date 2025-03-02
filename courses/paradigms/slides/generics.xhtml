@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ru" xml:lang="ru" xmlns="http://www.w3.org/1999/xhtml"><head><title>Парадигмы программирования / Полиморфизм и Generics</title><meta name="author" content="" /><link rel="stylesheet" type="text/css" media="screen, projection, print" href="scripts/slidy.css" /><link rel="stylesheet" type="text/css" href="scripts/prettify.css" /><link rel="stylesheet" type="text/css" href="scripts/kgeorgiy-slides.css" /><script type="text/javascript" src="scripts/slidy.js" charset="utf-8" /><script type="text/javascript" src="scripts/kgeorgiy-slides.js" charset="utf-8" /><script type="text/javascript" src="scripts/prettify.js" /><script type="text/javascript" src="scripts/lang-sql.js" /><script type="text/javascript" src="scripts/lang-javaModule.js" /><script type="text/javascript" src="scripts/lang-scala.js" /><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ" /><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body onload="prettyPrint()"><div id="all">
+<div class="slide cover"><div class="content"><div class="course">Парадигмы программирования</div><hr /><div class="lecture"><div>Полиморфизм и Generics</div></div><div class="link"><a href="https://kgeorgiy.info/courses/paradigms/">https://kgeorgiy.info/courses/paradigms/</a></div><div class="copyright"><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru"><span class="copyright">Copyright © Георгий Корнеев</span><img src="scripts/by-nc-sa.png" alt="Attribution-NonCommercial-ShareAlike" /></a></div></div></div>
+<div class="slide section"><div class="content"><h1>Полиморфизм</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Полиморфизм</a></li><li><a href="#(10)" class="toc">Введение в Generics</a></li><li><a href="#(16)" class="toc">Как писать Generic-код</a></li><li><a href="#(30)" class="toc">Generics и вариантность</a></li><li><a href="#(39)" class="toc">Реализация</a></li><li><a href="#(45)" class="toc">Дополнительные возможности</a></li><li><a href="#(52)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">2</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Полиморфизм</h1><div class="body"><ul class="item-1 level-1"><li>Один код, разные типы</li><li>Специальный (ad-hoc)<ul class="item-2 level-2"><li>Для каждого типа свое поведение</li><li>Времени компиляции</li><li>Времени исполнения</li></ul></li><li>Универсальный<ul class="item-2 level-2"><li>Одинаковое поведение для всех типов</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">3</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (1)</h1><div class="body"><ul class="item-1 level-1"><li>Операция сложения (<var>+</var>)<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">1 + 1
+</pre></li><li><pre class="prettyprint lang-java">1.0 + 1.0
+</pre></li><li><pre class="prettyprint lang-java">1.0 + 1
+</pre></li></ul></li><li>Перегрузка по обоим параметрам</li><li>Перегрузка для разных типов и автоматизированное приведение типов</li><li><span class="question">Тип полиморфизма?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental">Специальный полиморфизм времени компиляции</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">4</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (2)</h1><div class="body"><ul class="item-1 level-1"><li>Функция <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html#format(java.lang.String,java.lang.Object...)" target="_blank">String.format(string, object...)</a></var><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">String.format("%d", 10);
+</pre></li><li><pre class="prettyprint lang-java">String.format("Hello, %s!", "world");
+</pre></li></ul></li><li>Перегрузка времени исполнения по всем параметрам, кроме первого и явная передача информации о типах</li><li><span class="question">Тип полиморфизма?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental">Специальный полиморфизм времени исполнения</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">5</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (3)</h1><div class="body"><ul class="item-1 level-1"><li>Определение типа во время исполнения<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">void draw(Shape shape) {
+    if (shape instanceof Rect) …
+    if (shape instanceof Circle) …
+}
+</pre></li></ul></li><li><var>draw(shape)</var> – перегрузка времени исполнения</li><li><span class="question">Тип полиморфизма?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental">Специальный полиморфизм времени исполнения</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">6</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (4)</h1><div class="body"><ul class="item-1 level-1"><li>Наследование в ООП<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">void drawWithColor(Shape shape, Color color) {
+    shape.setColor(color);
+    shape.draw();
+}
+</pre></li></ul></li><li class="incremental"><div class="non-incremental"><var>drawWithColor</var><ul class="item-2 level-2"><li>Полиморфизм включения по первому параметру</li><li>Универсальный полиморфизм</li></ul></div></li><li class="incremental"><div class="non-incremental"><var>draw(this)</var><ul class="item-2 level-2"><li>Перегрузка времени исполнения по первому параметру</li><li>Специальный полиморфизм времени исполнения</li></ul></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">7</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (5)</h1><div class="body"><ul class="item-1 level-1"><li>Шаблоны в C++<ul class="item-2 level-2"><li><pre class="prettyprint lang-cpp">template &lt;typename T&gt; 
+bool contains(T x, T* a, int size) {
+    for (int i = 0; i &lt; size; i++) {
+        if (x == a[i]) {
+            return true;
+        }
+    }
+    return false;
+}
+</pre></li></ul></li><li>Перегрузка по всем параметрам</li><li><span class="question">Тип полиморфизма?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental">Специальный полиморфизм времени компиляции</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">8</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (6)</h1><div class="body"><ul class="item-1 level-1"><li>Generics в Java<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">&lt;T&gt; boolean contains(T item, T[] array) {
+    for (T value : array) {
+        if (item.equals(value)) {
+            return true;
+        }
+    }
+    return false;
+}
+</pre></li></ul></li><li>Параметрический полиморфизм по <var>T</var><ul class="item-2 level-2"><li>Универсальный полиморфизм</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">9</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Введение в Generics</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Полиморфизм</a></li><li><a href="#(10)" class="toc current">Введение в Generics</a></li><li><a href="#(16)" class="toc">Как писать Generic-код</a></li><li><a href="#(30)" class="toc">Generics и вариантность</a></li><li><a href="#(39)" class="toc">Реализация</a></li><li><a href="#(45)" class="toc">Дополнительные возможности</a></li><li><a href="#(52)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">10</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Особенности Generics</h1><div class="body"><ul class="item-1 level-1"><li>Строгая типизация</li><li>Единая реализация<ul class="item-2 level-2"><li>Параметрический полиморфизм</li></ul></li><li>Отсутствие информации о типе</li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">11</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример generic-определения</h1><div class="body"><ul class="item-1 level-1"><li>Интерфейс <pre class="prettyprint lang-java">interface Stack&lt;E&gt; {
+    void push(E element);
+    E pop();
+    E peek();
+    …
+}
+</pre></li><li>Класс <pre class="prettyprint lang-java">class ArrayStack&lt;E&gt; implements Stack&lt;E&gt; {
+    ...
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">12</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Generic стек</h1><div class="body"><ul class="item-1 level-1"><li><var> Stack&lt;E&gt; </var> ─ стек элементов типа <var>E</var></li><li>Раньше<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack stack = new ArrayStack();
+stack.push(1);
+Integer i = (Integer) stack.pop();
+</pre></li></ul></li><li>Теперь<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack&lt;Integer&gt; stack = new ArrayStack&lt;Integer&gt;();
+stack.push(1);
+Integer i = stack.pop();
+</pre></li></ul></li><li>Java 7+<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack&lt;Integer&gt; stack = new ArrayStack&lt;&gt;();
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">13</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример реализация generic-класса </h1><div class="body"><pre class="prettyprint lang-java">class ArrayStack&lt;E&gt; implements Stack&lt;E&gt; {
+    private E[] elements;
+    private int size;
+     
+    public ArrayStack() {
+        elements = (E[]) new Object[10];
+    }
+     
+    public E peek() {
+        return elements[size - 1];
+    }
+    …
+</pre></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">14</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Несовместимость generic-типов</h1><div class="body"><ul class="item-1 level-1"><li>Generic-типы не совместимы по присваиванию <pre class="prettyprint lang-java">Stack&lt;Integer&gt; si = new ArrayStack&lt;&gt;();
+</pre><span class="warn"><pre class="prettyprint lang-java">Stack&lt;Object&gt; so = si;
+</pre></span></li><li><span class="question">Почему?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental">Иначе — ошибки <span class="warn"><pre class="prettyprint lang-java">so.push("hello");
+// ClassCastException
+Integer li = si.peek();
+</pre></span></div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">15</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Как писать Generic-код</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Полиморфизм</a></li><li><a href="#(10)" class="toc">Введение в Generics</a></li><li><a href="#(16)" class="toc current">Как писать Generic-код</a></li><li><a href="#(30)" class="toc">Generics и вариантность</a></li><li><a href="#(39)" class="toc">Реализация</a></li><li><a href="#(45)" class="toc">Дополнительные возможности</a></li><li><a href="#(52)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">16</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема 1</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">void dump(Stack&lt;Object&gt; stack) {
+    while (!stack.isEmpty()) {
+        Object o = stack.pop();
+        System.out.println(o);
+    }
+}
+</pre></li><li>Вызовы<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">dump(new ArrayStack&lt;Object&gt;(…));
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">dump(new ArrayStack&lt;Integer&gt;(…));
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">17</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 1 – wildcard</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">void dump(Stack&lt;?&gt; stack) {
+    while (!stack.isEmpty()) {
+        Object o = stack.pop();
+        System.out.println(o);
+    }
+}
+</pre></li><li>Вызовы<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">dump(new ArrayStack&lt;Object&gt;(…));
+</pre></li><li><pre class="prettyprint lang-java">dump(new ArrayStack&lt;Integer&gt;(…));
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">18</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема 2</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">void draw(Stack&lt;Shape&gt; stack) {
+    while (!stack.isEmpty()) {
+        Shape shape = stack.pop();
+        shape.draw();
+    }
+}
+</pre></li><li>Вызовы<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">draw(new ArrayStack&lt;Shape&gt;(…));
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">draw(new ArrayStack&lt;Circle&gt;(…));
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">19</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 2 – bounded wildcard</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">void draw(Stack&lt;? extends Shape&gt; stack) {
+    while (!stack.isEmpty()) {
+        Shape shape = stack.pop();
+        shape.draw();
+    }
+}
+</pre></li><li>Вызовы<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">draw(new ArrayStack&lt;Shape&gt;(…));
+</pre></li><li><pre class="prettyprint lang-java">draw(new ArrayStack&lt;Circle&gt;(…));
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">20</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема 3</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">void pushAll(Object[] a, Stack&lt;Object&gt; stack) {
+    for (int i = 0; i &lt; a.length; i++) {
+        stack.push(a[i]);
+    }
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">pushAll(new Object[10], new ArrayStack&lt;Object&gt;());
+</pre></li><li><pre class="prettyprint lang-java">pushAll(new String[10], new ArrayStack&lt;Object&gt;());
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">pushAll(new String[10], new ArrayStack&lt;String&gt;());
+</pre></span></li><li><span class="warn"><pre class="prettyprint lang-java">pushAll(new Object[10], new ArrayStack&lt;String&gt;());
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">21</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 3 – generic-метод</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">&lt;T&gt; void pushAll(T[] a, Stack&lt;T&gt; c) {
+    for (int i = 0; i &lt; a.length; i++) {
+        stack.push(a[i]);
+    }
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">pushAll(new Object[10], new ArrayStack&lt;Object&gt;());
+</pre></li><li><pre class="prettyprint lang-java">pushAll(new String[10], new ArrayStack&lt;Object&gt;());
+</pre></li><li><pre class="prettyprint lang-java">pushAll(new String[10], new ArrayStack&lt;String&gt;());
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">pushAll(new Object[10], new ArrayStack&lt;String&gt;());
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">22</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема 4</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">&lt;T&gt; void moveAll(Stack&lt;T&gt; s1, Stack&lt;T&gt; s2) {
+    while (!s1.isEmpty()) {
+        T o = s1.pop();
+        s2.push(o);
+    }
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">moveAll(new AS&lt;Integer&gt;(…), new AS&lt;Integer&gt;());
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">moveAll(new AS&lt;Integer&gt;(…), new AS&lt;Object&gt;());
+</pre></span></li><li><span class="warn"><pre class="prettyprint lang-java">moveAll(new AS&lt;Object&gt;(…), new AS&lt;Integer&gt;());
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">23</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 4 – bounded type argument</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">&lt;T, S extends T&gt;
+void moveAll(Stack&lt;S&gt; s1, Stack&lt;T&gt; s2) {
+    while (!s1.isEmpty()) {
+        s2.push(s1.pop());
+    }
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">moveAll(new AS&lt;Integer&gt;(…), new AS&lt;Integer&gt;());
+</pre></li><li><pre class="prettyprint lang-java">moveAll(new AS&lt;Integer&gt;(…), new AS&lt;Object&gt;());
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">moveAll(new AS&lt;Object&gt;(…), new AS&lt;Integer&gt;());
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">24</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 4 – bounded wildcard</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">&lt;T&gt; void
+moveAll(Stack&lt;? extends T&gt; s1, Stack&lt;T&gt; s2) {
+    while (!s1.isEmpty()) {
+        s2.push(s1.pop());
+    }
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">moveAll(new AS&lt;Integer&gt;(…), new AS&lt;Integer&gt;());
+</pre></li><li><pre class="prettyprint lang-java">moveAll(new AS&lt;Integer&gt;(…), new AS&lt;Object&gt;());
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">moveAll(new AS&lt;Object&gt;(…), new AS&lt;Integer&gt;());
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">25</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема 5</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">&lt;T extends Comparable&lt;T&gt;&gt;
+T max(Stack&lt;T&gt; stack) {
+    ...
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Integer i = max(new AS&lt;Integer&gt;(…));
+</pre></li><li><pre class="prettyprint lang-java">class Test implements Comparable&lt;Object&gt; {…}
+</pre><span class="warn"><pre class="prettyprint lang-java">Test t = max(new AS&lt;Test&gt;(…));
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">26</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 5 – upper bounded wcard</h1><div class="body"><ul class="item-1 level-1"><li>Метод <pre class="prettyprint lang-java">&lt;T extends Comparable&lt;? super T&gt;&gt;
+max(Stack&lt;T&gt; stack) {
+    …
+}
+</pre></li><li>Примеры использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Integer i = max(new AS&lt;Integer&gt;(…));
+</pre></li><li><pre class="prettyprint lang-java">class Test implements Comparable&lt;Object&gt; {…}
+</pre><pre class="prettyprint lang-java">Test t = max(new AS&lt;Test&gt;(…));
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">27</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема 6</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">/** Duplicates top element of the stack. */
+// Часть интерфейса
+void dup(Stack&lt;?&gt; stack) {
+    // Как реализовать?
+}
+</pre></li><li class="incremental"><div class="non-incremental"><span class="warn"><pre class="prettyprint lang-java">void dup(Stack&lt;?&gt; stack) {
+    stack.push(stack.peek());
+}
+</pre></span></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">28</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение 6 – wildcard capture </h1><div class="body"><pre class="prettyprint lang-java">// Часть интерфейса
+void dup(Stack&lt;?&gt; stack) {
+    dupImpl(stack);
+}
+ 
+// Настоящая реализация
+private &lt;T&gt; void dupImpl(Stack&lt;T&gt; stack) {
+    stack.push(stack.peek());
+}
+</pre></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">29</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Generics и вариантность</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Полиморфизм</a></li><li><a href="#(10)" class="toc">Введение в Generics</a></li><li><a href="#(16)" class="toc">Как писать Generic-код</a></li><li><a href="#(30)" class="toc current">Generics и вариантность</a></li><li><a href="#(39)" class="toc">Реализация</a></li><li><a href="#(45)" class="toc">Дополнительные возможности</a></li><li><a href="#(52)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">30</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Источник</h1><div class="body"><ul class="item-1 level-1"><li>Источник данных<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">interface Reader&lt;T&gt; {
+    T read();
+}
+</pre></li></ul></li><li class="incremental"><div class="non-incremental">Преобразования<ul class="item-2 level-2"><li><span class="warn"><pre class="prettyprint lang-java">Reader&lt;Object&gt; objR = ...
+Reader&lt;String&gt; strR = objR;
+String data = strR.read();
+</pre></span></li><li><pre class="prettyprint lang-java">Reader&lt;String&gt; strR = ...
+Reader&lt;Object&gt; objR = strR;
+Object data = objR.read();
+</pre></li></ul></div></li><li class="incremental"><div class="non-incremental">Ковариантность<ul class="item-2 level-2"><li><var>S ⁚&gt; T </var> ⇒ <var> Reader&lt;S&gt; ⁚&gt; Reader&lt;T&gt;</var></li></ul></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">31</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Приемник</h1><div class="body"><ul class="item-1 level-1"><li>Приемник данных<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">interface Writer&lt;T&gt; {
+    write(T value);
+}
+</pre></li></ul></li><li class="incremental"><div class="non-incremental">Преобразования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Writer&lt;Object&gt; objW = ...
+Writer&lt;String&gt; strW = objW;
+strW.write(new String());
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">Writer&lt;String&gt; strW = ...
+Writer&lt;Object&gt; objW = strW;
+objW.write(new Object());
+</pre></span></li></ul></div></li><li class="incremental"><div class="non-incremental">Контравариантность<ul class="item-2 level-2"><li><var>S ⁚&gt; T </var> ⇒ <var> Writer&lt;S&gt; &lt;⁚ Writer&lt;T&gt;</var></li></ul></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">32</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Источник и приемник</h1><div class="body"><ul class="item-1 level-1"><li>Источник и приемник<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack&lt;T&gt;</pre></li></ul></li><li class="incremental"><div class="non-incremental">Преобразования<ul class="item-2 level-2"><li><span class="warn"><pre class="prettyprint lang-java">Stack&lt;Object&gt; os = ...
+Stack&lt;String&gt; ss = os;
+ss.push(new Object());
+String s = ss.pop();
+</pre></span></li><li><span class="warn"><pre class="prettyprint lang-java">Stack&lt;String&gt; ss = ...
+Stack&lt;Object&gt; os = ss;
+os.push(new Object());
+Object os = os.pop();
+</pre></span></li></ul></div></li><li class="incremental"><div class="non-incremental">Инвариантность<ul class="item-2 level-2"><li><var>S ⁚&gt; T </var> ⇒ <var>Stack&lt;S&gt;</var> не связан с <var>Stack&lt;T&gt;</var></li></ul></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">33</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вариантность</h1><div class="body"><ul class="item-1 level-1"><li>Ковариантность<ul class="item-2 level-2"><li>Согласованность с отношением включения</li><li><var>S ⁚&gt; T </var> ⇒ <var> G&lt;S&gt; ⁚&gt; G&lt;T&gt;</var></li><li>Только источник</li></ul></li><li>Контравариантность<ul class="item-2 level-2"><li>Антисогласованность с отношением включения</li><li><var>S ⁚&gt; T </var> ⇒ <var> G&lt;S&gt; &lt;⁚ G&lt;T&gt;</var></li><li>Только приемник</li></ul></li><li>Инвариантность<ul class="item-2 level-2"><li>Независимость от отношения включения</li><li><var>S ⁚&gt; T </var> ⇒ <var> G&lt;S&gt;</var> не связан с <var>G&lt;T&gt;</var></li><li>Источник и приемник</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">34</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Правила</h1><div class="body"><ul class="item-1 level-1"><li>Только источник<ul class="item-2 level-2"><li>Ковариантность</li><li><var>? extends T</var></li></ul></li><li>Только приемник<ul class="item-2 level-2"><li>Контравариантность</li><li><var>? super T</var></li></ul></li><li>Источник и приемник<ul class="item-2 level-2"><li>Инвариантный</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">35</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Примеры</h1><div class="body"><ul class="item-1 level-1"><li>Только источник<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Reader&lt;String&gt; strR = ...
+Reader&lt;? extends Object&gt; objR = strR;
+Object data = objR.read();
+</pre></li></ul></li><li>Только приемник<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Writer&lt;Object&gt; objW = ...
+Writer&lt;? super String&gt; strW = objW;
+strW.write(new String());
+</pre></li></ul></li><li>Источник и приемник<ul class="item-2 level-2"><li>Нельзя</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">36</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вариантность функций</h1><div class="body"><ul class="item-1 level-1"><li>Функция<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">interface Function&lt;T, R&gt; {
+     R apply(T argument);
+}
+</pre></li></ul></li><li>Совместимость по присваиванию<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Function&lt;T1, R1&gt; f1;
+Function&lt;T2, R2&gt; f2 = f1;
+</pre></li><li><var>Function&lt;T1, R1&gt; &lt;⁚ Function&lt;T2, R2&gt;</var></li></ul></li><li><span class="question">Что можно сказать о <var>T1 ⁚? T2</var> и <var>R1 ⁚? R2</var>?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental"><var>T1 ⁚&gt; T2</var> ─ Контравариантность аргумента</div></li><li class="incremental"><div class="non-incremental"><var>R1 &lt;⁚ R2</var> ─ ковариантность результата</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">37</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Приведение типов для функций</h1><div class="body"><ul class="item-1 level-1"><li>Вариантность<ul class="item-2 level-2"><li>Контравариантность аргумента</li><li>Ковариантность результата</li></ul></li><li><pre class="prettyprint lang-java">static &lt;T, R&gt; Function&lt;T, R&gt; cast(
+    Function&lt;? super T, ? extends R&gt; f
+) {
+    return new Function&lt;T, R&gt;() {
+        public R apply(T argument) {
+            return f.apply(argument);
+        }
+    };
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">38</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Реализация</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Полиморфизм</a></li><li><a href="#(10)" class="toc">Введение в Generics</a></li><li><a href="#(16)" class="toc">Как писать Generic-код</a></li><li><a href="#(30)" class="toc">Generics и вариантность</a></li><li><a href="#(39)" class="toc current">Реализация</a></li><li><a href="#(45)" class="toc">Дополнительные возможности</a></li><li><a href="#(52)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">39</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример кода </h1><div class="body"><pre class="prettyprint lang-java">List&lt;String&gt; list = new ArrayList&lt;&gt;(…);
+String max = list.get(0);
+for (int i = 1; i &lt; list.size(); i++) {
+    String next = list.get(i);
+    if (next.compareTo(max) &gt; 0) {
+        max = next;
+    }
+}
+</pre></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">40</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Стирание информации о типах </h1><div class="body"><pre class="prettyprint lang-java">List list = new ArrayList(…);
+String max = (String) list.get(0);
+for (int i = 1; i &lt; list.size(); i++) {
+    String next = (String) list.get(i);
+    if (next.compareTo(max) &gt; 0) {
+        max = next;
+    }
+}
+</pre></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">41</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Generic – один класс</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">Stack&lt;String&gt; ss = new AS&lt;String&gt;();
+Stack&lt;Integer&gt; si = new AS&lt;Integer&gt;();
+ss.getClass() == si.getClass() // True
+</pre><pre class="prettyprint lang-java">ss instanceof AS // True
+</pre><span class="warn"><pre class="prettyprint lang-java">ss instanceof AS&lt;String&gt; // Запрещено
+</pre></span></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">42</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Преобразование типов</h1><div class="body"><ul class="item-1 level-1"><li>Уничтожение информации о типе<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack s = new ArrayStack&lt;String&gt;();
+</pre></li></ul></li><li>Добавление информации о типе<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack&lt;String&gt; s = (Stack&lt;String&gt;) new ArrayStack();
+</pre></li><li><pre class="prettyprint lang-java">Stack&lt;String&gt; s1 = new ArrayStack();
+</pre></li></ul></li><li>Unchecked warning<ul class="item-2 level-2"><li>Ответственность программиста</li><li><pre class="prettyprint lang-java">@SuppressWarnings("unchecked")
+Stack&lt;String&gt; s1 = new ArrayStack();
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">43</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ограничения Generic</h1><div class="body"><ul class="item-1 level-1"><li>Невозможно создать массив параметра типа<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Stack&lt;T&gt; s;
+</pre></li><li><pre class="prettyprint lang-java">T[] elements; // Object[]
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">new T[10];
+</pre></span></li></ul></li><li>Невозможно создать массив Generic-классов<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">new ArrayStack&lt;Stack&lt;Integer&gt;&gt;();
+</pre></li><li><pre class="prettyprint lang-java">Stack&lt;?&gt;[] stacks = new Stack&lt;?&gt;[10];
+</pre></li><li><span class="warn"><pre class="prettyprint lang-java">new Stack&lt;Integer&gt;[10];
+</pre></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">44</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Дополнительные возможности</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Полиморфизм</a></li><li><a href="#(10)" class="toc">Введение в Generics</a></li><li><a href="#(16)" class="toc">Как писать Generic-код</a></li><li><a href="#(30)" class="toc">Generics и вариантность</a></li><li><a href="#(39)" class="toc">Реализация</a></li><li><a href="#(45)" class="toc current">Дополнительные возможности</a></li><li><a href="#(52)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">45</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Явное указание типов при вызове</h1><div class="body"><ul class="item-1 level-1"><li>Исходная функция<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Function&lt;Object, Integer&gt; foi = …;
+</pre></li></ul></li><li>Преобразованная функция<ul class="item-2 level-2"><li><span class="warn"><pre class="prettyprint lang-java">Function&lt;String, Number&gt; fso = Function.cast(foi);
+</pre></span></li><li><pre class="prettyprint lang-java">Function&lt;String, Number&gt; fso =
+    Function.&lt;String, Number&gt;cast(foi);
+</pre></li></ul></li><li>Map<ul class="item-2 level-2"><li><span class="warn"><pre class="prettyprint lang-java">Stack&lt;Number&gt; ns = stack.map(Function.cast(foi));
+</pre></span></li><li><pre class="prettyprint lang-java">Stack&lt;Number&gt; ns = stack.&lt;Number&gt;map(
+    Function.&lt;String, Number&gt;cast(foi));
+</pre></li><li><pre class="prettyprint lang-java">Stack&lt;Number&gt; ns = stack.map(
+    Function.&lt;String, Number&gt;cast(foi));
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">46</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Исключения</h1><div class="body"><ul class="item-1 level-1"><li>Объявление<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">interface Reader&lt;T, E extends Exception&gt; {
+    T next() throws E;
+    boolean hasNext() throws E;
+}
+</pre></li></ul></li><li>Использование<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">&lt;T, E  extends Exception&gt; List&lt;T&gt;
+readAll(Reader&lt;T, E&gt; reader) throws E {
+    final List&lt;T&gt; result = new ArrayList&lt;&gt;();
+    while (reader.hasNext()) {
+        result.add(reader.next());
+    }
+    return result;
+}
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">47</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Несколько ограничений (1)</h1><div class="body"><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">class StrangeExample&lt;
+    I,
+    C extends Collection&lt;I&gt; &amp; Comparable&lt;? super C&gt;
+&gt; {
+    C coll;
+     
+    void add(I item) {
+        coll.add(item);
+    }
+     
+    int compare(C other) {
+        return coll.compareTo(other);
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">48</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Наследование (1)</h1><div class="body"><ul class="item-2 level-2"><li>Опеределение <pre class="prettyprint lang-java">class ListBuilder&lt;T&gt; {
+    private final List&lt;T&gt; list = new ArrayList&lt;&gt;();
+    ListBuilder&lt;T&gt; add(T item) {
+        list.add(item);
+        return this;
+    }
+    List&lt;T&gt; build() { return list; }
+}
+</pre></li><li>Использование <pre class="prettyprint lang-java">List&lt;String&gt; hello = new ListBuilder&lt;String&gt;()
+    .add("hello")
+    .add("world")
+    .build();
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">49</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Наследование (2)</h1><div class="body"><ul class="item-2 level-2"><li>Опеределение <pre class="prettyprint lang-java">class AllBuilder&lt;T&gt; extends ListBuilder&lt;T&gt; {
+    AllBuilder&lt;T&gt; addAll(Collection&lt;T&gt; items) {
+        for (T item : items) {
+            add(item);
+        }
+        return this;
+    }
+}
+</pre></li><li>Использование <span class="warn"><pre class="prettyprint lang-java">List&lt;String&gt; hello = new AllBuilder&lt;String&gt;()
+    .add("hello")
+    .addAll(List.of("world"))
+    .build();
+</pre></span></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">50</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ссылка на свой тип</h1><div class="body"><ul class="item-2 level-2"><li>Предок <pre class="prettyprint lang-java">class ListBuilder&lt;B extends ListBuilder&lt;B, T&gt;, T&gt; {
+    B add(T item) { /* ... */ return self(); }
+    B self() { return (B) this; }
+</pre></li><li>Наследник <pre class="prettyprint lang-java">class AllBuilder&lt;B extends AllBuilder&lt;B, T&gt;, T&gt;
+  extends ListBuilder&lt;B, T&gt; {
+    B addAll(List&lt;T&gt; item) { /* ... */ return self(); }
+</pre></li><li>Реализация <pre class="prettyprint lang-java">class ConcreteBuilder&lt;T&gt; extends
+    AllBuilder&lt;ConcreteBuilder&lt;T&gt;, T&gt; {
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">51</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Заключение</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Полиморфизм</a></li><li><a href="#(10)" class="toc">Введение в Generics</a></li><li><a href="#(16)" class="toc">Как писать Generic-код</a></li><li><a href="#(30)" class="toc">Generics и вариантность</a></li><li><a href="#(39)" class="toc">Реализация</a></li><li><a href="#(45)" class="toc">Дополнительные возможности</a></li><li><a href="#(52)" class="toc current">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">52</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ссылки</h1><div class="body"><ul class="item-1 level-1"><li>Java Tutorial. Generics // <a href="http://docs.oracle.com/javase/tutorial/java/generics/" target="_blank">http://docs.oracle.com<br />/javase/tutorial/java/generics/</a></li><li>Generics in the Java Programming Language // <a href="http://www.oracle.com/technetwork/java/javase/generics-tutorial-159168.pdf" target="_blank">http://www.oracle.com/technetwork/java/javase/<br />generics-tutorial-159168.pdf</a></li><li>JSR 14 (Generics) // <a href="http://jcp.org/en/jsr/detail?id=14" target="_blank"><br />http://jcp.org/en/jsr/detail?id=14</a></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">53</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вопросы</h1><div class="body"><div class="questions">???</div></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Полиморфизм и Generics</span><span class="number">54</span></div></div></div></div></div></body></html>

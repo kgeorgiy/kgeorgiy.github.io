@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Технологии Java :: Тема&nbsp; 3. Лямбда-выражения и потоки</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Технологии Java</a> / </nav><h1>Тема&nbsp; 3. Лямбда-выражения и потоки</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Расширения интерфейсов</li><li>Лямбда-выражения<ol><li>Функциональные интерфейсы</li><li>Лямбда-выражения</li><li>Ссылки на методы</li></ol></li><li>Поддержка лямбда-выражений в основных классах<ol><li>Типы-обертки</li><li>Класс Objects</li><li>Стандартные функциональные интерфейсы</li></ol></li><li>Поддержка лямбда-выражений в Collections Framework<ol><li>Необязательные значения</li><li>Компараторы</li><li>Новые методы коллекций и отображений</li></ol></li><li>Потоки значений<ol><li>Применение<ol><li>Типы потоков</li><li>Создание и преобразование потоков</li><li>Комбинаторы</li></ol></li><li>Стандартные коллекторы</li><li>Реализация потоков<ol><li>Разбиваемые итераторы</li><li>Обобщенные свертки</li><li>Параллельное исполнение</li></ol></li></ol></li></ol><div class="slides"><h4 id="N65613">Слайды</h4><a href="../slides/lambda.xhtml">HTML</a></div><div class="examples"><h4 id="N65620">Примеры</h4><a href="../examples/lambda.zip">zip</a></div><div class="homework"><h4 id="N65627">Домашнее задание 3. Студенты</h4><ol><li>
+            Разработайте класс <code>StudentDB</code>,
+            осуществляющий поиск по базе данных студентов.
+            <ul><li>
+                    Класс <code>StudentDB</code> должен реализовывать
+                    интерфейс <code>StudentQuery</code> (простой вариант)
+                    или <code>GroupQuery</code> (сложный вариант).
+                </li><li>
+                    Каждый метод должен состоять из ровно одного оператора.
+                    При этом длинные операторы надо разбивать на несколько строк.
+                </li></ul></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    применение лямбда-выражений и потоков;
+                </li><li>
+                    избавление от повторяющегося кода.
+                </li></ul></li></ol></div><div class="homework"><h4 id="N65659">Домашнее задание 4. Сплитераторы и коллекторы</h4><ol><li>
+            Разработайте класс <code>Lambda</code>,
+            реализующий сплитераторы для деревьев и дополнительные коллекторы.
+            <ul><li><em>Простой вариант</em> (интерфейс <code>EasyLambda</code>) &mdash;
+                    реализуйте:
+                    <ul><li>
+                            сплитераторы 
+                            для двоичных деревьев, 
+                            двоичных деревьев с известным размером,
+                            k-ичных деревьев;
+                        </li><li>
+                            коллекторы первого, последнего, среднего элементов;
+                        </li><li>
+                            коллекторы общего префикса и суффикса строк.
+                        </li></ul></li><li><em>Сложный вариант</em> (интерфейс <code>HardLambda</code>) &mdash;
+                    дополнительно реализуйте:
+                    <ul><li>
+                            сплитераторы всех видов деревьев над списками элементов;
+                        </li><li>
+                            коллектор <var>n</var>-ого элемента;
+                        </li><li>
+                            коллекторы первых и последних <var>n</var> элементов.
+                        </li></ul></li></ul></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    характеристиски создаваемых сплитераторов;
+                </li><li>
+                    избавление от повторяющегося кода.
+                </li></ul></li></ol></div><div class="references"><h4 id="N65712">Библиография</h4><ol><li>&nbsp;<a href="https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html" title="">Method References</a></li><li>&nbsp;<a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html" title="">Lambda Expressions</a></li><li>&nbsp;<a href="https://docs.oracle.com/javase/tutorial/collections/streams/index.html" title="">Aggregate Operations (Steams)</a></li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65613">Слайды</a></li><li class="i0"><a href="#N65620">Примеры</a></li><li class="i0"><a href="#N65627">Домашнее задание 3. Студенты</a></li><li class="i0"><a href="#N65659">Домашнее задание 4. Сплитераторы и коллекторы</a></li><li class="i0"><a href="#N65712">Библиография</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

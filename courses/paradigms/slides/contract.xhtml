@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ru" xml:lang="ru" xmlns="http://www.w3.org/1999/xhtml"><head><title>Парадигмы программирования / Программирование по контракту</title><meta name="author" content="" /><link rel="stylesheet" type="text/css" media="screen, projection, print" href="scripts/slidy.css" /><link rel="stylesheet" type="text/css" href="scripts/prettify.css" /><link rel="stylesheet" type="text/css" href="scripts/kgeorgiy-slides.css" /><script type="text/javascript" src="scripts/slidy.js" charset="utf-8" /><script type="text/javascript" src="scripts/kgeorgiy-slides.js" charset="utf-8" /><script type="text/javascript" src="scripts/prettify.js" /><script type="text/javascript" src="scripts/lang-sql.js" /><script type="text/javascript" src="scripts/lang-javaModule.js" /><script type="text/javascript" src="scripts/lang-scala.js" /><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ" /><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body onload="prettyPrint()"><div id="all">
+<div class="slide cover"><div class="content"><div class="course">Парадигмы программирования</div><hr /><div class="lecture"><div>Программирование по контракту</div></div><div class="link"><a href="https://kgeorgiy.info/courses/paradigms/">https://kgeorgiy.info/courses/paradigms/</a></div><div class="copyright"><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru"><span class="copyright">Copyright © Георгий Корнеев</span><img src="scripts/by-nc-sa.png" alt="Attribution-NonCommercial-ShareAlike" /></a></div></div></div>
+<div class="slide section"><div class="content"><h1>Структура курса</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Структура курса</a></li><li><a href="#(6)" class="toc">Последовательный код</a></li><li><a href="#(22)" class="toc">Функции</a></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">2</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Структура</h1><div class="body"><ul class="item-1 level-1"><li>Лекции</li><li>Домашние задания</li><li>Практика</li><li>Зачет</li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">3</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Содержание</h1><div class="body"><ul class="item-1 level-1"><li>Концепции<ul class="item-2 level-2"><li>Программирование по контракту</li><li>ООП</li><li>Обобщённое программирование</li><li>Функциональное программирование</li><li>Логическое программирование</li></ul></li><li>Языки<ul class="item-2 level-2"><li><var>Java</var></li><li><var>JavaScript</var></li><li><var>Clojure</var></li><li><var>Prolog</var></li><li>???</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">4</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Практика и баллы</h1><div class="body"><ul class="item-1 level-1"><li>Версии<ul class="item-2 level-2"><li>Простая <var>M3131−35</var></li><li>Сложная <var>M3136−39</var></li></ul></li><li>Модификации</li><li>Задержка<ul class="item-2 level-2"><li>Не более 3 недель</li></ul></li><li>Минусы<ul class="item-2 level-2"><li>Не горят</li></ul></li><li>Бонусы<ul class="item-2 level-2"><li>Первому сдавшему</li><li>Нашедшим ошибки</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">5</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Последовательный код</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc current">Последовательный код</a><ol class="level-2 toc-2"><li><a href="#(8)" class="">Формализация</a></li><li><a href="#(18)" class="">Доказательство</a></li></ol></li><li><a href="#(22)" class="toc">Функции</a></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">6</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Быстрое возведение в степень</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">int power(int a, int n) {
+    int r = 1;
+    while (n != 0) {
+        if (n % 2 == 1) {
+            r *= a;
+        }
+        n /= 2;
+        a *= a;
+    }
+    return r;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">7</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Формализация</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc current">Последовательный код</a><ol class="level-2 toc-2"><li><a href="#(8)" class=" current">Формализация</a></li><li><a href="#(18)" class="">Доказательство</a></li></ol></li><li><a href="#(22)" class="toc">Функции</a></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">8</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пред- и постусловия</h1><div class="body"><ul class="item-1 level-1"><li>Определены на действиях</li><li>Предусловие<ul class="item-2 level-2"><li>Должно быть выполнено до исполнения действия</li></ul></li><li>Постусловие<ul class="item-2 level-2"><li>Выполнено после исполнения действия</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">9</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Условия для БВС</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Pre: n ≥ 0
+// Post: ℝ = a ^ n
+int power(int a, int n) {
+    ...
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">10</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Теорема о структурировании</h1><div class="body"><ul class="item-1 level-1"><li>Бём и Якопини</li><li>Любой управляющий граф можно составить из<ul class="item-2 level-2"><li>Последовательность</li><li>Ветвление</li><li>Цикл <var>while</var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">11</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Оператор присваивания (1)</h1><div class="body"><ul class="item-1 level-1"><li>Определение<ul class="item-2 level-2"><li>Обратная подстановка</li><li><pre class="prettyprint lang-java">// Pre: P[x→expr] (подставить expr вместо x)
+x = expr;
+// Post: P
+</pre></li></ul></li><li>Примеры<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: b = 0
+a = b;
+// Post: a = 0
+</pre></li><li><pre class="prettyprint lang-java">// Pre: a + a = b
+a += a;
+// Post: a = b
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">12</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Оператор присваивания (2)</h1><div class="body"><ul class="item-1 level-1"><li>Неверные подходы<ul class="item-2 level-2"><li>Прямая подстановка<ul class="item-3 level-3"><li><span class="warn"><pre class="prettyprint lang-java">// Pre: P
+x = expr;
+// Post: P[x→expr]
+</pre></span></li><li><span class="warn"><pre class="prettyprint lang-java">// Pre: x = 1
+x = 2;
+// Post: 2 = 1
+</pre></span></li></ul></li><li>Простая конъюнкция<ul class="item-3 level-3"><li><span class="warn"><pre class="prettyprint lang-java">// Pre: P
+x = expr;
+// Post: P ∧ x = expr
+</pre></span></li><li><span class="warn"><pre class="prettyprint lang-java">// Pre: x = 5
+x = x + 1;
+// Post: x = 5 ∧ x = x + 1
+</pre></span></li></ul></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">13</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Последовательность действий</h1><div class="body"><ul class="item-1 level-1"><li>из<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: P1
+S1
+// Post: Q1
+</pre></li><li><pre class="prettyprint lang-java">// Pre: P2
+S2
+// Post: Q2
+</pre></li><li><pre class="prettyprint lang-java">Q1 ⇒ P2
+</pre></li></ul></li><li>следует<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: P1
+S1
+S2
+// Post: Q2
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">14</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ветвление</h1><div class="body"><ul class="item-1 level-1"><li>из<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: P ∧ cond
+S1
+// Post: Q
+</pre></li><li><pre class="prettyprint lang-java">// Pre: P ∧ ¬cond
+S2
+// Post: Q
+</pre></li></ul></li><li>следует<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: P
+if (cond) S1 else S2
+// Post: Q
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">15</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Цикл</h1><div class="body"><ul class="item-1 level-1"><li>Из<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: P ∧ cond
+S
+// Post: P
+</pre></li></ul></li><li>следует<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pre: P
+while (cond) S
+// Post: P ∧ ¬cond
+</pre></li></ul></li><li class="incremental"><div class="non-incremental">Цикл может не завершиться<ul class="item-2 level-2"><li>Доказательство завершения</li></ul></div></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">16</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Стратегии доказательств</h1><div class="body"><ul class="item-1 level-1"><li>Сверху-вниз<ul class="item-2 level-2"><li>От посылок к следствиям</li><li>Предусловие + действие ⇒ постусловие</li></ul></li><li>Снизу-вверх<ul class="item-2 level-2"><li>От следствий к необходимым посылкам</li><li>Постусловие + действие ⇒ необходимое предусловие</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">17</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Доказательство</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc current">Последовательный код</a><ol class="level-2 toc-2"><li><a href="#(8)" class="">Формализация</a></li><li><a href="#(18)" class=" current">Доказательство</a></li></ol></li><li><a href="#(22)" class="toc">Функции</a></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">18</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Быстрое возведение в степень</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">int power(int a, int n) {
+    int r = 1;
+    while (n != 0) {
+        if (n % 2 == 1) {
+            r *= a;
+        }
+        n /= 2;
+        a *= a;
+    }
+    return r;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">19</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Инвариант цикла</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">int power(int a, int n) {
+    int r = 1;
+    // r' * a'^n' = a^n
+    while (n != 0) {
+        ...
+    }
+    // r' * a'^n' = a^n ∧ n' = 0
+    // ⇒ r' = a^n
+    return r;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">20</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Тело цикла</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// I ∧ n' != 0
+if (n % 2 == 1) {
+    // I ∧ n' % 2 = 1
+    r *= a; n--;
+    // I ∧ n' % 2 = 0
+} else {
+    // I ∧ n' % 2 = 0
+}
+// I ∧ n' % 2 = 0
+n /= 2; a *= a;
+// I
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">21</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Функции</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc">Последовательный код</a></li><li><a href="#(22)" class="toc current">Функции</a><ol class="level-2 toc-2"><li><a href="#(23)" class="">Чистые функции</a></li><li><a href="#(29)" class="">Функции с состояниями</a></li></ol></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">22</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Чистые функции</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc">Последовательный код</a></li><li><a href="#(22)" class="toc current">Функции</a><ol class="level-2 toc-2"><li><a href="#(23)" class=" current">Чистые функции</a></li><li><a href="#(29)" class="">Функции с состояниями</a></li></ol></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">23</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Чистая функция</h1><div class="body"><ul class="item-1 level-1"><li>Результат зависит только от аргументов</li><li>Не имеет побочных эффектов</li><li>Пример<ul class="item-2 level-2"><li>Функция <var>double sqrt(double x) </var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">24</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Предусловие</h1><div class="body"><ul class="item-1 level-1"><li>Условие, которое должно быть верно на момент вызова<ul class="item-2 level-2"><li><span class="warn">Результат вызова с неверным предусловием не определен</span></li></ul></li><li>Пример <pre class="prettyprint lang-java">// Pre: x &gt; 0
+double sqrt(double x)
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">25</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Постусловие</h1><div class="body"><ul class="item-1 level-1"><li>Условие, которое верно на момент возврата<ul class="item-2 level-2"><li><span class="warn">Постусловие не выполнено ⇒ ошибка в программе</span></li></ul></li><li>Пример <pre class="prettyprint lang-java">// Post: ℝ × ℝ = x ∧ ℝ ≥ 0
+double sqrt(double x)
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">26</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Контракт чистой функции</h1><div class="body"><ul class="item-1 level-1"><li>Предусловие + постусловие <pre class="prettyprint lang-java">// Pre: x &gt; 0
+// Post: ℝ × ℝ = x ∧ ℝ ≥ 0
+double sqrt(double x)
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">27</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Поиск максимума</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Pre: a.length &gt; 0
+// Post: (∀ i=0..a.length-1: ℝ ≥ a[i]) ∧ 
+//          (∃ i=0..a.length-1: ℝ = a[i])
+int max(int[] a)
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">28</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Функции с состояниями</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc">Последовательный код</a></li><li><a href="#(22)" class="toc current">Функции</a><ol class="level-2 toc-2"><li><a href="#(23)" class="">Чистые функции</a></li><li><a href="#(29)" class=" current">Функции с состояниями</a></li></ol></li><li><a href="#(36)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">29</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Сумма с аккумулированием (1)</h1><div class="body"><ul class="item-1 level-1"><li>Реализация <pre class="prettyprint lang-java">// Состояние
+int value = 0;
+ 
+// Pre: v ≥ 0
+// Post: ℝ = value + v ∧ value' = value + v
+int add(int v) {
+    return value += v;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">30</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Сумма с аккумулированием (2)</h1><div class="body"><ul class="item-1 level-1"><li>Предусловие на неотрицательность <var>value</var><pre class="prettyprint lang-java">// Состояние
+int value = 0;
+ 
+// Pre: v ≥ 0 ∧ value ≥ 0
+// Post: ℝ = value + v ∧ value' = value + v
+int add(int v) {
+    return value += v;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">31</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Сумма с аккумулированием (3)</h1><div class="body"><ul class="item-1 level-1"><li>Постусловие на неотрицательность <var>value</var><pre class="prettyprint lang-java">// Состояние
+int value = 0;
+ 
+// Pre: v ≥ 0 ∧ value ≥ 0
+// Post: ℝ = value + v ∧ value' = value + v
+//      ∧ value ≥ 0
+int add(int v) {
+    return value += v;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">32</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Инвариант</h1><div class="body"><ul class="item-1 level-1"><li>Общая часть пред- и постусловия<ul class="item-2 level-2"><li>Сохраняется всегда</li></ul></li><li>Пример <pre class="prettyprint lang-java">// Inv: value ≥ 0
+int value = 0;
+ 
+// Pre: v ≥ 0
+// Post: ℝ = value + v ∧ value' = value + v
+int add(int v) {
+    return value += v;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">33</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Контракт функции с состоянием</h1><div class="body"><ul class="item-1 level-1"><li>Инвариант + предусловие + постусловие</li><li>Пример <pre class="prettyprint lang-java">// Inv: value ≥ 0
+int value = 0;
+ 
+// Pre: v ≥ 0
+// Post: ℝ = value + v ∧ value' = value + v
+int add(int v) {
+    return value += v;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">34</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример нескольких функций</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">int value;
+ 
+void init() { value = 0; }
+ 
+// Pre: Был вызван init()
+// Post: value' = value + 1
+void inc() { value++; }
+ 
+// Pre: Был вызван init()
+// Post: ℝ = value ∧ value' = value
+int get() { return value; }
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">35</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Заключение</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Структура курса</a></li><li><a href="#(6)" class="toc">Последовательный код</a></li><li><a href="#(22)" class="toc">Функции</a></li><li><a href="#(36)" class="toc current">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">36</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ссылки</h1><div class="body"><ul class="item-1 level-1"><li><em>Дейкстра Э.</em> Дисциплина программирования</li><li><em>Мейер Б.</em> Объектно-ориентированное конструирование программных систем <a href="http://www.rusedit.com/book.aspx?BookID=1211" target="_blank">http://www.rusedit.com/book.aspx?BookID=1211</a></li><li><em>Wikipedia</em> <a href="https://en.wikipedia.org/wiki/Hoare_logic" target="_blank">Hoare Logic</a></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">37</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вопросы</h1><div class="body"><div class="questions">???</div></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Программирование по контракту</span><span class="number">38</span></div></div></div></div></div></body></html>

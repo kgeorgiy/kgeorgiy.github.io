@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ru" xml:lang="ru" xmlns="http://www.w3.org/1999/xhtml"><head><title>Парадигмы программирования / Реализация ООП</title><meta name="author" content="" /><link rel="stylesheet" type="text/css" media="screen, projection, print" href="scripts/slidy.css" /><link rel="stylesheet" type="text/css" href="scripts/prettify.css" /><link rel="stylesheet" type="text/css" href="scripts/kgeorgiy-slides.css" /><script type="text/javascript" src="scripts/slidy.js" charset="utf-8" /><script type="text/javascript" src="scripts/kgeorgiy-slides.js" charset="utf-8" /><script type="text/javascript" src="scripts/prettify.js" /><script type="text/javascript" src="scripts/lang-sql.js" /><script type="text/javascript" src="scripts/lang-javaModule.js" /><script type="text/javascript" src="scripts/lang-scala.js" /><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML" /><script type="text/javascript">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']], displayMath: [['$$','$$']], ignoreClass: "", processClass: "math|lang-math"}});</script><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ" /><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body onload="prettyPrint()"><div id="all">
+<div class="slide cover"><div class="content"><div class="course">Парадигмы программирования</div><hr /><div class="lecture"><div>Реализация ООП</div></div><div class="link"><a href="https://kgeorgiy.info/courses/paradigms/">https://kgeorgiy.info/courses/paradigms/</a></div><div class="copyright"><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru"><span class="copyright">Copyright © Георгий Корнеев</span><img src="scripts/by-nc-sa.png" alt="Attribution-NonCommercial-ShareAlike" /></a></div></div></div>
+<div class="slide section"><div class="content"><h1>Классы своими руками</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Классы своими руками</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">Стек на массиве</a></li><li><a href="#(8)" class="">Процедурная реализация на массиве</a></li><li><a href="#(15)" class="">Реализация на структурах</a></li><li><a href="#(23)" class="">Преобразование в класс</a></li></ol></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">2</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Стек на массиве</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Классы своими руками</a><ol class="level-2 toc-2"><li><a href="#(3)" class=" current">Стек на массиве</a></li><li><a href="#(8)" class="">Процедурная реализация на массиве</a></li><li><a href="#(15)" class="">Реализация на структурах</a></li><li><a href="#(23)" class="">Преобразование в класс</a></li></ol></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">3</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Описание стека</h1><div class="body"><ul class="item-1 level-1"><li>Переменные<ul class="item-2 level-2"><li><var>size</var> — число элементов</li><li><var>elements</var> — массив элементов</li></ul></li><li>Методы<ul class="item-2 level-2"><li><var>push</var> — добавить элемент</li><li><var>pop</var> — удалить элемент</li><li><var>peek</var> — получить элемент на вершине</li><li><var>size</var> — число элементов</li><li><var>isEmpty</var> — проверка на пустоту</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">4</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Модель</h1><div class="body"><ul class="item-1 level-1"><li>Последовательность чисел<ul class="item-2 level-2"><li><span class="mathO"><span class="math">$a[1], a[2], \ldots, a[n]$</span></span></li><li>Операции с последним элементом</li></ul></li><li>Инвариант<ul class="item-2 level-2"><li><span class="mathO"><span class="math">$n \ge 0$</span></span></li><li><span class="mathO"><span class="math">$∀i=1..n: a_i ≠ null$</span></span></li></ul></li><li>Определения<ul class="item-2 level-2"><li><span class="mathO"><span class="math">$immutable(k) = ∀i=1..k : a[i]' = a[i]$</span></span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">5</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Контракты (1)</h1><div class="body"><ul class="item-1 level-1"><li><var>push</var><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pred: element ≠ null
+// Post: n' = n + 1 ∧ immutable(n) ∧ a'[n'] = element
+void push(Object element)
+</pre></li></ul></li><li><var>pop</var><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pred: n &gt; 0
+// Post: ℝ = a[n] ∧ n = n' − 1 ∧ immutable(n')
+Object pop()
+</pre></li></ul></li><li><var>peek</var><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Pred: n &gt; 0
+// peek: ℝ = a[n] ∧ n = n' ∧ immutable(n)
+Object peek()
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">6</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Контракты (2)</h1><div class="body"><ul class="item-1 level-1"><li><var>size</var><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Post: ℝ = n ∧ n = n' ∧ immutable(n)
+int size()
+</pre></li></ul></li><li><var>isEmpty</var><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">// Post: ℝ = n &gt; 0 ∧ n = n' ∧ immutable(n)
+boolean isEmpty()
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">7</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Процедурная реализация на массиве</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Классы своими руками</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">Стек на массиве</a></li><li><a href="#(8)" class=" current">Процедурная реализация на массиве</a></li><li><a href="#(15)" class="">Реализация на структурах</a></li><li><a href="#(23)" class="">Преобразование в класс</a></li></ol></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">8</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Заголовок</h1><div class="body"><ul class="item-1 level-1"><li>Объявление модуля <pre class="prettyprint lang-java">public class ArrayStackModule {
+</pre></li><li>Данные <pre class="prettyprint lang-java">static int size;
+static Object[] elements = new Object[5];
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">9</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Функция push</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">static void push(Object element) {
+    Objects.requireNonNull(element);
+    ensureCapacity(size + 1);
+    elements[size++] = element;
+}
+</pre></li><li><pre class="prettyprint lang-java">static void ensureCapacity(int capacity) {
+    if (capacity &gt; elements.length) {
+        elements = 
+            Arrays.copyOf(elements, 2 * capacity);
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">10</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Функции pop и peek</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">static Object pop() {
+    assert size &gt; 0;
+    return elements[--size];
+}
+</pre></li><li><pre class="prettyprint lang-java">static Object peek() {
+    assert size &gt; 0;
+    return elements[size - 1];
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">11</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Функции size и isEmpty</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">static int size() {
+    return size;
+}
+</pre></li><li><pre class="prettyprint lang-java">static boolean isEmpty() {
+    return size == 0;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">12</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример использования</h1><div class="body"><ul class="item-1 level-1"><li>Добавление элементов <pre class="prettyprint lang-java">for (int i = 0; i &lt; 10; i++) {
+    ArrayStackModule.push(i);
+}
+</pre></li><li>Получение элементов <pre class="prettyprint lang-java">while (!ArrayStackModule.isEmpty()) {
+    System.out.println(
+        ArrayStackModule.size() + " " +
+        ArrayStackModule.peek() + " " +
+        ArrayStackModule.pop()
+    );
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">13</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Инкапсуляция</h1><div class="body"><ul class="item-1 level-1"><li>Сокрытие деталей реализации<ul class="item-2 level-2"><li>Доступ на уровне модуля</li><li>Способ поддерживать контракт</li></ul></li><li>Пример<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">private static int size
+private static Object[] elements
+public push(Object element)
+public Object pop()
+public Object peek()
+public int size()
+public boolean isEmpty()
+private void ensureCapacity()
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">14</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Реализация на структурах</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Классы своими руками</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">Стек на массиве</a></li><li><a href="#(8)" class="">Процедурная реализация на массиве</a></li><li><a href="#(15)" class=" current">Реализация на структурах</a></li><li><a href="#(23)" class="">Преобразование в класс</a></li></ol></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">15</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Заголовок</h1><div class="body"><ul class="item-1 level-1"><li>Объявление структуры <pre class="prettyprint lang-java">public class ArrayStackADT {
+</pre></li><li>Данные <pre class="prettyprint lang-java">private /*static*/ int size;
+private /*static*/ Object[] elements =
+        new Object[5];
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">16</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Преобразование</h1><div class="body"><ul class="item-1 level-1"><li>Добавление аргументов функций<ul class="item-2 level-2"><li>Первый аргумент — ссылка на структуру</li><li><var>ArrayStackADT stack</var></li></ul></li><li>Доступ к переменным<ul class="item-2 level-2"><li>Добавление префикса <var>stack.</var></li></ul></li><li>Вызов функций<ul class="item-2 level-2"><li>Передача первым аргументом ссылки</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">17</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Функция push</h1><div class="body"><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">public static void push(ArrayStackADT stack, Object element) {
+    Objects.requireNonNull(element);
+    ensureCapacity(stack, stack.size + 1);
+    stack.elements[stack.size++] = element;
+}
+</pre></li><li><pre class="prettyprint lang-java">private static void ensureCapacity(
+    ArrayStackADT stack, int capacity
+) {
+    if (stack.elements.length &lt; capacity) {
+        stack.elements = 
+            Arrays.copyOf(stack.elements, capacity * 2);
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">18</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Функции pop и peek</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">public static Object pop(ArrayStackADT stack) {
+    assert stack.size &gt; 0;
+    return stack.elements[--stack.size];
+}
+</pre></li><li><pre class="prettyprint lang-java">public static Object peek(ArrayStackADT stack) {
+    assert stack.size &gt; 0;
+    return stack.elements[stack.size - 1];
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">19</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Функции size и isEmpty</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">public static int size(ArrayStackADT stack) {
+    return stack.size;
+}
+</pre></li><li><pre class="prettyprint lang-java">public static boolean isEmpty(
+    ArrayStackADT stack
+) {
+    return stack.size == 0;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">20</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Инициализатор (конструктор)</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">public static ArrayStackADT create() {
+    ArrayStackADT stack = new ArrayStackADT();
+    stack.elements = new Object[10];
+    return stack;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">21</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример использования</h1><div class="body"><ul class="item-1 level-1"><li>Добавление элементов <pre class="prettyprint lang-java">ArrayStackADT stack = ArrayStackADT.create();
+for (int i = 0; i &lt; 10; i++) {
+    ArrayStackADT.push(stack, i);
+}
+</pre></li><li>Получение элементов <pre class="prettyprint lang-java">while (!ArrayStackADT.isEmpty(stack)) {
+    System.out.println(
+        ArrayStackADT.size(stack) + " " +
+        ArrayStackADT.peek(stack) + " " +
+        ArrayStackADT.pop(stack)
+    );
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">22</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Преобразование в класс</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Классы своими руками</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">Стек на массиве</a></li><li><a href="#(8)" class="">Процедурная реализация на массиве</a></li><li><a href="#(15)" class="">Реализация на структурах</a></li><li><a href="#(23)" class=" current">Преобразование в класс</a></li></ol></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">23</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Заголовок</h1><div class="body"><ul class="item-1 level-1"><li>Объявление класса <pre class="prettyprint lang-java">public class ArrayStack {
+</pre></li><li>Данные <pre class="prettyprint lang-java">private int size;
+private Object[] elements = new Object[10];
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">24</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Преобразование функций в методы</h1><div class="body"><ul class="item-1 level-1"><li>Изменение модификаторов<ul class="item-2 level-2"><li>Убрать <var>static</var></li></ul></li><li>Замена первого аргумента<ul class="item-2 level-2"><li>Замена на аргумента на неявный (<var>this</var>)</li></ul></li><li>Доступ к переменным<ul class="item-2 level-2"><li>Замена префикса <var>stack.</var> на <var>this.</var></li><li>Префикс <var>this.</var> можно опускать</li></ul></li><li>Вызов метода<ul class="item-2 level-2"><li><var>method(stack, ...)</var> ⇒ <var>stack.method(...)</var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">25</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Метод push</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">public void push(Object element) {
+    Objects.requireNonNull(element);
+    ensureCapacity(size + 1);
+    elements[size++] = element;
+}
+</pre></li><li><pre class="prettyprint lang-java">private void ensureCapacity(int capacity) {
+    if (elements.length &lt; capacity) {
+        elements = 
+            Arrays.copyOf(elements, capacity * 2);
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">26</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Методы pop и peek</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">public Object pop() {
+    assert size &gt; 0;
+    return elements[--size];
+}
+</pre></li><li><pre class="prettyprint lang-java">public Object peek() {
+    assert size &gt; 0;
+    return elements[size - 1];
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">27</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Методы size и isEmpty</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">public int size() {
+    return size;
+}
+</pre></li><li><pre class="prettyprint lang-java">public boolean isEmpty() {
+    return size == 0;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">28</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример использования</h1><div class="body"><ul class="item-1 level-1"><li>Добавление элементов <pre class="prettyprint lang-java">ArrayStack stack = new ArrayStack();
+for (int i = 0; i &lt; 10; i++) {
+    stack.push(i);
+}
+</pre></li><li>Получение элементов <pre class="prettyprint lang-java">while (!stack.isEmpty()) {
+    System.out.println(stack.size() + " " +
+        stack.peek() + " " + stack.pop());
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">29</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Конструкторы</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc current">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">30</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Элемент связного списка</h1><div class="body"><ul class="item-1 level-1"><li>Объявление класса <pre class="prettyprint lang-java">// inv: value != null
+public class Node {
+   Object value;
+   Node next;
+}
+</pre></li><li>Инициализация <pre class="prettyprint lang-java">public init(Object value, Node next) {
+    assert value != null;
+    this.value = value;
+    this.next = next;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">31</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Инициализация</h1><div class="body"><ul class="item-1 level-1"><li>Значения по умолчанию <pre class="prettyprint lang-java">value = null;
+next = null;
+</pre><ul class="item-2 level-2"><li><span class="warn">Инвариант нарушен</span></li></ul></li><li>Метод <var>init</var><pre class="prettyprint lang-java">assert value != null;
+this.value = value;
+this.next = next;
+</pre><ul class="item-2 level-2"><li>Инвариант соблюдается</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">32</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Конструктор</h1><div class="body"><ul class="item-1 level-1"><li>Соблюдение инварианта при создании</li><li>Пример конструктора <pre class="prettyprint lang-java">public Node(Object value, Node next) {
+    assert value != null;
+    this.value = value;
+    this.next = next;
+}
+</pre></li><li>Вызов конструктора <pre class="prettyprint lang-java">Node node = new Node(1, null);
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">33</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Как работало раньше?</h1><div class="body"><ul class="item-1 level-1"><li>Конструктор по умолчанию<ul class="item-2 level-2"><li>Без аргументов</li><li>Ничего не делает</li><li>Создается, если нет других</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">34</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Интерфейсы</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc current">Интерфейсы</a><ol class="level-2 toc-2"><li><a href="#(36)" class="">Стек на связном списке</a></li><li><a href="#(44)" class="">Определение интерфейса</a></li><li><a href="#(49)" class="">Эффективное устройство интерфейсов</a></li><li><a href="#(55)" class="">Полиморфизм</a></li></ol></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">35</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Стек на связном списке</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc current">Интерфейсы</a><ol class="level-2 toc-2"><li><a href="#(36)" class=" current">Стек на связном списке</a></li><li><a href="#(44)" class="">Определение интерфейса</a></li><li><a href="#(49)" class="">Эффективное устройство интерфейсов</a></li><li><a href="#(55)" class="">Полиморфизм</a></li></ol></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">36</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Устройство</h1><div class="body"><ul class="item-1 level-1"><li>Исходное состояние </li></ul><div class="img-width"><img class="width" style="width: 50%" src="pics/LinkedStack-0.svg" /></div><ul class="item-1 level-1"><li><var>push(v¹)</var></li></ul><div class="img-width"><img class="width" style="width: 50%" src="pics/LinkedStack-1.svg" /></div><ul class="item-1 level-1"><li><var>push(v²)</var></li></ul><div class="img-width"><img class="width" style="width: 50%" src="pics/LinkedStack-2.svg" /></div><ul class="item-1 level-1"><li><var>pop()</var></li></ul><div class="img-width"><img class="width" style="width: 50%" src="pics/LinkedStack-1.svg" /></div></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">37</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Реализация</h1><div class="body"><ul class="item-1 level-1"><li>Объявление класса <pre class="prettyprint lang-java">public class LinkedStack {
+</pre></li><li>Данные <pre class="prettyprint lang-java">private int size;
+private Node head;
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">38</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Метод push</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Pred: element ≠ null
+// Post: n = n' + 1 ∧ ∀i=1..n' : a[i]' = a[i]∧
+//          ∧ a[n] = element
+public void push(Object element) {
+    assert element != null;
+    size++;
+    head = new Node(element, head);
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">39</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Метод pop</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Pred: n &gt; 0
+// Post: ℝ = a[n + 1] ∧ n = n' − 1 ∧
+//          ∧ ∀i=1..n : a[i]' = a[i]
+public Object pop() {
+    assert size &gt; 0;
+    size--;
+    Object result = head.value;
+    head = head.next;
+    return result;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">40</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Метод peek</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Pred: n &gt; 0
+// Post: ℝ = a[n] ∧ immutable
+public Object peek() {
+    assert size &gt; 0;
+    return head.value;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">41</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Методы size и isEmpty</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Post: ℝ = n ∧ immutable
+public int size() {
+    return size;
+}
+</pre></li><li><pre class="prettyprint lang-java">// Post: ℝ = n &gt; 0 ∧ immutable
+public boolean isEmpty() {
+    return size == 0;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">42</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример использования</h1><div class="body"><ul class="item-1 level-1"><li>Добавление элементов <pre class="prettyprint lang-java">LinkedStack stack = new LinkedStack();
+for (int i = 0; i &lt; 10; i++) {
+    stack.push(i);
+}
+</pre></li><li>Получение элементов <pre class="prettyprint lang-java">while (!stack.isEmpty()) {
+    System.out.println(stack.size() + " " +
+        stack.peek() + " " + stack.pop());
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">43</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Определение интерфейса</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc current">Интерфейсы</a><ol class="level-2 toc-2"><li><a href="#(36)" class="">Стек на связном списке</a></li><li><a href="#(44)" class=" current">Определение интерфейса</a></li><li><a href="#(49)" class="">Эффективное устройство интерфейсов</a></li><li><a href="#(55)" class="">Полиморфизм</a></li></ol></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">44</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема</h1><div class="body"><ul class="item-1 level-1"><li>Одинаковый контракт стеков</li><li>Одинаково использование<ul class="item-2 level-2"><li>Почти одинаковый код</li></ul></li><li><span class="warn">Код знает тип списка</span><ul class="item-2 level-2"><li><var>ArrayStack</var></li><li><var>LinkedStack</var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">45</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Решение</h1><div class="body"><ul class="item-1 level-1"><li>Интерфейс<ul class="item-2 level-2"><li>Набор методов</li><li>Контракт</li></ul></li><li>Пример <pre class="prettyprint lang-java">public interface Stack {
+    /*public*/ void push(Object element);
+    /*public*/ Object pop();
+    /*public*/ Object peek();
+    /*public*/ int size();
+    /*public*/ boolean isEmpty();
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">46</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Реализация интерфейса</h1><div class="body"><ul class="item-1 level-1"><li>Синтаксис <pre class="prettyprint lang-java">public class ArrayStack implements Stack { ... }
+public class LinkedStack implements Stack { ... }
+</pre></li><li>Реализация методов<ul class="item-2 level-2"><li>Проверяется компилятором</li></ul></li><li>Выполнение контракта<ul class="item-2 level-2"><li>Гарантируется программистом</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">47</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример использования</h1><div class="body"><ul class="item-1 level-1"><li>Добавление элементов <pre class="prettyprint lang-java">public static void fill(Stack stack) {
+    for (int i = 0; i &lt; 10; i++) {
+        stack.push(i);
+    }
+}
+</pre></li><li>Получение элементов <pre class="prettyprint lang-java">public static void dump(Stack stack) {
+    while (!stack.isEmpty()) {
+        System.out.println(stack.size() + " " +
+            stack.peek() + " " + stack.pop());
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">48</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Эффективное устройство интерфейсов</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc current">Интерфейсы</a><ol class="level-2 toc-2"><li><a href="#(36)" class="">Стек на связном списке</a></li><li><a href="#(44)" class="">Определение интерфейса</a></li><li><a href="#(49)" class=" current">Эффективное устройство интерфейсов</a></li><li><a href="#(55)" class="">Полиморфизм</a></li></ol></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">49</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проверка типа</h1><div class="body"><ul class="item-1 level-1"><li><var>a instanceof T</var><ul class="item-2 level-2"><li><var>a</var> может быть приведено к <var>T</var></li></ul></li><li>Примеры<ul class="item-2 level-2"><li><var>new ArrayStack() instanceof ArrayStack</var> ⇒ <var>true</var></li><li><var>new ArrayStack() instanceof LinkedStack</var> ⇒ <var>false</var></li><li><var>new ArrayStack() instanceof Stack</var> ⇒ <var>true</var></li><li><var>new ArrayStack() instanceof Object</var> ⇒ <var>true</var></li><li><var>new Object() instanceof Stack</var> ⇒ <var>false</var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">50</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Реализация на основе instanceof </h1><div class="body"><pre class="prettyprint lang-java">class StackImpl {
+    public static void pop(Stack this) {
+        if (this instanceof ArrayStack) {
+            return ArrayStack.pop(this);
+        } else if (this instanceof LinkedStack) {
+            return LinkedStack.pop(this);
+        } else {
+            // ?
+        }
+    }
+    …
+}
+</pre></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">51</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Свойства</h1><div class="body"><ul class="item-1 level-1"><li>Достоинства<ul class="item-2 level-2"><li>Простота реализации</li></ul></li><li>Недостатки<ul class="item-2 level-2"><li>Разбухание кода</li><li>Линейное время</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">52</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Таблицы виртуальных функций </h1><div class="body"><div class="img-width"><img class="width" style="width: 100%" src="pics/Stack-vtbl.png" /></div></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">53</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Свойства</h1><div class="body"><ul class="item-1 level-1"><li>Достоинства<ul class="item-2 level-2"><li>Константные трудозатраты</li></ul></li><li>Недостатки<ul class="item-2 level-2"><li>Затраты памяти</li><li>Проблемы с множественным наследованием</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">54</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Полиморфизм</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc current">Интерфейсы</a><ol class="level-2 toc-2"><li><a href="#(36)" class="">Стек на связном списке</a></li><li><a href="#(44)" class="">Определение интерфейса</a></li><li><a href="#(49)" class="">Эффективное устройство интерфейсов</a></li><li><a href="#(55)" class=" current">Полиморфизм</a></li></ol></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">55</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Полиморфизм</h1><div class="body"><ul class="item-1 level-1"><li>Один код, разные типы</li><li>Ad-hoc<ul class="item-2 level-2"><li>Для каждого типа свое поведение</li></ul></li><li>Универсальный<ul class="item-2 level-2"><li>Одинаковое поведение для всех типов</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">56</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (1)</h1><div class="body"><ul class="item-1 level-1"><li>Операция сложения (<var>+</var>)</li><li>Примеры использования<ul class="item-2 level-2"><li><var>1 + 1</var></li><li><var>1.0 + 1</var></li><li><var>1 + 1.0</var></li><li><var>1.0 + 1.0</var></li></ul></li><li>Перегрузка времени компиляции по обоим параметрам<ul class="item-2 level-2"><li>Ad-hoc полиморфизм</li></ul></li><li>Перегрузка для разных типов + автоматизированное приведение типов<ul class="item-2 level-2"><li>Ad-hoc полиморфизм</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">57</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (2)</h1><div class="body"><ul class="item-1 level-1"><li>Перегрузка функций <pre class="prettyprint lang-java">void test(LinkedStack stack) { … }
+void test(ArrayStack stack) { … }
+…
+test(new LinkedList());
+test(new ArrayList());
+</pre></li><li>Ad-hoc полиморфизм</li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">58</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (3)</h1><div class="body"><ul class="item-1 level-1"><li>Функция <var>printf</var></li><li>Примеры использования<ul class="item-2 level-2"><li><var>printf("%d", 10);</var></li><li><var>printf("%s", "hello");</var></li></ul></li><li>Перегрузка времени исполнения по всем параметрам, кроме первого + явная передача информации о типах<ul class="item-2 level-2"><li>Ad-hoc полиморфизм</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">59</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (4)</h1><div class="body"><ul class="item-1 level-1"><li>Наследование в ООП<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">drawWithColor(Shape shape, Color color) {
+    shape.setColor(color);
+    shape.draw()
+}
+</pre></li></ul></li><li><var>drawWithColor</var> – полиморфизм включения по первому параметру<ul class="item-2 level-2"><li>Параметрический полиморфизм</li></ul></li><li><var>draw(this)</var> – перегрузка времени исполнения по первому параметру<ul class="item-2 level-2"><li>Ad-hoc полиморфизм</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">60</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример полиморфизма (5)</h1><div class="body"><ul class="item-1 level-1"><li>Определение типа во время исполнения</li><li>Пример использования<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">void draw(Shape shape) {
+    if (shape instanceof Rect) …
+    if (shape instanceof Circle) …
+}
+</pre></li></ul></li><li><var>draw()</var> – перегрузка времени исполнения<ul class="item-2 level-2"><li>Ad-hoc полиморфизм</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">61</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Наследование</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc current">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">62</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Общее поведение</h1><div class="body"><ul class="item-1 level-1"><li>Управление размером<ul class="item-2 level-2"><li><var>size</var></li><li><var>isEmpty</var></li><li><var>push</var></li><li><var>pop</var></li></ul></li><li>Обработка <var>null</var><ul class="item-2 level-2"><li><var>push</var></li></ul></li><li>Обработка пустого стека<ul class="item-2 level-2"><li><var>pop</var></li><li><var>peek</var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">63</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вынос общего поведения</h1><div class="body"><ul class="item-1 level-1"><li>Полное дублирование<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">public isEmpty() {
+    return size == 0;
+}
+</pre></li><li>Общая функция/метод</li></ul></li><li>Частичное дублирование<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">public peek() {
+    assert size &gt; 0;
+    // Получить элемент
+    // Зависит от реализации
+}
+</pre></li><li><span class="question">Что делать?</span></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">64</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Устранение дублирования</h1><div class="body"><ul class="item-1 level-1"><li>Метод для дублирующейся части<ul class="item-2 level-2"><li>Вызывает методы для различных частей</li><li><pre class="prettyprint lang-java">public peek() {
+    assert size &gt; 0;
+    doPeek();
+}
+</pre></li><li><pre class="prettyprint lang-java">protected abstract Object doPeek();
+</pre></li></ul></li><li>Методы для различающихся частей<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">protected doPeek() { // ArrayStack
+    return elements[size - 1];
+}
+</pre></li><li><pre class="prettyprint lang-java">protected doPeek() { // LinkedStack
+    return head.value;
+}
+</pre></li></ul></li><li><span class="question">Как реализовать?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental">Указатели на функции</div></li><li class="incremental"><div class="non-incremental">Таблица функций</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">65</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Память и сборка мусора</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc current">Память и сборка мусора</a></li><li><a href="#(76)" class="toc">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">66</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Интерфейс Copiable</h1><div class="body"><ul class="item-1 level-1"><li>Определение <pre class="prettyprint lang-java">public interface Copiable {
+    public Copiable makeCopy();
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">67</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Стек на массиве</h1><div class="body"><ul class="item-1 level-1"><li>Множественная реализация интерфейсов <pre class="prettyprint lang-java">public class ArrayStack
+    implements Stack, Copiable {
+</pre></li><li>Реализация <pre class="prettyprint lang-java">public Copiable makeCopy() {
+    final ArrayStack copy = new ArrayStack();
+    copy.size = size;
+    copy.elements = elements;
+    return copy;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">68</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Проблема</h1><div class="body"><ul class="item-1 level-1"><li>Общий массив элементов</li><li><var>makeCopy()</var></li></ul><div class="img-width"><img class="width" style="width: 80%" src="pics/ArrayStack-Copiable-1.svg" /></div><ul class="item-1 level-1"><li><var>pop()</var></li></ul><div class="img-width"><img class="width" style="width: 80%" src="pics/ArrayStack-Copiable-2.svg" /></div></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">69</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Копирование массива </h1><div class="body"><pre class="prettyprint lang-java">public Copiable makeCopy() {
+    final ArrayStack copy = new ArrayStack();
+    copy.size = size;
+    copy.elements = Arrays.copyOf(elements, size);
+    return copy;
+}
+</pre></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">70</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Соглашения Java</h1><div class="body"><ul class="item-1 level-1"><li>Ссылка передается по значению<ul class="item-2 level-2"><li>Объект – не копируется</li><li>При изменении – изменяется по всем ссылкам</li></ul></li><li>Поверхностное копирование<ul class="item-2 level-2"><li>Только ссылок на объекты</li></ul></li><li>Глубокое копирование<ul class="item-2 level-2"><li>Создание копий объектов</li><li>В явном виде</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">71</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Сборка мусора</h1><div class="body"><ul class="item-1 level-1"><li>Получение ссылки<ul class="item-2 level-2"><li><var>new</var></li><li>присваивание</li><li>вызов метода</li></ul></li><li>Мусор<ul class="item-2 level-2"><li>Нет ссылок</li><li>⇒ никогда не будет</li><li>⇒ можно удалить объект</li></ul></li><li>Сборщик мусора<ul class="item-2 level-2"><li>Удаляет мусор</li><li><var>delete</var> не нужен</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">72</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Уточнение возвращаемого значения</h1><div class="body"><ul class="item-1 level-1"><li>Проблема<ul class="item-2 level-2"><li><var>ArrayStack copy = <span class="warn">(ArrayStack)</span> stack.makeCopy();</var></li></ul></li><li>Решение <pre class="prettyprint lang-java">public ArrayStack makeCopy() { ... }
+</pre></li><li><span class="question">Почему это работает?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental"><var>ArrayStack</var> реализует <var>Copiable</var></div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">73</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Стек на связном списке</h1><div class="body"><ul class="item-1 level-1"><li>Объявление <pre class="prettyprint lang-java">public class LinkedStack
+    implements Stack, Copiable {
+</pre></li><li>Реализация <pre class="prettyprint lang-java">public LinkedStack makeCopy() {
+    final LinkedStack copy = new LinkedStack();
+    copy.size = size;
+    copy.head = head;
+    return copy;
+}
+</pre></li><li><span class="question">Почему это работает?</span><ul class="item-2 level-2"><li class="incremental"><div class="non-incremental"><var>Node</var> не изменяется</div></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">74</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Наследование интерфейсов</h1><div class="body"><ul class="item-1 level-1"><li>Конкретный стек можно скопировать<ul class="item-2 level-2"><li><span class="warn"><var>Stack</var> нельзя скопировать</span></li></ul></li><li>Решение <pre class="prettyprint lang-java">public interface Stack extends Copiable { ... }
+</pre></li><li>Уточнение возвращаемого значения <pre class="prettyprint lang-java">public interface Stack extends Copiable {
+    Stack makeCopy();
+    ...
+</pre></li><li>Пример использования <pre class="prettyprint lang-java">Stack stack = ...;
+Stack copy = stack.makeCopy();
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">75</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Заключение</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Классы своими руками</a></li><li><a href="#(30)" class="toc">Конструкторы</a></li><li><a href="#(35)" class="toc">Интерфейсы</a></li><li><a href="#(62)" class="toc">Наследование</a></li><li><a href="#(66)" class="toc">Память и сборка мусора</a></li><li><a href="#(76)" class="toc current">Заключение</a></li></ol></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">76</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ссылки</h1><div class="body"><ul class="item-1 level-1"><li><em>Мейер Б.</em> Объектно-ориентированное конструирование программных систем <a href="http://www.rusedit.com/book.aspx?BookID=1211" target="_blank">http://www.rusedit.com/book.aspx?BookID=1211</a></li><li>Java Modeling Language <a href="http://www.cs.ucf.edu/~leavens/JML/" target="_blank">http://www.cs.ucf.edu/~leavens/JML/</a></li><li>Сборка мусора <a href="http://ru.wikipedia.org/wiki/Сборка_мусора" target="_blank"><br />http://ru.wikipedia.org/wiki/Сборка_мусора</a></li><li>Java Tutorial: Interfaces and Inheritance <a href="http://docs.oracle.com/javase/tutorial/java/IandI/index.html" target="_blank">http://docs.oracle.com/javase/tutorial/java/IandI/index.html</a></li></ul></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">77</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вопросы</h1><div class="body"><div class="questions">???</div></div><div class="footer"><div class="test"><span class="author">Георгий Корнеев</span><span class="title">Парадигмы программирования / Реализация ООП</span><span class="number">78</span></div></div></div></div></div></body></html>

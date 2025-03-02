@@ -1,0 +1,166 @@
+:root {
+    --em-font: Arial, Helvetica, Sans-serif; 
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body > header {
+    color: white;
+    background: repeating-linear-gradient(-45deg, #448fdb, #448fdb 2ex, #3a86da 2ex, #3a86da 4ex);
+}
+
+body > header > h1 {
+    margin: 0 0.3em;
+    padding: 0;
+}
+
+body > header > nav {
+    font: bolder 100% var(--em-font);
+    margin: 0 1em;
+    letter-spacing: -0.15ex;
+}
+
+body > header > nav > a {
+    color: inherit;
+}
+
+
+a {
+    color: #17487D;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin-bottom: 0.5ex;
+    font-family: var(--em-font);
+    font-weight: bolder;
+}
+
+h1 {
+    font-size: 300%;
+    letter-spacing: -0.2ex;
+}
+
+h2 {
+    font-size: 200%;
+    letter-spacing: -0.2ex;
+    color: #2666c3;
+}
+
+h3 {
+    font-size: 150%;
+    letter-spacing: -0.2ex;
+    color: #2666c3;
+}
+
+h4 {
+    font-size: 120%;
+    letter-spacing: -0.15ex;
+    color: black;
+}
+
+h5 {
+    font-size: 100%;
+    letter-spacing: -0.1ex;
+    color: black;
+}
+
+table.black {
+    border-collapse: collapse;
+    vertical-align: top;
+
+    padding: 3px;
+    text-align: justify;
+}
+
+table.black td, table.black th {
+    background: white;
+}
+
+table.black td > pre {
+    margin: 0;
+}
+
+.center {
+    text-align: center;
+}
+
+table.black th {
+    background: repeating-linear-gradient(-45deg, #448fdb, #448fdb 2ex, #3a86da 2ex, #3a86da 4ex);
+    letter-spacing: -0.15ex;
+    color: white;
+    border: solid 1px #133964;
+    text-align: center;
+}
+
+table.black td {
+    border: solid 1px #2666c3;
+    vertical-align: top;
+}
+
+div#main {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+article {
+    padding: 0 1em 1em 1em;
+    flex: 1 1;
+}
+
+
+@media print, screen and (max-width: 70rem) {
+    aside {
+        display: none;
+    }
+}
+
+aside {
+    width: 20vw;
+    padding: 1em;
+    background-color: #ecf3fb;
+}
+
+aside > nav {
+    margin: 1em 0 2em 0;
+}
+
+aside > nav > ol {
+    list-style-type: none;
+    margin: 0 0 0 2em;
+    padding: 0;
+    font-family: var(--em-font);
+    font-size: 90%;
+}
+
+aside > nav > ol > li {
+    text-indent: -2em;
+}
+
+aside > nav > ol > li.i0 { margin-left: 0em; }
+aside > nav > ol > li.i1 { margin-left: 1em; }
+aside > nav > ol > li.i2 { margin-left: 2em; }
+aside > nav > ol > li.i3 { margin-left: 3em; }
+aside > nav > ol > li.i4 { margin-left: 4em; }
+
+form#search {
+    display: flex;
+    width: 100%;
+}
+
+form#search > input {
+    flex: 1 1;
+}
+
+li > p:first-child {
+    margin-top: 0;
+    margin-bottom: 0;
+}

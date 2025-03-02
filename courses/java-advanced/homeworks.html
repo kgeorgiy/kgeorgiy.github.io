@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Технологии Java :: Домашние задания</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="./../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="./../../">ГК</a> / <a href="./../">Материалы курсов</a> / <a href="./">Технологии Java</a> / </nav><h1>Домашние задания</h1></header><div id="main"><article><h4 id="walk">Домашнее задание 1. Обход файлов</h4><ol><li>
+            Разработайте класс <code>Walk</code>, осуществляющий подсчет хэш-сумм файлов.
+            <ol><li>
+                    Формат запуска:
+                    <pre>java Walk &lt;входной файл&gt; &lt;выходной файл&gt;</pre></li><li>
+                    Входной файл содержит список файлов, которые требуется обойти.
+                </li><li>
+                    Выходной файл должен содержать по одной строке для каждого файла. 
+                    Формат строки:
+                    <pre>&lt;шестнадцатеричная хэш-сумма&gt; &lt;путь к файлу&gt;</pre></li><li>
+                    Для подсчета хэш-суммы используйте
+                    последние 64 бита <a href="https://en.wikipedia.org/wiki/SHA-256">SHA-256</a>
+                    (поддержка есть в стандартной библиотеке).
+                    
+                    
+                    .
+                    
+                </li><li>
+                    Если при чтении файла возникают ошибки, укажите в качестве
+                    его хэш-суммы все нули.
+                </li><li>
+                    Кодировка входного и выходного файлов &mdash; UTF-8.
+                </li><li>
+                    Размеры файлов могут превышать размер оперативной памяти.
+                </li><li>
+                    Пример
+                    <table class="black"><tr><th>Входной файл</th></tr><tr><td><pre>
+samples/1
+samples/12
+samples/123
+samples/1234
+samples/1
+samples/binary
+samples/no-such-file
+                        </pre></td></tr><tr><th>Выходной файл</th></tr><tr><td><pre>
+6b86b273ff34fce1 samples/1
+6b51d431df5d7f14 samples/12
+a665a45920422f9d samples/123
+03ac674216f3e15c samples/1234
+6b86b273ff34fce1 samples/1
+40aff2e9d2d8922e samples/binary
+0000000000000000 samples/no-such-file
+                         </pre></td></tr></table></li></ol></li><li>
+            Сложный вариант:
+            <ol><li>
+                    Разработайте класс <code>RecursiveWalk</code>,
+                    осуществляющий подсчет хэш-сумм файлов в
+                    директориях.
+                </li><li>
+                    Входной файл содержит список файлов и директорий,
+                    которые требуется обойти. Обход директорий осуществляется
+                    рекурсивно.
+                </li><li>
+                    Пример:
+                    <table class="black"><tr><th>Входной файл</th></tr><tr><td><pre>
+samples/binary
+samples
+samples/no-such-file
+                        </pre></td></tr><tr><th>Выходной файл</th></tr><tr><td><pre>
+40aff2e9d2d8922e samples/binary
+6b86b273ff34fce1 samples/1
+6b51d431df5d7f14 samples/12
+a665a45920422f9d samples/123
+03ac674216f3e15c samples/1234
+40aff2e9d2d8922e samples/binary
+0000000000000000 samples/such-file
+                        </pre></td></tr></table></li></ol></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    Дизайн и обработку исключений, диагностику ошибок.
+                </li><li>
+                    Программа должна корректно завершаться даже в случае ошибки.
+                </li><li>
+                    Корректная работа с вводом-выводом.
+                </li><li>
+                    Отсутствие утечки ресурсов.
+                </li><li>
+                    Возможность повторного использования кода.
+                </li></ul></li><li>
+            Требования к оформлению задания.
+            <ul><li>
+                    Проверяется исходный код задания.
+                </li><li>
+                    Весь код должен находиться в пакете
+                    <code>info.kgeorgiy.ja.фамилия.walk</code>.
+                </li></ul></li></ol><p><a href="https://www.kgeorgiy.info/git/geo/java-advanced-2025">Репозиторий курса</a></p><h4 id="arrayset">Домашнее задание 2. Множество на массиве</h4><ol><li>
+            Разработайте класс <code>ArraySet</code>,
+            реализующий неизменяемое упорядоченное множество.
+            <ul><li>
+                    Класс <code>ArraySet</code> должен реализовывать
+                    интерфейс 
+                    <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/SortedSet.html">SortedSet</a>
+                    (простой вариант)
+                    или 
+                    <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/NavigableSet.html">NavigableSet</a> 
+                    (сложный вариант).
+                </li><li>
+                    Все операции над множествами должны производиться с наилучшей асимптотической эффективностью.
+                </li></ul></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    Применение стандартных коллекций.
+                </li><li>
+                    Избавление от повторяющегося кода.
+                </li><li>
+                    Отсутствие Unchecked warnings при компиляции.
+                </li><li>
+                    Отсутствие излишних подавленных unchecked warnings.
+                </li></ul></li></ol><h4 id="student">Домашнее задание 3. Студенты</h4><ol><li>
+            Разработайте класс <code>StudentDB</code>,
+            осуществляющий поиск по базе данных студентов.
+            <ul><li>
+                    Класс <code>StudentDB</code> должен реализовывать
+                    интерфейс <code>StudentQuery</code> (простой вариант)
+                    или <code>GroupQuery</code> (сложный вариант).
+                </li><li>
+                    Каждый метод должен состоять из ровно одного оператора.
+                    При этом длинные операторы надо разбивать на несколько строк.
+                </li></ul></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    применение лямбда-выражений и потоков;
+                </li><li>
+                    избавление от повторяющегося кода.
+                </li></ul></li></ol><h4 id="lambda">Домашнее задание 4. Сплитераторы и коллекторы</h4><ol><li>
+            Разработайте класс <code>Lambda</code>,
+            реализующий сплитераторы для деревьев и дополнительные коллекторы.
+            <ul><li><em>Простой вариант</em> (интерфейс <code>EasyLambda</code>) &mdash;
+                    реализуйте:
+                    <ul><li>
+                            сплитераторы 
+                            для двоичных деревьев, 
+                            двоичных деревьев с известным размером,
+                            k-ичных деревьев;
+                        </li><li>
+                            коллекторы первого, последнего, среднего элементов;
+                        </li><li>
+                            коллекторы общего префикса и суффикса строк.
+                        </li></ul></li><li><em>Сложный вариант</em> (интерфейс <code>HardLambda</code>) &mdash;
+                    дополнительно реализуйте:
+                    <ul><li>
+                            сплитераторы всех видов деревьев над списками элементов;
+                        </li><li>
+                            коллектор <var>n</var>-ого элемента;
+                        </li><li>
+                            коллекторы первых и последних <var>n</var> элементов.
+                        </li></ul></li></ul></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    характеристиски создаваемых сплитераторов;
+                </li><li>
+                    избавление от повторяющегося кода.
+                </li></ul></li></ol></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#walk">ДЗ-1. Обход файлов</a></li><li class="i0"><a href="#arrayset">ДЗ-2. Множество на массиве</a></li><li class="i0"><a href="#student">ДЗ-3. Студенты</a></li><li class="i0"><a href="#lambda">ДЗ-4. Сплитераторы и коллекторы</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

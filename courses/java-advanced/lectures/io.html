@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Технологии Java :: Тема&nbsp; 1. Ввод-вывод</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Технологии Java</a> / </nav><h1>Тема&nbsp; 1. Ввод-вывод</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Потоки ввода-вывода<ol><li>Четыре вида потоков</li><li>Операции с потоками</li><li>Исключения ввода-вывода</li></ol></li><li>Файловый ввод-вывод и преобразование потоков<ol><li>Классы файловых потоков</li><li>Кодировки и преобразование потоков</li></ol></li><li>Фильтрующие потоки<ol><li>Фильтрация</li><li>Буферизация</li></ol></li><li>Дополнительные возможности потоков<ol><li>Эмуляция чтения и записи</li><li>Конкатенация потоков ввода</li><li>Подавление ошибок</li></ol></li><li>Расширенный ввод-вывод<ol><li>Платформонезависимый ввод-вывод</li><li>Файлы с произвольным доступом</li><li>Классы System и Console</li></ol></li><li>Дескрипторы файлов<ol><li>Файлы, каталоги, пути и разделители</li><li>Операции с отдельными файлами</li><li>Листинг каталогов</li></ol></li><li>Ввод-вывод в Java 7<ol><li>Файловые системы и пути</li><li>Операции с отдельными файлами</li><li>Листинг каталогов</li></ol></li><li>Ввод-вывод и исключения<ol><li>Идиома работы с ресурсами</li><li>Работа с несколькими потоками</li></ol></li></ol><div class="slides"><h4 id="N65627">Слайды</h4><a href="../slides/io.xhtml">HTML</a></div><div class="examples"><h4 id="N65634">Примеры</h4><a href="../examples/io.zip">zip</a></div><div class="homework"><h4 id="N65641">Домашнее задание 1. Обход файлов</h4><ol><li>
+            Разработайте класс <code>Walk</code>, осуществляющий подсчет хэш-сумм файлов.
+            <ol><li>
+                    Формат запуска:
+                    <pre>java Walk &lt;входной файл&gt; &lt;выходной файл&gt;</pre></li><li>
+                    Входной файл содержит список файлов, которые требуется обойти.
+                </li><li>
+                    Выходной файл должен содержать по одной строке для каждого файла. 
+                    Формат строки:
+                    <pre>&lt;шестнадцатеричная хэш-сумма&gt; &lt;путь к файлу&gt;</pre></li><li>
+                    Для подсчета хэш-суммы используйте
+                    последние 64 бита <a href="https://en.wikipedia.org/wiki/SHA-256">SHA-256</a>
+                    (поддержка есть в стандартной библиотеке).
+                    
+                    
+                    .
+                    
+                </li><li>
+                    Если при чтении файла возникают ошибки, укажите в качестве
+                    его хэш-суммы все нули.
+                </li><li>
+                    Кодировка входного и выходного файлов &mdash; UTF-8.
+                </li><li>
+                    Размеры файлов могут превышать размер оперативной памяти.
+                </li><li>
+                    Пример
+                    <table class="black"><tr><th>Входной файл</th></tr><tr><td><pre>
+samples/1
+samples/12
+samples/123
+samples/1234
+samples/1
+samples/binary
+samples/no-such-file
+                        </pre></td></tr><tr><th>Выходной файл</th></tr><tr><td><pre>
+6b86b273ff34fce1 samples/1
+6b51d431df5d7f14 samples/12
+a665a45920422f9d samples/123
+03ac674216f3e15c samples/1234
+6b86b273ff34fce1 samples/1
+40aff2e9d2d8922e samples/binary
+0000000000000000 samples/no-such-file
+                         </pre></td></tr></table></li></ol></li><li>
+            Сложный вариант:
+            <ol><li>
+                    Разработайте класс <code>RecursiveWalk</code>,
+                    осуществляющий подсчет хэш-сумм файлов в
+                    директориях.
+                </li><li>
+                    Входной файл содержит список файлов и директорий,
+                    которые требуется обойти. Обход директорий осуществляется
+                    рекурсивно.
+                </li><li>
+                    Пример:
+                    <table class="black"><tr><th>Входной файл</th></tr><tr><td><pre>
+samples/binary
+samples
+samples/no-such-file
+                        </pre></td></tr><tr><th>Выходной файл</th></tr><tr><td><pre>
+40aff2e9d2d8922e samples/binary
+6b86b273ff34fce1 samples/1
+6b51d431df5d7f14 samples/12
+a665a45920422f9d samples/123
+03ac674216f3e15c samples/1234
+40aff2e9d2d8922e samples/binary
+0000000000000000 samples/such-file
+                        </pre></td></tr></table></li></ol></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    Дизайн и обработку исключений, диагностику ошибок.
+                </li><li>
+                    Программа должна корректно завершаться даже в случае ошибки.
+                </li><li>
+                    Корректная работа с вводом-выводом.
+                </li><li>
+                    Отсутствие утечки ресурсов.
+                </li><li>
+                    Возможность повторного использования кода.
+                </li></ul></li><li>
+            Требования к оформлению задания.
+            <ul><li>
+                    Проверяется исходный код задания.
+                </li><li>
+                    Весь код должен находиться в пакете
+                    <code>info.kgeorgiy.ja.фамилия.walk</code>.
+                </li></ul></li></ol><p><a href="https://www.kgeorgiy.info/git/geo/java-advanced-2025">Репозиторий курса</a></p></div><div class="references"><h4 id="N65749">Библиография</h4><ol><li>&nbsp;<a href="http://docs.oracle.com/javase/tutorial/essential/io/index.html" title="">Java Tutorial. Basic I/O</a></li><li>&nbsp;<a href="http://docs.oracle.com/javase/8/docs/technotes/guides/io/" title="">Java I/O, NIO, and NIO.2</a></li><li>&nbsp;<a href="https://openjdk.org/jeps/400" title="">JEP 400: UTF-8 by Default</a></li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65627">Слайды</a></li><li class="i0"><a href="#N65634">Примеры</a></li><li class="i0"><a href="#N65641">Домашнее задание 1. Обход файлов</a></li><li class="i0"><a href="#N65749">Библиография</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="ru"><head><META http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Технологии Java :: Тема&nbsp; 2. Collections Framework</title><link href="/design/main.css" type="text/css" rel="stylesheet"><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"><link rel="icon" href="/favicon.ico" type="image/x-icon"><link href="../../plan.css" type="text/css" rel="stylesheet"><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ"></script><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body><header><nav aria-label="Breadcrumb"><a href="../../../">ГК</a> / <a href="../../">Материалы курсов</a> / <a href="../">Технологии Java</a> / </nav><h1>Тема&nbsp; 2. Collections Framework</h1></header><div id="main"><article><h4 id="N65556">Содержание</h4><ol><li>Контейнеры<ol><li>Коллекции<ol><li>Интерфейс Collection</li><li>Итераторы</li><li>Класс AbstractCollection</li></ol></li><li>Множества<ol><li>Интерфейс Set</li><li>Методы equals и hashCode</li><li>Реализации множеств и базовые классы</li></ol></li><li>Списки<ol><li>Интерфейс List</li><li>Итераторы по спискам</li><li>Реализации списков и базовые классы</li></ol></li><li>Очереди и деки<ol><li>Интерфейс Queue</li><li>Интерфейс Dequeue</li><li>Реализации очередей и деков, базовые классы</li></ol></li></ol></li><li>Отображения<ol><li>Интерфейс Map</li><li>Пары и проекции отображений</li><li>Реализации отображений и базовые классы</li></ol></li><li>Упорядоченные коллекции<ol><li>Сравнение элементов и согласованность с equals</li><li>Упорядоченные множества</li><li>Упорядоченные отображения</li><li>Очередь с приоритетами</li></ol></li><li>Алгоритмы<ol><li>Класс Collections</li><li>Класс Arrays</li></ol></li><li>Устаревшие коллекции</li></ol><div class="slides"><h4 id="N65629">Слайды</h4><a href="../slides/collections.xhtml">HTML</a></div><div class="examples"><h4 id="N65636">Примеры</h4><a href="../examples/collections.zip">zip</a></div><div class="homework"><h4 id="N65643">Домашнее задание 2. Множество на массиве</h4><ol><li>
+            Разработайте класс <code>ArraySet</code>,
+            реализующий неизменяемое упорядоченное множество.
+            <ul><li>
+                    Класс <code>ArraySet</code> должен реализовывать
+                    интерфейс 
+                    <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/SortedSet.html">SortedSet</a>
+                    (простой вариант)
+                    или 
+                    <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/NavigableSet.html">NavigableSet</a> 
+                    (сложный вариант).
+                </li><li>
+                    Все операции над множествами должны производиться с наилучшей асимптотической эффективностью.
+                </li></ul></li><li>
+            При выполнении задания следует обратить внимание на:
+            <ul><li>
+                    Применение стандартных коллекций.
+                </li><li>
+                    Избавление от повторяющегося кода.
+                </li><li>
+                    Отсутствие Unchecked warnings при компиляции.
+                </li><li>
+                    Отсутствие излишних подавленных unchecked warnings.
+                </li></ul></li></ol></div><div class="references"><h4 id="N65681">Библиография</h4><ol><li>&nbsp;<a href="http://docs.oracle.com/javase/tutorial/collections/" title="">Collections Tutorial</a></li><li>&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/doc-files/coll-reference.html" title="">Outline of the Collections Framework</a></li><li>&nbsp;<a href="https://zeroturnaround.com/rebellabs/java-collections-cheat-sheet/" title="">Java Collections Cheat Sheet</a></li></ol></div></article><aside><header><form id="search" method="get" action="https://www.google.com/search"><input type="hidden" name="sitesearch" value="kgeorgiy.info"><input type="text" name="q" maxlength="255"><button type="submit" value="Search">&#128269;</button></form></header><nav><ol><li class="i0"><a href="#N65556">Содержание</a></li><li class="i0"><a href="#N65629">Слайды</a></li><li class="i0"><a href="#N65636">Примеры</a></li><li class="i0"><a href="#N65643">Домашнее задание 2. Множество на массиве</a></li><li class="i0"><a href="#N65681">Библиография</a></li></ol></nav><footer><a href="https://validator.w3.org/check?uri=referer" referrerpolicy="unsafe-url"><img src="/design/valid-html5.svg" alt="Valid HTML 5" height="31" width="88"></a></footer></aside></div></body></html>

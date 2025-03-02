@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="ru" xml:lang="ru" xmlns="http://www.w3.org/1999/xhtml"><head><title>Технологии Java / Введение в многопоточное программирование</title><meta name="author" content="" /><link rel="stylesheet" type="text/css" media="screen, projection, print" href="scripts/slidy.css" /><link rel="stylesheet" type="text/css" href="scripts/prettify.css" /><link rel="stylesheet" type="text/css" href="scripts/kgeorgiy-slides.css" /><script type="text/javascript" src="scripts/slidy.js" charset="utf-8" /><script type="text/javascript" src="scripts/kgeorgiy-slides.js" charset="utf-8" /><script type="text/javascript" src="scripts/prettify.js" /><script type="text/javascript" src="scripts/lang-sql.js" /><script type="text/javascript" src="scripts/lang-javaModule.js" /><script type="text/javascript" src="scripts/lang-scala.js" /><script>var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-37693764-1"]);_gaq.push(["_setDomainName","kgeorgiy.info"]);_gaq.push(["_trackPageview"]);(function(){var a=document.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();</script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-8EQ66D87ZZ" /><script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+
+                  gtag('config', 'G-8EQ66D87ZZ');
+                </script></head><body onload="prettyPrint()"><div id="all">
+<div class="slide cover"><div class="content"><div class="course">Технологии Java</div><hr /><div class="lecture"><div>Введение в многопоточное программирование</div></div><div class="link"><a href="https://kgeorgiy.info/courses/java-advanced/">https://kgeorgiy.info/courses/java-advanced/</a></div><div class="copyright"><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/deed.ru"><span class="copyright">Copyright © Georgiy Korneev</span><img src="scripts/by-nc-sa.png" alt="Attribution-NonCommercial-ShareAlike" /></a></div></div></div>
+<div class="slide section"><div class="content"><h1>Параллельное исполнение</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Параллельное исполнение</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">История</a></li><li><a href="#(9)" class="">Примеры</a></li><li><a href="#(17)" class="">Операции с потоками</a></li></ol></li><li><a href="#(22)" class="toc">Потоки в Java</a></li></ol></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">2</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>История</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Параллельное исполнение</a><ol class="level-2 toc-2"><li><a href="#(3)" class=" current">История</a></li><li><a href="#(9)" class="">Примеры</a></li><li><a href="#(17)" class="">Операции с потоками</a></li></ol></li><li><a href="#(22)" class="toc">Потоки в Java</a></li></ol></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">3</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Однозадачные системы</h1><div class="body"><ul class="item-1 level-1"><li>Одна задача за раз<ul class="item-2 level-2"><li>Пока задача не завершилась – все ждут</li><li>Память – монопольное использование</li><li>Ввод-вывод – монопольное использование</li></ul></li><li>Пока не завершилась – все ждут<ul class="item-2 level-2"><li>Простой ресурсов</li><li>Большое время отклика</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">4</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пакетные</h1><div class="body"><ul class="item-1 level-1"><li>Набор заданий для исполнения (пакет)<ul class="item-2 level-2"><li>Память – разделяемая, изолированная</li><li>Ввод-вывод – переключение задач</li><li>Управление заданиями – монитор</li></ul></li><li>Псевдопараллельное исполнение<ul class="item-2 level-2"><li>Увеличение загрузки ресурсов</li><li>Большое время отклика</li></ul></li><li>1950-е годы</li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">5</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Многозадачные системы</h1><div class="body"><ul class="item-1 level-1"><li>Несколько задач конкурируют за процессор<ul class="item-2 level-2"><li>Память – разделяемая, изолированная</li><li>Прерывание – переключение задач</li><li>Ввод-вывод – разделяемый</li></ul></li><li>Параллельное исполнение<ul class="item-2 level-2"><li>Уменьшение времени отклика</li></ul></li><li>1960-е годы</li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">6</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Многопоточные программы</h1><div class="body"><ul class="item-1 level-1"><li>Несколько потоков конкурируют за процессор<ul class="item-2 level-2"><li>Память – общая</li><li>Прерывание – переключение потоков</li><li>Ввод-вывод – разделяемый</li></ul></li><li>Параллельное исполнение кода внутри программы<ul class="item-2 level-2"><li>Уменьшение времени отклика</li><li>1990-е годы</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">7</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Многопоточное программирование</h1><div class="body"><ul class="item-1 level-1"><li>Программа одновременно имеет несколько потоков исполнения</li><li>Потоки могут взаимодействовать друг с другом<ul class="item-2 level-2"><li>Синхронизация</li><li>Обмен сообщениями</li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">8</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Примеры</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Параллельное исполнение</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">История</a></li><li><a href="#(9)" class=" current">Примеры</a></li><li><a href="#(17)" class="">Операции с потоками</a></li></ol></li><li><a href="#(22)" class="toc">Потоки в Java</a></li></ol></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">9</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Умножение матриц</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Матрицы размера n×n
+double[][] a, b, c;
+for (int i = 0; i &lt; n; i++) {
+    for (int j = 0; j &lt; n; j++) {
+        c[i][j] = 0;
+        for (int k = 0; k &lt; n; k++) {
+            c[i][j] += a[i][k] * b[k][j];
+        }
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">10</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Итеративный параллелизм</h1><div class="body"><ul class="item-1 level-1"><li><pre class="prettyprint lang-java">// Матрицы размера n×n
+/*shared*/ double[][] a, b, c;
+for (int i = 0; i &lt; n; i++) {     // Параллельно
+    for (int j = 0; j &lt; n; j++) { // Параллельно
+        c[i][j] = 0;
+        for (int k = 0; k &lt; n; k++) {
+            c[i][j] += a[i][k] * b[k][j];
+        }
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">11</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Обмен сообщениями (1)</h1><div class="body"><ul class="item-1 level-1"><li>Рабочий поток<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">worker[i] {
+    double[]   a; // a[i][⋅]
+    double[][] b; // b[⋅][⋅]
+    double[]   c; // c[i][⋅]
+    receive a, b from coordinator;
+    for (int j = 0; j &lt; n; j++) {
+        c[j] = 0;
+        for (int k = 0; k &lt; n; k++) {
+            c[j] += a[k] * b[k][j];
+        }
+    }
+    send c to coordinator;
+}
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">12</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Обмен сообщениями (2)</h1><div class="body"><ul class="item-1 level-1"><li>Управляющий поток<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">coordinator(int i) {
+    double[][] a, b, c;
+    for (int i = 0; i &lt; n; i++) {
+        send a[i], b to worker[i];
+    }
+    for (int i = 0; i &lt; n; i++) {
+        receive c[i] from worker[i];
+    }
+}
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">13</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Обмен сообщениями (3)</h1><div class="body"><ul class="item-1 level-1"><li>Передача данных между рабочими потоками<ul class="item-2 level-2"><li><pre class="prettyprint lang-java">worker[i] {
+    double[] a; // a[i][⋅]
+    double[] b; // b[⋅][i]
+    double[] c; //  c[i][⋅]
+    receive a, b from coordinator;
+    for (int j = 0; j &lt; n; j++) {
+        // Вычисление c[(i - j + n) % n]
+        send b to worker[(i + 1) % n];
+        receive b from worker[(i + n - 1) % n];
+    }
+    send c to coordinator;
+}
+</pre></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">14</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вычисление интеграла</h1><div class="body"><ul class="item-1 level-1"><li>Адаптивное вычисление интеграла <var>f(x)</var><pre class="prettyprint lang-java">double integrate(double l, double r) {
+    if (abs(area(l, m) + area(m, r) - area(l, r)) &gt; ε) {
+        return integrate(l, m) + integrate(m, r);
+    } else {
+        return area(l, m) + area(m, r);
+    }
+}
+double area(double l, double r) {
+    return (f(l) + f(r)) * (r - l) / 2;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">15</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Рекурсивный параллелизм</h1><div class="body"><ul class="item-1 level-1"><li>Адаптивное вычисление интеграла <var>f(x)</var><pre class="prettyprint lang-java">double integrate(double l, double r) {
+    double m = (l + r) / 2;
+    double la = area(l, m);
+    double ra = area(m, r);
+    if (abs(la + ra - area(l, r)) &gt; ε) {
+        la = integrate(l, m); // Параллельно
+        ra = integrate(m, r); // Параллельно
+    }
+    return la + ra;
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">16</span></div></div></div></div>
+<div class="slide subsection"><div class="content"><h1>Операции с потоками</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc current">Параллельное исполнение</a><ol class="level-2 toc-2"><li><a href="#(3)" class="">История</a></li><li><a href="#(9)" class="">Примеры</a></li><li><a href="#(17)" class=" current">Операции с потоками</a></li></ol></li><li><a href="#(22)" class="toc">Потоки в Java</a></li></ol></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">17</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Основные операции</h1><div class="body"><ul class="item-1 level-1"><li>Создание потока</li><li>Уничтожение потока</li><li>Неделимая операция <pre class="prettyprint lang-java">〈statements〉
+</pre></li><li>Неделимая операция с ожиданием условия <pre class="prettyprint lang-java">〈await(C) statements〉
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">18</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример. Поиск максимума (1)</h1><div class="body"><ul class="item-1 level-1"><li>Без синхронизации <pre class="prettyprint lang-java">/* shared */ int max = 0;
+create worker[i] {
+    if (max &lt; a[i]) max = a[i];
+}
+</pre></li><li>С синхронизацией <pre class="prettyprint lang-java">/* shared */ int max = 0;
+create worker[i] {
+    〈if (max &lt; a[i]) max = a[i];〉
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">19</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Пример. Поиск максимума (2)</h1><div class="body"><ul class="item-1 level-1"><li>Протокол проверить-проверить-установить <pre class="prettyprint lang-java">/* shared */ int max = 0;
+create worker[i] {
+    if (max &lt; a[i]) {
+        〈if (max &lt; a[i]) max = a[i];〉
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">20</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Свойства планировщика</h1><div class="body"><ul class="item-1 level-1"><li>Тип многозадачности<ul class="item-2 level-2"><li>Кооперативная</li><li>Вытесняющая</li></ul></li><li>Безопасность</li><li>Живучесть</li><li>Справедливость<ul class="item-2 level-2"><li>Безусловная (отсутствие условий)</li><li>Слабая</li><li>Сильная <img class="bottom" src="pics/SchedulerFairness.svg" /></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">21</span></div></div></div></div>
+<div class="slide section"><div class="content"><h1>Потоки в Java</h1><h2>Содержание</h2><div class="body"><ol class="level-1 toc-1"><li><a href="#(2)" class="toc">Параллельное исполнение</a></li><li><a href="#(22)" class="toc current">Потоки в Java</a></li></ol></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">22</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Создание потоков</h1><div class="body"><ul class="item-1 level-1"><li>Класс <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html" target="_blank">Thread</a></var><ul class="item-2 level-2"><li>Поток исполнения</li><li>Позволяет создавать потоки и производить операции с ними</li></ul></li><li>Интерфейс <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html" target="_blank">Runnable</a></var><ul class="item-2 level-2"><li>Сущность, которая может быть запущена</li><li><var>public void <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html#run()" target="_blank">run()</a></var></var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">23</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Создание потока (Runnable)</h1><div class="body"><ul class="item-1 level-1"><li>Рекомендуемый способ <pre class="prettyprint lang-java">// Создание
+Thread t = new Thread(() -&gt; {
+    System.out.println("Hello");
+});
+// Запуск
+t.start();
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">24</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Создание потока (Thread)</h1><div class="body"><ul class="item-1 level-1"><li><span class="warn">Нерекомендуемый способ <pre class="prettyprint lang-java">// Создание
+Thread t = new Thread() {
+    public void run() {
+        System.out.println("Hello");
+    }
+};
+// Запуск
+t.start();
+</pre></span></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">25</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Состояния потока</h1><div class="body"><ul class="item-1 level-1"><li>Состояние потока возвращается методами<ul class="item-2 level-2"><li><var><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html" target="_blank">Thread.State</a></var> <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#getState()" target="_blank">getState()</a></var></var></li><li><var>boolean <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#isAlive()" target="_blank">isAlive()</a></var></var></li></ul></li><li>Таблица состояний <table><tr><th><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#getState()" target="_blank">getState()</a></var></th><th><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#isAlive()" target="_blank">isAlive()</a></var></th></tr><tr><td><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html#NEW" target="_blank">NEW</a></var></td><td /></tr><tr><td><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html#RUNNABLE" target="_blank">RUNNABLE</a></var></td><td> +</td></tr><tr><td><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html#BLOCKED" target="_blank">BLOCKED</a></var></td><td> +</td></tr><tr><td><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html#WAITING" target="_blank">WAITING</a></var></td><td> +</td></tr><tr><td><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html#TIMED_WAITING" target="_blank">TIMED_WAITING</a></var></td><td> +</td></tr><tr><td><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.State.html#TERMINATED" target="_blank">TERMINATED</a></var></td><td /></tr></table></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">26</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Состояния потока </h1><div class="body"><img class="bottom" src="pics/ThreadState.svg" /></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">27</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Свойства потока</h1><div class="body"><ul class="item-1 level-1"><li>Основные свойства<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#getId()" target="_blank">id</a></var> – идентификатор потока</li><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#getName()" target="_blank">name</a></var> – имя потока</li><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#getPriority()" target="_blank">priority</a></var> – приоритет<ul class="item-3 level-3"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#MIN_PRIORITY" target="_blank">MIN_PRIORITY</a></var>, <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#NORM_PRIORITY" target="_blank">NORM_PRIORITY</a></var>, <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#MAX_PRIORITY" target="_blank">MAX_PRIORITY</a></var></li></ul></li><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#isDaemon()" target="_blank">daemon</a></var> – поток-демон</li></ul></li><li>Свойства потока не могут изменяться после запуска</li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">28</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Взаимодействие потоков</h1><div class="body"><ul class="item-1 level-1"><li>Создание: конструктор</li><li>Запуск: <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#start()" target="_blank">start()</a></var></li><li>Ожидание завершения: <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#join(long)" target="_blank">join(time?)</a></var></li><li>Прерывание: <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupt()" target="_blank">interrupt()</a></var><img class="bottom" src="pics/StartJoin.svg" /></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">29</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ожидание окончания потока</h1><div class="body"><ul class="item-1 level-1"><li>Ожидать до завершения<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#join()" target="_blank">thread.join()</a></var></li></ul></li><li>Ожидать до завершения или истечения времени<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#join(long,int)" target="_blank">thread.join(millis, nanos?)</a></var></li></ul></li><li>Все методы ожидания кидают <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" target="_blank">InterruptedException</a></var></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">30</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Прерывание потока</h1><div class="body"><ul class="item-1 level-1"><li>Установить флаг прерывания<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupt()" target="_blank">thread.interrupt()</a></var></li></ul></li><li>Проверить флаг прерывания<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#isInterrupted()" target="_blank">thread.isInterrupted()</a></var></li></ul></li><li>Проверить и сбросить флаг прерывания<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupted()" target="_blank">Thread.interrupted()</a></var></li></ul></li><li>Ожидающие методы должны бросать <var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" target="_blank">InterruptedException</a></var><img class="bottom" src="pics/Interruption.svg" /></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">31</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Дополнительные методы</h1><div class="body"><ul class="item-1 level-1"><li>Приостановка исполнения<ul class="item-2 level-2"><li>На время<ul class="item-3 level-3"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(long)" target="_blank">Thread.sleep(time)</a></var></li></ul></li><li>Позволить выполниться другим потокам<ul class="item-3 level-3"><li>Кооперативная многозадачность</li><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#yield()" target="_blank">Thread.yield()</a></var></li></ul></li></ul></li><li>Получение текущего потока<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#currentThread()" target="_blank">Thread.currentThread()</a></var></li></ul></li><li>Обработка исключений<ul class="item-2 level-2"><li><var><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#getDefaultUncaughtExceptionHandler()" target="_blank">defaultUncaughtExceptionHandler</a></var></li></ul></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">32</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Обработка данных в цикле</h1><div class="body"><ul class="item-2 level-2"><li><pre class="prettyprint lang-java">Runnable worker = run() -&gt; {
+    try {
+        while (!Thread.interrupted()) {
+            // Полезные действия
+        }
+    } catch (InterruptedException e) {
+        // Поток заканчивает работу
+    } finally {
+        // Восстановление флага прерывания
+        Thread.currentThread().interrupt();
+    }
+}
+</pre></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">33</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Ссылки</h1><div class="body"><ul class="item-1 level-1"><li>JLS. Threads and Locks // <a href="https://docs.oracle.com/javase/specs/jls/se17/html/jls-17.html" target="_blank">https://docs.oracle.com/javase/specs/jls/se17/<br />html/jls-17.html</a></li><li>Concurrency (Java Tutorial) // <a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/" target="_blank">http://docs.oracle.com/javase/tutorial/essential/<br />concurrency/</a></li></ul></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">34</span></div></div></div></div>
+<div class="slide"><div class="content"><h1>Вопросы</h1><div class="body"><div class="questions">???</div></div><div class="footer"><div class="test"><span class="author">Georgiy Korneev</span><span class="title">Технологии Java / Введение в многопоточное программирование</span><span class="number">35</span></div></div></div></div></div></body></html>
